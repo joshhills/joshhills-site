@@ -1,7 +1,7 @@
 import express from 'express';
 import payload from 'payload';
 
-require('dotenv').config({path: './config/.env'});
+require('dotenv').config();
 const app = express();
 
 console.log(process.env.MONGODB_URI);

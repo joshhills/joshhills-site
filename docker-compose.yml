@@ -1,6 +1,16 @@
-version: '3.1'
+version: '3.9'
 
 services:
+
+  payload:
+    environment: 
+      - MONGODB_URI="mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/${MONGODB_DB}"
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && npm run serve"
 
   mongo:
     image: mongo
@@ -11,8 +21,6 @@ services:
       MONGODB_USERNAME: ${MONGODB_USERNAME}
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
       MONGODB_DB: ${MONGODB_DB}
-    ports:
-      - 27017:27017
     volumes:
       - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
       - ./data:/data/db
