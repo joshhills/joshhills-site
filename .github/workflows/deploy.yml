@@ -1,0 +1,31 @@
+name: DigitalOcean Droplet Deployment
+
+on:
+  push:
+    branches: [staging]
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy staging
+        uses: appleboy/ssh-action@master
+        env:
+          MONGODB_DB: payload-staging
+          MONDODB_ROOT_USERNAME: root
+          MONDODB_ROOT_PASSWORD: ${{secrets.staging-mongodb-root-password}}
+          MONGODB_USERNAME: payload
+          MONDODB_PASSWORD: ${{secrets.staging-mongodb-user-password}}
+          PAYLOAD_SECRET: ${{secrets.staing-payload-secret}}
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+        
+          script: |
+            rm -rf /usr/app/joshhills-cms-staging
+            git clone git@github.com:joshhills/joshhills-cms.git /usr/app/joshhills-cms-staging
+            chown -R root:admins /usr/app/joshhills-cms-staging
+            cd /usr/app/joshhills-cms-staging
+            docker-compose up -d
