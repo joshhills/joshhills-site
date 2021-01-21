@@ -23,7 +23,8 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-        
+          envs: MONGODB_DB,MONDODB_ROOT_USERNAME,MONDODB_ROOT_PASSWORD,MONGODB_USERNAME,MONDODB_PASSWORD,PAYLOAD_SECRET
+
           script: |
             rm -rf /usr/app/joshhills-cms-staging
             git clone git@github.com:joshhills/joshhills-cms.git /usr/app/joshhills-cms-staging
