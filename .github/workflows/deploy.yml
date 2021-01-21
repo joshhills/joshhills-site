@@ -26,6 +26,7 @@ jobs:
           envs: MONGODB_DB,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET
 
           script: |
+            echo "$MONGODB_USERNAME"
             rm -rf /usr/app/joshhills-cms-staging
             git clone git@github.com:joshhills/joshhills-cms.git /usr/app/joshhills-cms-staging
             chown -R root:admins /usr/app/joshhills-cms-staging
