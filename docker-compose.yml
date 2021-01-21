@@ -3,12 +3,15 @@ version: '3.9'
 services:
 
   payload:
-    environment: 
-      - MONGODB_URI="mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/${MONGODB_DB}"
+    restart: always
+    environment:
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/${MONGODB_DB}
     build: .
     ports:
-      - 3000:3000
+      - ${PAYLOAD_PORT}:3000
     depends_on:
+      - mongo
+    links:
       - mongo
     command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && npm run serve"
 
@@ -29,7 +32,7 @@ services:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - ${MONGO_EXPRESS_PORT}:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_ROOT_USERNAME}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_ROOT_PASSWORD}
