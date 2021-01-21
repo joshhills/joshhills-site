@@ -13,17 +13,17 @@ jobs:
       - name: Deploy staging
         uses: appleboy/ssh-action@master
         env:
-          MONGODB_DB: payload-staging
-          MONDODB_ROOT_USERNAME: root
-          MONDODB_ROOT_PASSWORD: ${{secrets.staging-mongodb-root-password}}
-          MONGODB_USERNAME: payload
-          MONDODB_PASSWORD: ${{secrets.staging-mongodb-user-password}}
-          PAYLOAD_SECRET: ${{secrets.staing-payload-secret}}
+          MONGODB_DB: ${{secrets.MONGODB_DB}}
+          MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
+          MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
+          MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+          MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+          PAYLOAD_SECRET: ${{secrets.PAYLOAD_SECRET}}
         with:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: MONGODB_DB,MONDODB_ROOT_USERNAME,MONDODB_ROOT_PASSWORD,MONGODB_USERNAME,MONDODB_PASSWORD,PAYLOAD_SECRET
+          envs: MONGODB_DB,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET
 
           script: |
             rm -rf /usr/app/joshhills-cms-staging
