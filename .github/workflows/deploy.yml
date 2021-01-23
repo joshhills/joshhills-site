@@ -28,16 +28,12 @@ jobs:
           envs: MONGODB_DB,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
 
           script: |
-            export PAYLOAD_PORT
-            export MONGO_EXPRESS_PORT
-            export MONGODB_DB
-            export MONGODB_ROOT_USERNAME
-            export MONGODB_ROOT_PASSWORD
-            export MONGODB_USERNAME
-            export MONGODB_PASSWORD
-            export PAYLOAD_SECRET
             rm -rf /usr/app/joshhills-cms-staging
             git clone git@github.com:joshhills/joshhills-cms.git /usr/app/joshhills-cms-staging
-            chown -R root:admins /usr/app/joshhills-cms-staging
             cd /usr/app/joshhills-cms-staging
+            touch .env
+            echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
+            chown -R root:admins /usr/app/joshhills-cms-staging
+            docker-compose down
+            docker-compose build
             docker-compose up -d
