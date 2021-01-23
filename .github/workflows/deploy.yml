@@ -33,6 +33,13 @@ jobs:
             cd /usr/app/joshhills-cms-staging
             touch .env
             echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
+            echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
+            echo "MONGODB_DB=$MONGODB_DB" >> .env
+            echo "MONGODB_ROOT_USERNAME=$MONGODB_ROOT_USERNAME" >> .env
+            echo "MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD" >> .env
+            echo "MONGODB_USERNAME=$MONGODB_USERNAME" >> .env
+            echo "MONGODB_PASSWORD=$MONGODB_PASSWORD" >> .env
+            echo "PAYLOAD_SECRET=$PAYLOAD_SECRET" >> .env
             chown -R root:admins /usr/app/joshhills-cms-staging
             docker-compose down
             docker-compose build
