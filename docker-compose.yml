@@ -38,3 +38,8 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_ROOT_PASSWORD}
     depends_on:
       - mongo
+
+networks: 
+  default: 
+    external: 
+      name: joshhills-dev
