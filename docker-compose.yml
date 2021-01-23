@@ -42,4 +42,4 @@ services:
 networks: 
   default: 
     external: 
-      name: joshhills-dev
+      name: nginx
