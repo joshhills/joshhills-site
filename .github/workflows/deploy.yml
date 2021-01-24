@@ -14,6 +14,7 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           ENVIRONMENT: staging
+          DOMAIN: staging.joshhills.dev
           MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
           MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
           MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
