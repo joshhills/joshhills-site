@@ -5,7 +5,7 @@ services:
   payload:
     restart: always
     environment:
-      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/${MONGODB_DB}
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
     build: .
     ports:
       - "${PAYLOAD_PORT}:3000"
@@ -14,6 +14,8 @@ services:
     links:
       - mongo
     command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && npm run serve"
+    volumes:
+      - /
 
   mongo:
     image: mongo
@@ -23,7 +25,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
       MONGODB_USERNAME: ${MONGODB_USERNAME}
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
-      MONGODB_DB: ${MONGODB_DB}
     volumes:
       - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
       - ./data:/data/db

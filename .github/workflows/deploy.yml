@@ -13,7 +13,7 @@ jobs:
       - name: Deploy staging
         uses: appleboy/ssh-action@master
         env:
-          MONGODB_DB: ${{secrets.MONGODB_DB}}
+          ENVIRONMENT: staging
           MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
           MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
           MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
@@ -25,7 +25,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: MONGODB_DB,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
+          envs: ENVIRONMENT,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
 
           script: |
             rm -rf /usr/app/joshhills-cms-staging
@@ -34,7 +34,7 @@ jobs:
             touch .env
             echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
             echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
-            echo "MONGODB_DB=$MONGODB_DB" >> .env
+            echo "ENVIRONMENT=$ENVIRONMENT" >> .env
             echo "MONGODB_ROOT_USERNAME=$MONGODB_ROOT_USERNAME" >> .env
             echo "MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD" >> .env
             echo "MONGODB_USERNAME=$MONGODB_USERNAME" >> .env

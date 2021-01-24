@@ -2,14 +2,14 @@ set -e
 
 mongo -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD --authenticationDatabase admin<<EOF
 
-use $MONGODB_DB
+use payload-$ENVIRONMENT
 
 db.createUser({
   user: '$MONGODB_USERNAME',
   pwd: '$MONGODB_PASSWORD',
   roles: [{
     role: 'readWrite',
-    db: '$MONGODB_DB'
+    db: 'payload-$ENVIRONMENT'
   }]
 })
 EOF
