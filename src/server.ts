@@ -4,8 +4,6 @@ import payload from 'payload';
 require('dotenv').config();
 const app = express();
 
-console.log(process.env.MONGODB_URI);
-
 // Initialize Payload
 payload.init({
   secret: process.env.PAYLOAD_SECRET,

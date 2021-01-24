@@ -4,7 +4,7 @@ const Media: CollectionConfig = {
     slug: 'media',
     upload: {
         staticURL: '/cms/media',
-        staticDir: 'media'
+        staticDir: '/usr/app/payload-uploads'
     },
     fields: [
         {

@@ -15,7 +15,7 @@ services:
       - mongo
     command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && npm run serve"
     volumes:
-      - /
+      - /usr/app/payload-${ENVIRONMENT}-uploads:/usr/app/payload-uploads
 
   mongo:
     image: mongo
