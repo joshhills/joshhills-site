@@ -25,6 +25,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
       MONGODB_USERNAME: ${MONGODB_USERNAME}
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
+      MONGODB_DB: payload-${ENVIRONMENT}
+      ENVIRONMENT: ${ENVIRONMENT}
     volumes:
       - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
       - ./data:/data/db

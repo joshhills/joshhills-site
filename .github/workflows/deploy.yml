@@ -31,6 +31,7 @@ jobs:
             rm -rf /usr/app/joshhills-cms-staging
             git clone git@github.com:joshhills/joshhills-cms.git --branch staging --single-branch /usr/app/joshhills-cms-staging
             cd /usr/app/joshhills-cms-staging
+            rm .env
             touch .env
             echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
             echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
