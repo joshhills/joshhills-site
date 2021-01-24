@@ -2,12 +2,11 @@ import { buildConfig } from 'payload/config';
 import Media from './collections/Media';
 import TodoLists from './collections/TodoLists';
 import Users from './collections/Users';
-require('dotenv').config();
 
-console.log(`http://${process.env.DOMAIN}:${process.env.PAYLOAD_PORT}`);
+console.log(process.env.SITE_URL);
 
 export default buildConfig({
-  serverURL: `http://${process.env.DOMAIN}:${process.env.PAYLOAD_PORT}`,
+  serverURL: process.env.SITE_URL,
   admin: {
     user: Users.slug,
   },
