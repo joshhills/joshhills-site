@@ -26,7 +26,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: ENVIRONMENT,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
+          envs: ENVIRONMENT,DOMAIN,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
 
           script: |
             rm -rf /usr/app/joshhills-cms-staging
@@ -34,6 +34,7 @@ jobs:
             cd /usr/app/joshhills-cms-staging
             rm .env
             touch .env
+            echo "DOMAIN=$DOMAIN" >> .env
             echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
             echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
             echo "ENVIRONMENT=$ENVIRONMENT" >> .env

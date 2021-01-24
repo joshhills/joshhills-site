@@ -4,8 +4,6 @@ import TodoLists from './collections/TodoLists';
 import Users from './collections/Users';
 require('dotenv').config();
 
-console.log(`http://${process.env.DOMAIN}:${process.env.PAYLOAD_PORT}`);
-
 export default buildConfig({
   serverURL: `http://${process.env.DOMAIN}:${process.env.PAYLOAD_PORT}`,
   admin: {
