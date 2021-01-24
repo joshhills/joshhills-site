@@ -14,7 +14,7 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           ENVIRONMENT: staging
-          SITE_URL: staging.joshhills.dev
+          PAYLOAD_PUBLIC_SERVER_URL: staging.joshhills.dev
           MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
           MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
           MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
@@ -26,7 +26,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: ENVIRONMENT,SITE_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
+          envs: ENVIRONMENT,PAYLOAD_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,PAYLOAD_SECRET,PAYLOAD_PORT,MONGO_EXPRESS_PORT
 
           script: |
             rm -rf /usr/app/joshhills-cms-staging
@@ -34,7 +34,7 @@ jobs:
             cd /usr/app/joshhills-cms-staging
             rm .env
             touch .env
-            echo "SITE_URL=$SITE_URL" >> .env
+            echo "PAYLOAD_PUBLIC_SERVER_URL=$PAYLOAD_PUBLIC_SERVER_URL" >> .env
             echo "PAYLOAD_PORT=$PAYLOAD_PORT" >> .env
             echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
             echo "ENVIRONMENT=$ENVIRONMENT" >> .env
