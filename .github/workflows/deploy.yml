@@ -20,7 +20,7 @@ jobs:
           MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
           MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
           PAYLOAD_SECRET: ${{secrets.PAYLOAD_SECRET}}
-          PAYLOAD_PORT: 3000
+          PAYLOAD_PORT: 3001
           MONGO_EXPRESS_PORT: 8081
         with:
           host: ${{secrets.SSH_HOST}}
