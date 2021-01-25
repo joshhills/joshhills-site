@@ -4,6 +4,11 @@ data
 # Payload artifacts
 build
 dist
+media
+
+# Next.js artifacts
+public/sitemap.xml
+public/robots.txt
 
 # Mac OS
 .DS_Store
