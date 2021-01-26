@@ -5,7 +5,7 @@ services:
   site:
     restart: always
     environment:
-      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${NODE_ENV}
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
     build: .
     ports:
       - "${SITE_PORT}:3000"
@@ -13,7 +13,7 @@ services:
       - mongo
     links:
       - mongo
-    command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && npm run serve"
+    command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && yarn serve"
     volumes:
       - ${PAYLOAD_UPLOADS_PATH}:/usr/app/payload-uploads
 
@@ -25,8 +25,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
       MONGODB_USERNAME: ${MONGODB_USERNAME}
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
-      MONGODB_DB: payload-${NODE_ENV}
-      NODE_ENV: ${NODE_ENV}
+      MONGODB_DB: payload-${ENVIRONMENT}
+      ENVIRONMENT: ${ENVIRONMENT}
     ports: 
       - "27017:27017"
     volumes:
