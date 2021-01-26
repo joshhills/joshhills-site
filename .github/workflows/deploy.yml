@@ -49,7 +49,7 @@ jobs:
             echo "MONGODB_USERNAME=$MONGODB_USERNAME" >> .env
             echo "MONGODB_PASSWORD=$MONGODB_PASSWORD" >> .env
             echo "PAYLOAD_SECRET=$PAYLOAD_SECRET" >> .env
-            echo "MONGODB_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}" >> .env
+            echo "MONGODB_URI=mongodb://$MONGODB_USERNAME:$MONGODB_PASSWORD@mongo/payload-$ENVIRONMENT" >> .env
             chown -R root:admins /usr/app/joshhills-site-staging
             chown -R root:admins /usr/app/joshhills-site-staging-data
             chown -R root:admins /usr/app/joshhills-site-staging-uploads
