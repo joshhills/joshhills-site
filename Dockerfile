@@ -11,6 +11,6 @@ RUN yarn
 
 COPY . .
 
-RUN yarn build --verbose
+RUN yarn build
 
 EXPOSE 3000
