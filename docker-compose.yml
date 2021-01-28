@@ -2,26 +2,28 @@ version: '3.9'
 
 services:
 
+  # Next JS & Payload
   site:
+    container_name: joshhills-site-${ENVIRONMENT}_site
     restart: always
     environment:
       MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
     build:
       context: .
-      network: nginx
+      network: site
       args:
         MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
     ports:
       - "${SITE_PORT}:3000"
     depends_on:
       - mongo
-    links:
-      - mongo
     command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && yarn serve"
     volumes:
       - ${PAYLOAD_UPLOADS_PATH}:/usr/app/payload-uploads
 
+  # Database
   mongo:
+    container_name: joshhills-site-${ENVIRONMENT}_mongo
     image: mongo
     restart: always
     environment:
@@ -31,13 +33,13 @@ services:
       MONGODB_PASSWORD: ${MONGODB_PASSWORD}
       MONGODB_DB: payload-${ENVIRONMENT}
       ENVIRONMENT: ${ENVIRONMENT}
-    ports: 
-      - "27017:27017"
     volumes:
       - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
       - ${DB_DATA_PATH}:/data/db
 
+  # Database Viewer
   mongo-express:
+    container_name: joshhills-site-${ENVIRONMENT}_mongo-express
     image: mongo-express
     restart: always
     ports:
@@ -50,6 +52,7 @@ services:
       - mongo
 
 networks: 
-  default: 
-    external: 
-      name: nginx
+  default:
+    name: site
+  nginx:
+    external: true
