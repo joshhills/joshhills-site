@@ -6,7 +6,11 @@ services:
     restart: always
     environment:
       MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
-    build: .
+    build:
+      context: .
+      network: nginx
+      args:
+        MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
     ports:
       - "${SITE_PORT}:3000"
     depends_on:

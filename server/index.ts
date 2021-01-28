@@ -7,12 +7,16 @@ import express from 'express';
 import payload from 'payload';
 import { config as dotenv } from 'dotenv';
 
+console.log(process.env.MONGODB_URI);
+
 dotenv({
   path: path.resolve(__dirname, '../.env'),
 });
 
 const dev = process.env.NODE_ENV !== 'production';
 const server = express();
+
+console.log(process.env.MONGODB_URI);
 
 payload.init({
   secret: process.env.PAYLOAD_SECRET,
