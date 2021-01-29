@@ -56,6 +56,6 @@ jobs:
             chown -R root:admins /usr/app/joshhills-site-production-uploads
 
             docker-compose down
-            docker-compose up -d mongo mongo-express
+            docker-compose up -d mongo
             docker-compose build site
             docker-compose up -d site
