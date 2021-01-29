@@ -7,7 +7,7 @@ services:
     container_name: joshhills-site-${ENVIRONMENT}_site
     restart: always
     environment:
-      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
+      MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@joshhills-site-${ENVIRONMENT}_mongo/payload-${ENVIRONMENT}
     networks:
       - default
       - nginx
@@ -15,7 +15,7 @@ services:
       context: .
       network: site
       args:
-        MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo/payload-${ENVIRONMENT}
+        MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@joshhills-site-${ENVIRONMENT}_mongo/payload-${ENVIRONMENT}
     ports:
       - "${SITE_PORT}:3000"
     depends_on:
