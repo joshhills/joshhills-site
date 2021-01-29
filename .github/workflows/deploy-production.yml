@@ -1,4 +1,4 @@
-name: DigitalOcean Droplet Deployment
+name: Production
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Deploy staging
+      - name: Deploy production
         uses: appleboy/ssh-action@master
         env:
           NODE_ENV: production

@@ -1,4 +1,4 @@
-name: DigitalOcean Droplet Deployment
+name: Staging
 
 on:
   push:
