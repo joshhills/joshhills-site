@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  deploy-staging:
+  deploy-production:
     environment: production
     runs-on: ubuntu-latest
     
