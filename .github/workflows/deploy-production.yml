@@ -1,0 +1,61 @@
+name: DigitalOcean Droplet Deployment
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-staging:
+    environment: production
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Deploy staging
+        uses: appleboy/ssh-action@master
+        env:
+          NODE_ENV: production
+          PAYLOAD_PUBLIC_SERVER_URL: https://joshhills.dev
+          MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
+          MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
+          MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+          MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+          DB_DATA_PATH: /usr/app/joshhills-site-production-data
+          PAYLOAD_UPLOADS_PATH: /usr/app/joshhills-site-production-uploads
+          PAYLOAD_SECRET: ${{secrets.PAYLOAD_SECRET}}
+          SITE_PORT: 3001
+          MONGO_EXPRESS_PORT: 8082
+          ENVIRONMENT: production
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          envs: NODE_ENV,ENVIRONMENT,PAYLOAD_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,DB_DATA_PATH,PAYLOAD_UPLOADS_PATH,PAYLOAD_SECRET,SITE_PORT,MONGO_EXPRESS_PORT
+
+          script: |
+            rm -rf /usr/app/joshhills-site-production
+            git clone git@github.com:joshhills/joshhills-site.git --branch main --single-branch /usr/app/joshhills-site-production
+            cd /usr/app/joshhills-site-production
+            
+            rm .env
+            touch .env
+            echo "PAYLOAD_PUBLIC_SERVER_URL=$PAYLOAD_PUBLIC_SERVER_URL" >> .env
+            echo "SITE_PORT=$SITE_PORT" >> .env
+            echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
+            echo "DB_DATA_PATH=$DB_DATA_PATH" >> .env
+            echo "PAYLOAD_UPLOADS_PATH=$PAYLOAD_UPLOADS_PATH" >> .env
+            echo "NODE_ENV=$NODE_ENV" >> .env
+            echo "ENVIRONMENT=$ENVIRONMENT" >> .env
+            echo "MONGODB_ROOT_USERNAME=$MONGODB_ROOT_USERNAME" >> .env
+            echo "MONGODB_ROOT_PASSWORD=$MONGODB_ROOT_PASSWORD" >> .env
+            echo "MONGODB_USERNAME=$MONGODB_USERNAME" >> .env
+            echo "MONGODB_PASSWORD=$MONGODB_PASSWORD" >> .env
+            echo "PAYLOAD_SECRET=$PAYLOAD_SECRET" >> .env
+
+            chown -R root:admins /usr/app/joshhills-site-production
+            chown -R root:admins /usr/app/joshhills-site-production-data
+            chown -R root:admins /usr/app/joshhills-site-production-uploads
+
+            docker-compose down
+            docker-compose up -d mongo mongo-express
+            docker-compose build site
+            docker-compose up -d site
