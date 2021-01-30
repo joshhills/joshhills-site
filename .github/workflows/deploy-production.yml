@@ -25,11 +25,14 @@ jobs:
           SITE_PORT: 3001
           MONGO_EXPRESS_PORT: 8082
           ENVIRONMENT: production
+          SMTP_HOST: ${{secrets.SMTP_HOST}}
+          SMTP_USER: ${{secrets.SMTP_USER}}
+          SMTP_PASSWORD: ${{secrets.SMTP_PASSWORD}}
         with:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: NODE_ENV,ENVIRONMENT,PAYLOAD_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,DB_DATA_PATH,PAYLOAD_UPLOADS_PATH,PAYLOAD_SECRET,SITE_PORT,MONGO_EXPRESS_PORT
+          envs: NODE_ENV,SMTP_HOST,SMTP_USER,SMTP_PASSWORD,ENVIRONMENT,PAYLOAD_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,DB_DATA_PATH,PAYLOAD_UPLOADS_PATH,PAYLOAD_SECRET,SITE_PORT,MONGO_EXPRESS_PORT
 
           script: |
             rm -rf /usr/app/joshhills-site-production
@@ -50,6 +53,9 @@ jobs:
             echo "MONGODB_USERNAME=$MONGODB_USERNAME" >> .env
             echo "MONGODB_PASSWORD=$MONGODB_PASSWORD" >> .env
             echo "PAYLOAD_SECRET=$PAYLOAD_SECRET" >> .env
+            echo "SMTP_HOST=$SMTP_HOST" >> .env
+            echo "SMTP_USER=$SMTP_USER" >> .env
+            echo "SMTP_PASSWORD=$SMTP_PASSWORD" >> .env
 
             chown -R root:admins /usr/app/joshhills-site-production
             chown -R root:admins /usr/app/joshhills-site-production-data
