@@ -22,6 +22,24 @@ payload.init({
   secret: process.env.PAYLOAD_SECRET,
   mongoURL: process.env.MONGODB_URI,
   express: server,
+  ...process.env.ENVIRONMENT === 'production' ? {
+    email: {
+      transportOptions: {
+        host: process.env.SMTP_HOST,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD
+        },
+        port: 465,
+        secure: true,
+        tls: {
+          rejectUnauthorized: false
+        }
+      },
+      fromName: 'noreply',
+      fromAddress: 'noreply@joshhills.dev'
+    }
+  } : {}
 });
 
 if (!process.env.NEXT_BUILD) {
@@ -35,7 +53,7 @@ if (!process.env.NEXT_BUILD) {
     console.log('NextJS started');
 
     server.listen(process.env.SITE_PORT, async () => {
-      console.log(`Server listening on ${process.env.PORT}...`);
+      console.log(`Server listening on ${process.env.SITE_PORT}...`);
     });
   });
 } else {
