@@ -1,10 +1,20 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from 'payload/types'
 
-export type MediaType = {
+export type Type = {
   filename: string
   alt: string
   sizes: {
+    thumbnail?: {
+      filename: string
+      width: number
+      height: number
+    }
     card?: {
+      filename: string
+      width: number
+      height: number
+    }
+    feature?: {
       filename: string
       width: number
       height: number
@@ -21,11 +31,21 @@ const Media: CollectionConfig = {
     adminThumbnail: 'card',
     imageSizes: [
       {
+        name: 'thumbnail',
+        width: 160,
+        height: 120,
+      },
+      {
         name: 'card',
         width: 640,
         height: 480,
       },
-    ],
+      {
+        name: 'feature',
+        width: 1024,
+        height: 576,
+      }
+    ]
   },
   fields: [
     {
@@ -33,8 +53,8 @@ const Media: CollectionConfig = {
       label: 'Alt Text',
       type: 'text',
       required: true,
-    },
-  ],
+    }
+  ]
 };
 
-export default Media;
+export default Media

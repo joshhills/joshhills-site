@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import payload from 'payload';
-import { GetServerSideProps } from 'next';
-import getConfig from 'next/config';
-import { PageType } from '../collections/Page';
-import NotFound from '../components/NotFound';
-import Head from '../components/Head';
-
-const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
+import React from 'react'
+import { Grid, Cell } from '@faceless-ui/css-grid'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import { Type as PageType } from '../collections/Page'
+import NotFound from '../components/NotFound'
+import Head from '../components/Head'
+import RenderBlocks from '../components/RenderBlocks'
+import GridContainer from '../components/layout/GridContainer'
+import Template from '../components/layout/Template'
 
 export type Props = {
   page?: PageType
@@ -14,55 +14,52 @@ export type Props = {
 }
 
 const Page: React.FC<Props> = (props) => {
-  const { page } = props;
+
+  const { page } = props
 
   if (!page) {
-    return <NotFound />;
+    return <NotFound />
   }
 
   return (
-    <Fragment>
+    <Template>
       <Head
         title={page.meta?.title || page.title}
         description={page.meta?.description}
         keywords={page.meta?.keywords}
       />
-      <h1>{page.title}</h1>
-      {page.image && (
-        <img
-          src={`${SERVER_URL}/media/${page.image.filename}`}
-          alt={page.image.alt}
-        />
-      )}
-    </Fragment>
-  );
-};
+      <header>
+        <h1>{page.title}</h1>
+      </header>
+      <RenderBlocks layout={page.layout} />
+    </Template>
+  )
+}
 
-export default Page;
+export default Page
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const slug = ctx.params?.slug || 'home';
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  
+  const slug = ctx.params?.slug || 'home'
 
-  const pageQuery = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  });
-
-  if (!pageQuery.docs[0]) {
-    ctx.res.statusCode = 404;
-
-    return {
-      props: {},
-    };
-  }
+  const pageReq = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/pages?where[slug][equals]=${slug}`)
+  const pageData = await pageReq.json()
 
   return {
     props: {
-      page: pageQuery.docs[0],
-    },
-  };
-};
+      page: pageData.docs[0] || null,
+    }
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const pageReq = await fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/pages?limit=100`)
+  const pageData = await pageReq.json()
+
+  return {
+    paths: pageData.docs.map(({ slug }) => ({
+      params: { slug: slug.split('/') },
+    })),
+    fallback: false
+  }
+}

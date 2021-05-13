@@ -1,88 +1,56 @@
-import { CollectionConfig } from 'payload/types';
-import { MediaType } from './Media';
-import formatSlug from '../utilities/formatSlug';
-import Slider, { SliderType } from '../blocks/Slider';
-import Content, { ContentType } from '../blocks/Content';
+import { CollectionConfig } from 'payload/types'
+import { RichText, Type as RichTextType } from '../blocks/RichText'
+import { Image, Type as ImageType } from '../blocks/Image'
+import { Hero, Type as HeroType } from '../blocks/Hero'
+import meta, { Type as MetaType } from '../fields/meta'
+import slug from '../fields/slug'
+import { ArticleList, Type as ArticleListType } from '../blocks/ArticleList'
+import { RoleList, Type as RoleListType } from '../blocks/RoleList'
 
-export type PageType = {
-  title: string
-  slug: string
-  image?: MediaType
-  layout: SliderType | ContentType
-  meta: {
-    title?: string
-    description?: string
-    keywords?: string
-  }
+export type Layout = 
+    HeroType | RichTextType | ImageType | ArticleListType | RoleListType
+
+export type Type = {
+    title: string,
+    slug: string,
+    layout: Layout[]
+    meta: MetaType
 }
 
-const Page: CollectionConfig = {
-  slug: 'pages',
-  admin: {
-    useAsTitle: 'title',
-  },
-  access: {
-    read: (): boolean => true, // Everyone can read Pages
-  },
-  fields: [
-    {
-      name: 'title',
-      label: 'Page Title',
-      type: 'text',
-      required: true,
+export const Page: CollectionConfig = {
+    slug: 'pages',
+    admin: {
+        useAsTitle: 'title',
+        defaultColumns: [
+            'title',
+            'slug',
+            'meta.description'
+        ]
     },
-    {
-      name: 'image',
-      label: 'Featured Image',
-      type: 'upload',
-      relationTo: 'media',
+    access: {
+        read: (): boolean => true // Everyone can read Pages
     },
-    {
-      name: 'layout',
-      label: 'Page Layout',
-      type: 'blocks',
-      minRows: 1,
-      blocks: [
-        Content,
-        Slider,
-      ],
-    },
-    {
-      name: 'meta',
-      label: 'Page Meta',
-      type: 'group',
-      fields: [
+    fields: [
         {
-          name: 'title',
-          label: 'Title',
-          type: 'text',
+            name: 'title',
+            label: 'Page Title',
+            type: 'text',
+            required: true
         },
         {
-          name: 'description',
-          label: 'Description',
-          type: 'textarea',
+            name: 'layout',
+            label: 'Page Layout',
+            type: 'blocks',
+            minRows: 1,
+            blocks: [
+                Hero,
+                RichText,
+                Image,
+                ArticleList,
+                RoleList
+            ],
         },
-        {
-          name: 'keywords',
-          label: 'Keywords',
-          type: 'text',
-        },
-      ],
-    },
-    {
-      name: 'slug',
-      label: 'Page Slug',
-      type: 'text',
-      admin: {
-        position: 'sidebar',
-      },
-      hooks: {
-        beforeValidate: [
-          formatSlug('title'),
-        ],
-      },
-    },
-  ],
-};
-
-export default Page;
+        slug,
+        meta
+    ]
+}
