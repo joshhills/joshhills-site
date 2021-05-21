@@ -4,6 +4,7 @@ import { Hero, Component as hero } from './Hero'
 import { Button, Component as button } from './Button'
 import { ArticleList, Component as articleList } from './ArticleList'
 import { RoleList, Component as roleList } from './RoleList'
+import { Inset, Component as inset } from './Inset'
 
 export const blocks = {
   Hero,
@@ -11,7 +12,8 @@ export const blocks = {
   Image,
   Button,
   ArticleList,
-  RoleList
+  RoleList,
+  Inset
 }
 
 export const components = {
@@ -20,5 +22,6 @@ export const components = {
   image,
   button,
   articleList,
-  roleList
+  roleList,
+  inset
 }

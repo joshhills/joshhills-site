@@ -15,8 +15,6 @@ const featuredMedia: Field = {
         components: {
             Cell: ({ rowData: { featuredMedia } }: any) => {
 
-                console.log(featuredMedia)
-
                 const imagePath = featuredMedia?.image?.sizes?.thumbnail?.filename
 
                 if (!imagePath) {

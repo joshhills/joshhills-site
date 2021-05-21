@@ -5,4 +5,4 @@ export default {
   l: 1120,
   xl: 1680,
   xxl: 1920,
-};
+}

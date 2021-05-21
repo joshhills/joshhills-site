@@ -1,6 +1,6 @@
-import { Field } from 'payload/types';
+import { Field } from 'payload/types'
 
-export type Type = 'none' | 'light' | 'dark';
+export type Type = 'none' | 'light' | 'dark'
 
 const backgroundColor: Field = {
   name: 'backgroundColor',
@@ -24,6 +24,6 @@ const backgroundColor: Field = {
       value: 'dark',
     }
   ]
-};
+}
 
-export default backgroundColor;
+export default backgroundColor

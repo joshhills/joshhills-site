@@ -6,13 +6,17 @@ import meta, { Type as MetaType } from '../fields/meta'
 import slug from '../fields/slug'
 import { ArticleList, Type as ArticleListType } from '../blocks/ArticleList'
 import { RoleList, Type as RoleListType } from '../blocks/RoleList'
+import { Inset, Type as InsetType } from '../blocks/Inset'
 
 export type Layout = 
-    HeroType | RichTextType | ImageType | ArticleListType | RoleListType
+    HeroType | RichTextType | ImageType | ArticleListType | RoleListType | InsetType
 
 export type Type = {
-    title: string,
-    slug: string,
+    id?: string
+    createdAt?: Date
+    updatedAt?: Date
+    title: string
+    slug: string
     layout: Layout[]
     meta: MetaType
 }
@@ -44,6 +48,7 @@ export const Page: CollectionConfig = {
             minRows: 1,
             blocks: [
                 Hero,
+                Inset,
                 RichText,
                 Image,
                 ArticleList,

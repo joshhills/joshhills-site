@@ -3,10 +3,10 @@ import { Type as MediaType } from '../collections/Media'
 import { Button, Type as ButtonType } from '../blocks/Button'
 
 export type Type = {
-    heroType: 'half' | 'full'
+    contentWidth: 'half' | 'full'
     content: unknown
     fullScreen: boolean
-    featuredImage?: MediaType
+    backgroundImage?: MediaType
     actions: ButtonType[]
 }
 
@@ -16,7 +16,7 @@ const hero: Field = {
     fields: [
         {
             type: 'radio',
-            name: 'heroType',
+            name: 'contentWidth',
             label: 'Hero Content Width',
             required: true,
             defaultValue: 'half',

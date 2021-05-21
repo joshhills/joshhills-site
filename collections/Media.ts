@@ -1,7 +1,11 @@
 import { CollectionConfig } from 'payload/types'
 
 export type Type = {
+  id?: string
+  createdAt?: Date
+  updatedAt?: Date
   filename: string
+  slug: string
   alt: string
   sizes: {
     thumbnail?: {

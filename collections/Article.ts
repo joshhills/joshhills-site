@@ -9,13 +9,16 @@ import state from '../fields/state'
 export type Layout = RichTextType | ImageType
 
 export type Type = {
+    id?: string
+    createdAt?: Date
+    updatedAt?: Date
     title: string
     featuredMedia?: FeaturedMediaType
     datePublished?: Date
     excerpt?: string
     slug: string
     state: 'draft' | 'published'
-    layout: Layout[]
+    content: Layout[]
     relatedPosts?: Type[]
     category: 'general' | 'project'
     project?: {
@@ -81,44 +84,6 @@ export const Article: CollectionConfig = {
             name: 'excerpt',
             label: 'Excerpt',
             type: 'textarea'
-        },
-        slug,
-        {
-            name: 'content',
-            label: 'Content',
-            type: 'blocks',
-            minRows: 1,
-            blocks: [
-                RichText,
-                Image
-            ]
-        },
-        {
-            name: 'related',
-            label: 'Related Articles',
-            type: 'relationship',
-            relationTo: ['articles'],
-            hasMany: true
-        },
-        {
-            name: 'category',
-            label: 'Category',
-            type: 'select',
-            required: true,
-            defaultValue: 'general',
-            options: [
-                {
-                    label: 'General',
-                    value: 'general'
-                },
-                {
-                    label: 'Project',
-                    value: 'project'
-                }
-            ],
-            admin: {
-                position: 'sidebar'
-            }
         },
         {
             name: 'project',
@@ -200,6 +165,44 @@ export const Article: CollectionConfig = {
             ],
             admin: {
                 condition: (_, siblingData) => siblingData?.category === 'project'
+            }
+        },
+        slug,
+        {
+            name: 'content',
+            label: 'Content',
+            type: 'blocks',
+            minRows: 1,
+            blocks: [
+                RichText,
+                Image
+            ]
+        },
+        {
+            name: 'related',
+            label: 'Related Articles',
+            type: 'relationship',
+            relationTo: ['articles'],
+            hasMany: true
+        },
+        {
+            name: 'category',
+            label: 'Category',
+            type: 'select',
+            required: true,
+            defaultValue: 'general',
+            options: [
+                {
+                    label: 'General',
+                    value: 'general'
+                },
+                {
+                    label: 'Project',
+                    value: 'project'
+                }
+            ],
+            admin: {
+                position: 'sidebar'
             }
         }
     ]

@@ -14,7 +14,7 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           NODE_ENV: production
-          PAYLOAD_PUBLIC_SERVER_URL: https://joshhills.dev
+          NEXT_PUBLIC_SERVER_URL: https://joshhills.dev
           MONGODB_ROOT_USERNAME: ${{secrets.MONGODB_ROOT_USERNAME}}
           MONGODB_ROOT_PASSWORD: ${{secrets.MONGODB_ROOT_PASSWORD}}
           MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
@@ -32,7 +32,7 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
-          envs: NODE_ENV,SMTP_HOST,SMTP_USER,SMTP_PASSWORD,ENVIRONMENT,PAYLOAD_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,DB_DATA_PATH,PAYLOAD_UPLOADS_PATH,PAYLOAD_SECRET,SITE_PORT,MONGO_EXPRESS_PORT
+          envs: NODE_ENV,SMTP_HOST,SMTP_USER,SMTP_PASSWORD,ENVIRONMENT,NEXT_PUBLIC_SERVER_URL,MONGODB_ROOT_USERNAME,MONGODB_ROOT_PASSWORD,MONGODB_USERNAME,MONGODB_PASSWORD,DB_DATA_PATH,PAYLOAD_UPLOADS_PATH,PAYLOAD_SECRET,SITE_PORT,MONGO_EXPRESS_PORT
 
           script: |
             rm -rf /usr/app/joshhills-site-production
@@ -41,7 +41,7 @@ jobs:
             
             rm .env
             touch .env
-            echo "PAYLOAD_PUBLIC_SERVER_URL=$PAYLOAD_PUBLIC_SERVER_URL" >> .env
+            echo "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL" >> .env
             echo "SITE_PORT=$SITE_PORT" >> .env
             echo "MONGO_EXPRESS_PORT=$MONGO_EXPRESS_PORT" >> .env
             echo "DB_DATA_PATH=$DB_DATA_PATH" >> .env

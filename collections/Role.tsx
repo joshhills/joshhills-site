@@ -6,6 +6,9 @@ import slug from '../fields/slug'
 import state from '../fields/state'
 
 export type Type = {
+    id?: string
+    createdAt?: Date
+    updatedAt?: Date
     title: string
     slug: string
     state: 'draft' | 'published'
@@ -19,7 +22,7 @@ export type Type = {
         start: Date
         end?: Date
     }
-    description: string
+    excerpt: string
     responsibilities: string
     achievements: string
     related: ArticleType[]
@@ -124,8 +127,8 @@ export const Role: CollectionConfig = {
             ]
         },
         {
-            name: 'description',
-            label: 'Description',
+            name: 'excerpt',
+            label: 'Excerpt',
             type: 'textarea',
             required: true
         },

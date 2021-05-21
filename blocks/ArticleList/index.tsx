@@ -1,12 +1,19 @@
 import { Block } from 'payload/types'
-import { Type as PageType } from '../../collections/Page'
+import React from 'react'
 import { Type as ArticleType } from '../../collections/Article'
-import { Type as RoleType } from '../../collections/Role'
-import { Type as MediaType } from '../../collections/Media'
+import { PostList } from '../../components/layout/PostList'
 
 export type Type = {
     blockType: 'articleList'
     blockName?: string
+    items: {
+        type: 'relation' | 'text'
+        text?: string
+        article?: {
+            link: ArticleType
+            expanded: boolean
+        }
+    }[]
 }
 
 export const ArticleList: Block = {
@@ -70,11 +77,9 @@ export const ArticleList: Block = {
     ]
 }
 
-export const Component: React.FC<Type> = (props) => {
+export const Component: React.FC<Type> = ( { items } ) => {
 
     return (
-        <div>
-            {JSON.stringify(props)}
-        </div>
+        <PostList items={items} />
     )
 }

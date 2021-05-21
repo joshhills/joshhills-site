@@ -2,6 +2,7 @@ import React from 'react'
 import { Block } from 'payload/types'
 import { Type as MediaType } from '../../collections/Media'
 import { Component as RichText } from '../../blocks/RichText'
+import createUseStyles from './css'
 
 export type Type = {
   blockType: 'image'
@@ -62,25 +63,26 @@ export const Image: Block = {
 }
 
 export const Component: React.FC<Type> = (props) => {
-  const { image, type, caption } = props;
+  const { image, type, caption } = props
+
+  const classes = createUseStyles()
 
   if (typeof image === 'object') {
-    let filenameToRender = image.filename;
-    if (image.sizes[type]) filenameToRender = image.sizes[type];
+    let filenameToRender = image.filename
+    if (image.sizes[type]) filenameToRender = image.sizes[type]
 
     return (
       <div>
-        <img
-          src={`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
+        <img className={classes.image}
+          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
           alt={image.alt}
         />
-        {caption && (
+        {caption &&
           <RichText
             blockType='richText'
             backgroundColor='none'
             content={caption}
-          />
-        )}
+          />}
       </div>
     )
   }

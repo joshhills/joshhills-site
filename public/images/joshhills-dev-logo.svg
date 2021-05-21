@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .square {
+        fill: none;
+        stroke: #22262a;
+        stroke-width: 200px;
+      }
+
+      .square, .letter {
+        fill-rule: evenodd;
+      }
+
+      .letter {
+        fill: #22262a;
+      }
+    </style>
+  </defs>
+  <path class="square" d="M0,0H1000V1000H0V0Z"/>
+  <path class="letter" d="M337,226V330H534V607s-0.031,81.463-76,81c-72.142,1.442-107-61-107-61l-72,85s51.618,81.6,181,83c124.544-.657,193.6-59.009,203-193-0.433-126.032,0-376,0-376H337Z"/>
+</svg>

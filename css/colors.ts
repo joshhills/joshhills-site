@@ -1,9 +1,10 @@
+export const colorWithOpacity = (hexColour, opacity) => `${hexColour}${opacity}`
+
 export default {
-  antique: '#FFF9F2',
   white: '#FFFFFF',
-  gray: '#181818',
-  red: '#FF322C',
-  blue: '#9ED1D8',
-  yellow: '#FFEF5E',
-  orange: '#FCB449',
-};
+  orange: '#FFA351',
+  lightOrange: '#FFBC81',
+  black: '#222629',
+  grey: '#787A7F',
+  lightGrey: '#D8D8D8'
+}

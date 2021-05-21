@@ -52,8 +52,7 @@ const MyApp = (appProps: AppProps): React.ReactElement => {
             m: 8,
             l: 12,
             xl: 12,
-          }}
-          >
+          }}>
           <div className={classes.app}>
             <Header menu={menu} socialMedia={socialMedia} />
             <Component {...pageProps} socialMedia={socialMedia} />
@@ -68,8 +67,8 @@ MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   const [menu, socialMedia] = await Promise.all([
-    fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/menu`).then((res) => res.json()),
-    fetch(`${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/globals/social-media`).then((res) => res.json()),
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/menu`).then((res) => res.json()),
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/social-media`).then((res) => res.json()),
   ]);
 
   return {
