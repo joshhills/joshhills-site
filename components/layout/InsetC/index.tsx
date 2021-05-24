@@ -17,7 +17,7 @@ const InsetC: React.FC<Props> = ({ insetTop, insetBottom, contentLeft, contentRi
     const classes = useStyles()
 
     return (
-        <div className={`${insetTop && classes.insetTop} ${insetBottom && classes.insetBottom} ${backgroundColor === 'light' && classes.light} ${backgroundColor === 'dark' && classes.dark}`}>
+        <div className={`${classes.inset} ${insetTop && classes.insetTop} ${insetBottom && classes.insetBottom} ${backgroundColor === 'light' && classes.light} ${backgroundColor === 'dark' && classes.dark}`}>
             <GridContainer>
                 <Grid>
                     <Cell cols={8}>

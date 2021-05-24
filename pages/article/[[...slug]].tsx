@@ -13,6 +13,8 @@ import GridContainer from '../../components/layout/GridContainer'
 import createUseStyles from './css'
 import { FaBackspace, FaArrowUp, FaLink } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import Post from '../../components/layout/Post'
+import { formatLinkUrl } from '../../utilities/formatRelationUrl'
 
 export type Props = {
     article?: ArticleType
@@ -29,7 +31,7 @@ const Article: React.FC<Props> = (props) => {
     }
 
     // Get the featured media URLs
-    const featuredImagePath = article.featuredMedia?.image?.sizes?.feature.filename
+    const featuredImagePath = article.featuredMedia?.image?.filename
     const featuredImageUrl = featuredImagePath ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${featuredImagePath}` : null
 
     return (
@@ -44,8 +46,9 @@ const Article: React.FC<Props> = (props) => {
             <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} contentWidth='full'>
                 <div className={classes.cover}>
                     <p>
-                        <button className={classes.back} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
+                        <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
                         Posted {dateFormat(article.datePublished, 'dddd, mmmm dS, yyyy')}
+                        {article.project?.length && ` • ${article.project.length}`}
                     </p>
                     <h2>{article.title}</h2>
                     <div>
@@ -66,20 +69,41 @@ const Article: React.FC<Props> = (props) => {
                 </Grid>
             </GridContainer>
 
+            {article.related && article.related.length > 0 && <div className={classes.related}>
+                <GridContainer>
+                    <Grid>
+                        <Cell cols={12}>
+                            <div className={classes.relatedWrapper}>
+                                <h4 className={classes.relatedTitle}>Related Posts</h4>
+                                <div className={classes.relatedPostsWrapper}>
+                                    {article.related.map((p, i) => 
+                                    <Post
+                                        key={i}
+                                        title={p.value.title}
+                                        datePublished={p.value.datePublished} 
+                                        featuredMedia={p.value.featuredMedia.image} 
+                                        url={formatLinkUrl('articles', p.value.slug)} />)}
+                                </div>
+                            </div>
+                        </Cell>
+                    </Grid>
+                </GridContainer>
+            </div>}
+
             {/* Meta & Controls */}
             <div className={classes.controlWrapper}>
                 <GridContainer>
                     <Grid>
                         <Cell cols={12}>
                             <div className={classes.control}>
-                                <a href="#">
+                                <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
                                     <FaArrowUp />
                                     Scroll Up
-                                </a>&nbsp;
-                                <a href="#">
+                                </button>&nbsp;
+                                {/* <button>
                                     <FaLink />
                                     Copy link
-                                </a>
+                                </button> */}
                             </div>
                         </Cell>
                     </Grid>

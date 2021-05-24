@@ -5,6 +5,7 @@ import NotFound from '../components/NotFound'
 import Head from '../components/Head'
 import RenderBlocks from '../components/RenderBlocks'
 import Template from '../components/layout/Template'
+import createUseStyles from './css'
 
 export type Props = {
   page?: PageType
@@ -14,6 +15,7 @@ export type Props = {
 const Page: React.FC<Props> = (props) => {
 
   const { page } = props
+  const classes = createUseStyles()
 
   if (!page) {
     return <NotFound />
@@ -26,7 +28,9 @@ const Page: React.FC<Props> = (props) => {
         description={page.meta?.description}
         keywords={page.meta?.keywords}
       />
-      <RenderBlocks layout={page.layout} />
+      <div className={classes.page}>
+        <RenderBlocks layout={page.layout} />
+      </div>
     </Template>
   )
 }
@@ -37,7 +41,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   
   const slug = ctx.params?.slug || 'home'
 
-  const pageReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/pages?where[slug][equals]=${slug}`)
+  const pageReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/pages?where[slug][equals]=${slug}&depth=2`)
   const pageData = await pageReq.json()
 
   return {

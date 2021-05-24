@@ -12,14 +12,11 @@ const ProjectDetails = ( { length, resources }: Type) => {
 
     return (
         <div className={classes.projectDetails}>
-        <p>
-            {length}
-        </p>
         {resources?.length > 0 &&
             <div>
-                <h4>Resources</h4>
+                <h4 className={classes.title}>Resources</h4>
                 <ul>
-                    {resources.map((r, i) => <li><Link {...r} /></li>)}
+                    {resources.map((r, i) => <li key={i}><Link {...r} /></li>)}
                 </ul>
             </div>}
         </div>

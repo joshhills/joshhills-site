@@ -9,7 +9,7 @@ export type Type = {
   blockName?: string
   image: MediaType
   caption?: any
-  type: 'normal' | 'wide' | 'fullscreen'
+  type: 'normal' | 'fullscreen'
 }
 
 export const Image: Block = {
@@ -39,10 +39,6 @@ export const Image: Block = {
         {
           label: 'Fullscreen',
           value: 'fullscreen'
-        },
-        {
-          label: 'Wide',
-          value: 'wide'
         }
       ],
       admin: {
@@ -72,8 +68,8 @@ export const Component: React.FC<Type> = (props) => {
     if (image.sizes[type]) filenameToRender = image.sizes[type]
 
     return (
-      <div>
-        <img className={classes.image}
+      <div className={classes.wrapper}>
+        <img className={`${classes.image} ${type === 'fullscreen' ? classes.fullscreen : ''} ${caption ? classes.hasCaption : ''}`}
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
           alt={image.alt}
         />

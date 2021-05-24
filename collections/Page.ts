@@ -7,9 +7,10 @@ import slug from '../fields/slug'
 import { ArticleList, Type as ArticleListType } from '../blocks/ArticleList'
 import { RoleList, Type as RoleListType } from '../blocks/RoleList'
 import { Inset, Type as InsetType } from '../blocks/Inset'
+import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 
 export type Layout = 
-    HeroType | RichTextType | ImageType | ArticleListType | RoleListType | InsetType
+    HeroType | RichTextType | ImageType | ImageCarouselType | ArticleListType | RoleListType | InsetType
 
 export type Type = {
     id?: string
@@ -51,6 +52,7 @@ export const Page: CollectionConfig = {
                 Inset,
                 RichText,
                 Image,
+                ImageCarousel,
                 ArticleList,
                 RoleList
             ],

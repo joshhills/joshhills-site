@@ -1,9 +1,6 @@
 import React from 'react'
 import { Block } from 'payload/types'
 import backgroundColor, { Type as BackgroundColorType } from '../../fields/backgroundColor'
-import GridContainer from '../../components/layout/GridContainer'
-import { Cell, Grid } from '@faceless-ui/css-grid'
-import useStyles from './css'
 import { Component as RichText } from '../RichText'
 import InsetC from '../../components/layout/InsetC'
 
@@ -27,7 +24,7 @@ export const Inset: Block = {
         {
             type: 'checkbox',
             name: 'insetTop',
-            label: 'Inset Bottom',
+            label: 'Inset Top',
             defaultValue: false
         },
         {
@@ -52,8 +49,6 @@ export const Inset: Block = {
 }
 
 export const Component: React.FC<Type> = ({ insetTop, insetBottom, contentLeft, contentRight, backgroundColor }) => {
-    
-    const classes = useStyles()
 
     const contentLeftRichText = <RichText blockType='richText' content={contentLeft} />
     const contentRightRichText = <RichText blockType='richText' content={contentRight} />

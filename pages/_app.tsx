@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ModalProvider } from '@faceless-ui/modal'
+import { Modal, ModalContainer, ModalProvider } from '@faceless-ui/modal'
 import { GridProvider } from '@faceless-ui/css-grid'
 import App from 'next/app'
 import { WindowInfoProvider } from '@faceless-ui/window-info'
@@ -10,6 +10,7 @@ import breakpoints from '../css/breakpoints'
 import { base } from '../css/base'
 import { Type as MenuType } from '../globals/Menu'
 import { Type as SocialMediaType } from '../globals/SocialMedia'
+import Nav from '../components/Nav'
 
 type AppProps = {
   pageProps: unknown
@@ -58,6 +59,9 @@ const MyApp = (appProps: AppProps): React.ReactElement => {
             <Component {...pageProps} socialMedia={socialMedia} />
           </div>
         </GridProvider>
+        <ModalContainer>
+          <Nav menu={menu} />
+        </ModalContainer>
       </ModalProvider>
     </WindowInfoProvider>
   )

@@ -2,7 +2,8 @@ import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
 import colors from '../../../css/colors'
 import fonts from '../../../css/fonts'
-import { borderSize } from '../../../css/type'
+import queries from '../../../css/queries'
+import { body, borderSize } from '../../../css/type'
 
 export default createUseStyles({
   header: {
@@ -27,11 +28,37 @@ export default createUseStyles({
     fontWeight: 'bold',
     display: 'inline-block'
   },
+  menuButton: {
+    ...body,
+    background: 'none',
+    border: 'none',
+    fontFamily: fonts.headers,
+    fontWeight: 'bold',
+    padding: 0,
+    cursor: 'pointer',
+    '&:hover, &:active': {
+        color: colors.lightOrange
+    }
+  },
   content: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: base(2),
     paddingRight: base(2)
+  },
+  links: {
+    '& > *': {
+      marginRight: base()
+    },
+    [queries.s]: {
+      display: 'none'
+    }
+  },
+  menu: {
+    display: 'none',
+    [queries.s]: {
+      display: 'block'
+    }
   }
 })

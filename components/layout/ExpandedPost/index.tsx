@@ -13,23 +13,37 @@ type Props = {
     featuredMedia: MediaType,
     excerpt: string
     url: string
+    dashed?: boolean
+    company?: string
+    dateRange?: {
+      ongoing: boolean
+      start: Date
+      end?: Date
+    }
 }
 
-const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featuredMedia, url }) => {
+const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featuredMedia, url, dashed, company, dateRange }) => {
   const classes = useStyles()
-
+  const dateFormatStr = 'mmmm, yyyy'
+  
   return (
     <div className={classes.post}>
-        <div className={classes.wrapper}>
+        <div className={`${classes.wrapper} ${dashed ? classes.dashed : ''}`}>
             <GridContainer>
                 <Grid>
                     <Cell cols={6}></Cell>
                     <Cell cols={6}>
                         <div className={classes.text}>
-                            <p className={classes.date}>{dateFormat(datePublished, 'dd/mm/yy')}</p>
+                            {dateRange ? 
+                                dateRange.ongoing ? 
+                                    <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
+                                    <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
+                                : 
+                                <p className={classes.date}>{dateFormat(datePublished, 'dd/mm/yy')}</p>}
                             <Link href={url}>
                                 <a className={classes.title}>{title}</a>
                             </Link>
+                            {company && <p className={classes.date}>{company}</p>}
                             <p>{excerpt}</p>
                             <Link href={url}>
                                 <a className={classes.cta}>Read more</a>

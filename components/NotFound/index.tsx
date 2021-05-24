@@ -1,5 +1,16 @@
-import React from 'react';
+import React from 'react'
+import createUseStyles from './css'
 
-const NotFound: React.FC = () => <h1>404 - Page Not Found</h1>;
+const NotFound: React.FC = () => {
 
-export default NotFound;
+    const classes = createUseStyles()
+
+    return (
+        <div className={classes.notFound}>
+            <h2>404</h2>
+            <h3>Not Found</h3>
+        </div>
+    )
+}
+
+export default NotFound

@@ -56,5 +56,8 @@ export default createUseStyles({
   image: {
     ...imageCover,
     zIndex: 0
+  },
+  dashed: {
+    borderStyle: 'dashed'
   }
 })

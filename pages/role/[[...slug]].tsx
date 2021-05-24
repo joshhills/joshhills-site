@@ -5,9 +5,15 @@ import { Type as RoleType } from '../../collections/Role'
 import Template from '../../components/layout/Template'
 import NotFound from '../../components/NotFound'
 import dateFormat from 'dateformat'
-import RenderBlocks from '../../components/RenderBlocks'
-import ProjectDetails from '../../components/article/ProjectDetails'
 import { Component as RichText } from '../../blocks/RichText'
+import GridContainer from '../../components/layout/GridContainer'
+import { Cell, Grid } from '@faceless-ui/css-grid'
+import { FaArrowUp, FaBackspace } from 'react-icons/fa'
+import Cover from '../../components/layout/Cover'
+import createUseStyles from './css'
+import { useRouter } from 'next/router'
+import Post from '../../components/layout/Post'
+import { formatLinkUrl } from '../../utilities/formatRelationUrl'
 
 export type Props = {
     role?: RoleType
@@ -21,8 +27,11 @@ const Role: React.FC<Props> = (props) => {
         return <NotFound />
     }
 
+    const classes = createUseStyles()
+    const router = useRouter()
+
     // Get the featured media URLs
-    const featuredImagePath = role.featuredMedia?.image?.sizes?.feature.filename
+    const featuredImagePath = role.featuredMedia?.image?.filename
     const featuredImageUrl = featuredImagePath ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${featuredImagePath}` : null
 
     const dateFormatStr = 'mmmm, yyyy'
@@ -34,35 +43,75 @@ const Role: React.FC<Props> = (props) => {
                 ogImage={featuredImageUrl}
             />
 
-            {/* Hero */}
-            <div>
-                {featuredImagePath && <img src={featuredImageUrl}
-                     alt={role.featuredMedia?.image.alt} />}
-                <button>
-                    Back
-                </button>
-                <h2>{role.title}</h2>
-                <a href={role.location.link} target="_blank"><h3>{role.location.company}</h3></a>
-                {role.date.ongoing ? 
-                    <p>Since {dateFormat(role.date.start, dateFormatStr)}</p> :
-                    <p>{dateFormat(role.date.start, dateFormatStr)} to {dateFormat(role.date.end, dateFormatStr)}</p>}
-                <p>{role.description}</p>
-            </div>
+            {/* Cover */}
+            <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={role.featuredMedia?.image?.alt} contentWidth='full'>
+                <div className={classes.cover}>
+                    <p>
+                        <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
+                        {role.date.ongoing ? 
+                        <span>Since {dateFormat(role.date.start, dateFormatStr)}</span> :
+                        <span>{dateFormat(role.date.start, dateFormatStr) === dateFormat(role.date.end, dateFormatStr) ? dateFormat(role.date.start, dateFormatStr) : `${dateFormat(role.date.start, dateFormatStr)} to ${dateFormat(role.date.end, dateFormatStr)}`}</span>}
+                    </p>
+                    <h2>{role.title} @ <a href={role.location.link} target="_blank">{role.location.company}</a></h2>
+                    <div>
+                        {role.excerpt && <p>{role.excerpt}</p>}
+                    </div>
+                </div>
+            </Cover>
             
             {/* Content */}
-            <h4>Responsibilities</h4>
-            <RichText blockType='richText' backgroundColor='none' content={role.responsibilities} />
-            <h4>Achievements</h4>
-            <RichText blockType='richText' backgroundColor='none' content={role.achievements} />
+            <GridContainer>
+                <Grid>
+                    <Cell cols={12}>
+                        <div className={classes.contentWrapper}>
+                            <h4 className={classes.content}>Responsibilities</h4>
+                            <RichText blockType='richText' backgroundColor='none' content={role.responsibilities} />
+                            <h4 className={classes.content}>Achievements</h4>
+                            <RichText blockType='richText' backgroundColor='none' content={role.achievements} />
+                        </div>
+                    </Cell>
+                </Grid>
+            </GridContainer>
+
+            {role.related && role.related.length > 0 && <div className={classes.related}>
+                <GridContainer>
+                    <Grid>
+                        <Cell cols={12}>
+                            <div className={classes.relatedWrapper}>
+                                <h4 className={classes.relatedTitle}>Related Posts</h4>
+                                <div className={classes.relatedPostsWrapper}>
+                                    {role.related.map((p, i) => 
+                                        <Post
+                                            key={i}
+                                            title={p.value.title}
+                                            datePublished={p.value.datePublished} 
+                                            featuredMedia={p.value.featuredMedia?.image} 
+                                            url={formatLinkUrl('articles', p.value.slug)} />)}
+                                </div>
+                            </div>
+                        </Cell>
+                    </Grid>
+                </GridContainer>
+            </div>}
 
             {/* Meta & Controls */}
-            <div>
-                <button>
-                    Scroll Up
-                </button>
-                <button>
-                    Copy link
-                </button>
+            <div className={classes.controlWrapper}>
+                <GridContainer>
+                    <Grid>
+                        <Cell cols={12}>
+                            <div className={classes.control}>
+                                <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
+                                    <FaArrowUp />
+                                    Scroll Up
+                                </button>&nbsp;
+                                {/* <button>
+                                    <FaLink />
+                                    Copy link
+                                </button> */}
+                            </div>
+                        </Cell>
+                    </Grid>
+                </GridContainer>
             </div>
         </Template>
     )
@@ -82,8 +131,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         }
     }
 
-    const roleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/roles?where[slug][equals]=${slug}`)
+    const roleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/roles?where[slug][equals]=${slug}&depth=3`)
     const roleData = await roleReq.json()
+
+    console.log(roleData.docs[0].related)
 
     return {
         props: {

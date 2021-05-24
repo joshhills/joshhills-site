@@ -1,15 +1,15 @@
-import React from 'react';
-import NextHead from 'next/head';
-import getConfig from 'next/config';
-import { useRouter } from 'next/router';
+import React from 'react'
+import NextHead from 'next/head'
+import getConfig from 'next/config'
+import { useRouter } from 'next/router'
 
 const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
-const defaultDescription = 'Boilerplate for combining Payload CMS and NextJS into a single Node server';
-const defaultTitle = 'Payload CMS + NextJS Custom Server';
-const titleSuffix = ' | Josh Hills';
-const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`;
-const defaultKeywords = 'NextJS, Payload CMS, boilerplate';
+const defaultDescription = 'Boilerplate for combining Payload CMS and NextJS into a single Node server'
+const defaultTitle = 'Payload CMS + NextJS Custom Server'
+const titleSuffix = ' | Josh Hills'
+const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`
+const defaultKeywords = 'developer, multiplayer, online, games, blog, tech, medium, portfolio, career, AAA'
 
 type Props = {
   title?: string,
@@ -19,12 +19,12 @@ type Props = {
 };
 
 const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
-  const { asPath } = useRouter();
+  const { asPath } = useRouter()
 
   const getTitle = () => {
-    if (title) return title + titleSuffix;
-    return defaultTitle + titleSuffix;
-  };
+    if (title) return title + titleSuffix
+    return defaultTitle + titleSuffix
+  }
 
   return (
     <NextHead>
@@ -81,7 +81,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
         content={ogImage || defaultOGImage}
       />
     </NextHead>
-  );
-};
+  )
+}
 
 export default Head;

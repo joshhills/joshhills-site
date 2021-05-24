@@ -1,12 +1,19 @@
 import { Block } from 'payload/types'
-import { Type as PageType } from '../../collections/Page'
-import { Type as ArticleType } from '../../collections/Article'
+import React from 'react'
 import { Type as RoleType } from '../../collections/Role'
-import { Type as MediaType } from '../../collections/Media'
+import { PostList } from '../../components/layout/PostList'
 
 export type Type = {
     blockType: 'roleList'
     blockName?: string
+    items: {
+        type: 'relation' | 'text'
+        text?: string
+        role?: {
+            link: RoleType
+            expanded: boolean
+        }
+    }[]
 }
 
 export const RoleList: Block = {
@@ -53,12 +60,13 @@ export const RoleList: Block = {
                             name: 'link',
                             label: 'Link',
                             type: 'relationship',
-                            relationTo: 'articles'
+                            relationTo: 'roles'
                         },
                         {
                             name: 'expanded',
                             label: 'Expanded',
-                            type: 'checkbox'
+                            type: 'checkbox',
+                            required: true
                         }
                     ],
                     admin: {
@@ -70,11 +78,9 @@ export const RoleList: Block = {
     ]
 }
 
-export const Component: React.FC<Type> = (props) => {
+export const Component: React.FC<Type> = ({ items }) => {
 
     return (
-        <div>
-            {JSON.stringify(props)}
-        </div>
+        <PostList items={items} />
     )
 }

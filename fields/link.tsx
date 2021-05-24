@@ -11,7 +11,8 @@ export type Type = {
   relation?: {
     relationTo: string,
     value: ArticleType | RoleType | PageType
-  }
+  },
+  relationTo?: string
 }
 
 const link: Field = {
@@ -77,27 +78,47 @@ const link: Field = {
 
 export default link
 
-export const Component: React.FC<Type> = ( { type, label, url, relation } ) => {
+export const Component: React.FC<any> = ( { type, label, url, relation, relationTo } ) => {
 
   let component: JSX.Element
 
-  if (type === 'relation') {
-    let basePath = ''
-    switch (relation.relationTo) {
-      case 'articles':
-        basePath = 'article/'
-        break
-      case 'role':
-        basePath = 'role/'
-        break
-    }
-
-    component = <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/${basePath}${relation.value.slug}`}>
-      <a>{label}</a>
-    </Link>
-  } else if (type === 'custom') {
-    component = <a href={url} target="_blank">{label}</a>
-  } else throw "Link was not of any expected type"
+  if (relationTo) {
+    if (type === 'relation') {
+      let basePath = ''
+      switch (relationTo) {
+        case 'articles':
+          basePath = 'article/'
+          break
+        case 'role':
+          basePath = 'role/'
+          break
+      }
+  
+      component = <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/${basePath}${relation.slug}`}>
+        <a>{label}</a>
+      </Link>
+    } else if (type === 'custom') {
+      component = <a href={url}>{label}</a>
+    } else throw "Link was not of any expected type"
+  } else {
+    if (type === 'relation') {
+      let basePath = ''
+      switch (relation.relationTo) {
+        case 'articles':
+          basePath = 'article/'
+          break
+        case 'role':
+          basePath = 'role/'
+          break
+      }
+  
+      component = <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/${basePath}${relation.value.slug}`}>
+        <a>{label}</a>
+      </Link>
+    } else if (type === 'custom') {
+      component = <a href={url}>{label}</a>
+    } else throw "Link was not of any expected type"
+  }
 
   return component
 }

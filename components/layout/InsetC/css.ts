@@ -3,13 +3,15 @@ import { base } from '../../../css/base'
 import colors from '../../../css/colors'
 
 export default createUseStyles({
+    inset: {
+        paddingBottom: base(2)
+    },
     insetTop: {
         marginTop: `-${base(4)}`,
         paddingTop: base(2)
     },
     insetBottom: {
         marginBottom: `-${base(4)}`,
-        paddingBottom: base(2)
     },
     light: {
         backgroundColor: colors.lightGrey,

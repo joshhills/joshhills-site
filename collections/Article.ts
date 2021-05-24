@@ -3,10 +3,11 @@ import slug from '../fields/slug'
 import { RichText, Type as RichTextType } from '../blocks/RichText'
 import { Image, Type as ImageType } from '../blocks/Image'
 import { Type as LinkType } from '../fields/link'
+import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 import featuredMedia, { Type as FeaturedMediaType } from '../fields/featuredMedia'
 import state from '../fields/state'
 
-export type Layout = RichTextType | ImageType
+export type Layout = RichTextType | ImageType | ImageCarouselType
 
 export type Type = {
     id?: string
@@ -19,7 +20,10 @@ export type Type = {
     slug: string
     state: 'draft' | 'published'
     content: Layout[]
-    relatedPosts?: Type[]
+    related?: {
+        relationTo: 'articles'
+        value: Type
+    }[]
     category: 'general' | 'project'
     project?: {
         length?: string
@@ -175,7 +179,8 @@ export const Article: CollectionConfig = {
             minRows: 1,
             blocks: [
                 RichText,
-                Image
+                Image,
+                ImageCarousel
             ]
         },
         {

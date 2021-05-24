@@ -57,5 +57,13 @@ export default createUseStyles({
     relatedPostsWrapper: {
         display: 'flex',
         flexWrap: 'wrap'
+    },
+    content: {
+        paddingLeft: base(2),
+        paddingRight: base(2)
+    },
+    contentWrapper: {
+        paddingTop: base(2),
+        paddingBottom: base(2)
     }
 })

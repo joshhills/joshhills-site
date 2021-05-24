@@ -25,7 +25,10 @@ export type Type = {
     excerpt: string
     responsibilities: string
     achievements: string
-    related: ArticleType[]
+    related?: {
+        relationTo: 'articles'
+        value: ArticleType
+    }[]
 }
 
 export const Role: CollectionConfig = {
@@ -148,7 +151,7 @@ export const Role: CollectionConfig = {
             name: 'related',
             label: 'Related Articles',
             type: 'relationship',
-            relationTo: 'articles',
+            relationTo: ['articles'],
             hasMany: true
         }
     ]
