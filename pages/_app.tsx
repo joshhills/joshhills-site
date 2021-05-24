@@ -71,8 +71,8 @@ MyApp.getInitialProps = async (appContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   const [menu, socialMedia] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/menu`).then((res) => res.json()),
-    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/social-media`).then((res) => res.json()),
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/menu`).then((res) => res.json()).catch(() => null),
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/social-media`).then((res) => res.json()).catch(() => null),
   ]);
 
   return {
