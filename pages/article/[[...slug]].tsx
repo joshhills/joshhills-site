@@ -137,15 +137,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-
-    const articleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/articles?limit=100`)
-    const articleData = await articleReq.json()
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 
     return {
-        paths: articleData.docs.map(({ slug }) => ({
-            params: { slug: slug.split('/') },
-        })),
-        fallback: true
+        paths: [], //indicates that no page needs be created at build time
+        fallback: 'blocking' //indicates the type of fallback
     }
 }
