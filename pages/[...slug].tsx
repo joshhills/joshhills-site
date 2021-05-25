@@ -51,10 +51,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
-// export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
 
-//   return {
-//       paths: [], //indicates that no page needs be created at build time
-//       fallback: 'blocking' //indicates the type of fallback
-//   }
-// }
+  return {
+      paths: [], //indicates that no page needs be created at build time
+      fallback: 'blocking' //indicates the type of fallback
+  }
+}
