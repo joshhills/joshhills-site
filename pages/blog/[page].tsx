@@ -1,5 +1,5 @@
 import { Cell, Grid } from "@faceless-ui/css-grid"
-import { GetServerSideProps, GetStaticPaths } from "next"
+import { GetServerSideProps } from "next"
 import React from "react"
 import { Type as ArticleType } from '../../collections/Article'
 import Head from "../../components/Head"
@@ -78,13 +78,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             totalPages: articleData.totalPages,
             activeIndex: page - 1
         }
-    }
-}
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-
-    return {
-        paths: [], //indicates that no page needs be created at build time
-        fallback: 'blocking' //indicates the type of fallback
     }
 }

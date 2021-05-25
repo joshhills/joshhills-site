@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetStaticPaths, GetServerSideProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { Type as PageType } from '../collections/Page'
 import NotFound from '../components/NotFound'
 import Head from '../components/Head'
@@ -48,13 +48,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       page: pageData.docs[0] || null,
     }
-  }
-}
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-
-  return {
-      paths: [], //indicates that no page needs be created at build time
-      fallback: 'blocking' //indicates the type of fallback
   }
 }

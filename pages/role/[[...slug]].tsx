@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from '../../components/Head'
-import { GetServerSideProps, GetStaticPaths } from 'next'
+import { GetServerSideProps } from 'next'
 import { Type as RoleType } from '../../collections/Role'
 import Template from '../../components/layout/Template'
 import NotFound from '../../components/NotFound'
@@ -140,13 +140,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         props: {
             role: roleData.docs[0] || null
         }
-    }
-}
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-
-    return {
-        paths: [], //indicates that no page needs be created at build time
-        fallback: 'blocking' //indicates the type of fallback
     }
 }
