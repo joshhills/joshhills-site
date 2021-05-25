@@ -1,5 +1,5 @@
 import { Cell, Grid } from "@faceless-ui/css-grid"
-import { GetServerSideProps, GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import React from "react"
 import { Component as RichText } from "../../blocks/RichText"
 import { Type as ArticleType } from '../../collections/Article'

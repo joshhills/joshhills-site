@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+import { GetStaticPaths, GetServerSideProps } from 'next'
 import { Type as PageType } from '../collections/Page'
 import NotFound from '../components/NotFound'
 import Head from '../components/Head'

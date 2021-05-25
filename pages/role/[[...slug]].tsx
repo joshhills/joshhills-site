@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from '../../components/Head'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetServerSideProps, GetStaticPaths } from 'next'
 import { Type as RoleType } from '../../collections/Role'
 import Template from '../../components/layout/Template'
 import NotFound from '../../components/NotFound'
@@ -119,7 +119,7 @@ const Role: React.FC<Props> = (props) => {
 
 export default Role
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const slug = ctx.params?.slug
 

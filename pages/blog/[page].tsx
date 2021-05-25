@@ -1,5 +1,5 @@
 import { Cell, Grid } from "@faceless-ui/css-grid"
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetServerSideProps, GetStaticPaths } from "next"
 import React from "react"
 import { Type as ArticleType } from '../../collections/Article'
 import Head from "../../components/Head"
@@ -65,7 +65,7 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex }) => {
 
 export default BlogPage
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const page = +ctx.params?.page
 
