@@ -5,8 +5,8 @@ import { useRouter } from 'next/router'
 
 const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
-const defaultDescription = 'Boilerplate for combining Payload CMS and NextJS into a single Node server'
-const defaultTitle = 'Payload CMS + NextJS Custom Server'
+const defaultDescription = 'Portfolio and blog'
+const defaultTitle = 'Online Game Developer'
 const titleSuffix = ' | Josh Hills'
 const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`
 const defaultKeywords = 'developer, multiplayer, online, games, blog, tech, medium, portfolio, career, AAA'

@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({ menu }) => {
                   </Link>
                 </div>
                 <div className={classes.links}>
-                  {menu.nav.map((l, i) => <LinkC key={i} {...l.link} relationTo="pages" />)}
+                  {menu && menu.nav.map((l, i) => <LinkC key={i} {...l.link} relationTo="pages" />)}
                 </div>
                 <div className={classes.menu}>
                   <ModalToggler slug="nav" className={classes.menuButton}>
