@@ -33,7 +33,7 @@ const NavModal = ({ menu }) => {
                                 </div>
                             </div>
                             <div className={classes.links}>
-                                {menu.nav.map((l, i) => <LinkC key={i} {...l.link} relationTo="pages" />)}
+                                {menu.nav && menu.nav.map((l, i) => <LinkC key={i} {...l.link} relationTo="pages" />)}
                             </div>
                         </Cell>
                     </Grid>

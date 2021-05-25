@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import { Type as PageType } from '../collections/Page'
 import NotFound from '../components/NotFound'
 import Head from '../components/Head'
@@ -37,7 +37,7 @@ const Page: React.FC<Props> = (props) => {
 
 export default Page
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   
   const slug = ctx.params?.slug || 'home'
 

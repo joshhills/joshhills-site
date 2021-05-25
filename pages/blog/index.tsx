@@ -1,5 +1,5 @@
 import { Cell, Grid } from "@faceless-ui/css-grid"
-import { GetStaticProps } from "next"
+import { GetServerSideProps, GetStaticProps } from "next"
 import React from "react"
 import { Component as RichText } from "../../blocks/RichText"
 import { Type as ArticleType } from '../../collections/Article'
@@ -112,7 +112,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages }) => {
 
 export default BlogIndex
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const articleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/articles?limit=11&sort=-publishedDate`)
     const articleData = await articleReq.json()
     
