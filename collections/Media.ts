@@ -32,6 +32,7 @@ const Media: CollectionConfig = {
     read: (): boolean => true, // Everyone can read Media
   },
   upload: {
+    staticDir: `${process.env.PAYLOAD_UPLOADS_PATH}`,
     adminThumbnail: 'card',
     imageSizes: [
       {
