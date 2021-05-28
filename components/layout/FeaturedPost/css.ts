@@ -33,7 +33,7 @@ export default createUseStyles({
       left: 0,
       background: colors.black,
       zIndex: 1,
-      clipPath: 'circle(45% at 68%)'
+      clipPath: 'circle(45% at 66%)'
     },
     [queries.m]: {
       marginBottom: 0,
@@ -54,7 +54,7 @@ export default createUseStyles({
   },
   text: {
     boxSizing: 'border-box',
-    padding: base(7),
+    padding: base(6),
     zIndex: 2,
     backfaceVisibility: 'hidden',
     position: 'absolute',
@@ -74,5 +74,15 @@ export default createUseStyles({
     ...imageCover,
     top: 0,
     zIndex: 0
+  },
+  grid: {
+    display: 'grid',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    gridGap: base(),
+    gridTemplateColumns: '1fr 2fr',
+    [queries.m]: {
+        gridTemplateColumns: '1fr'
+    }
   }
 })

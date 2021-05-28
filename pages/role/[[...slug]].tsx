@@ -6,8 +6,6 @@ import Template from '../../components/layout/Template'
 import NotFound from '../../components/NotFound'
 import dateFormat from 'dateformat'
 import { Component as RichText } from '../../blocks/RichText'
-import GridContainer from '../../components/layout/GridContainer'
-import { Cell, Grid } from '@faceless-ui/css-grid'
 import { FaArrowUp, FaBackspace } from 'react-icons/fa'
 import Cover from '../../components/layout/Cover'
 import createUseStyles from './css'
@@ -60,58 +58,46 @@ const Role: React.FC<Props> = (props) => {
             </Cover>
             
             {/* Content */}
-            <GridContainer>
-                <Grid>
-                    <Cell cols={12}>
-                        <div className={classes.contentWrapper}>
-                            <h4 className={classes.content}>Responsibilities</h4>
-                            <RichText blockType='richText' backgroundColor='none' content={role.responsibilities} />
-                            <h4 className={classes.content}>Achievements</h4>
-                            <RichText blockType='richText' backgroundColor='none' content={role.achievements} />
-                        </div>
-                    </Cell>
-                </Grid>
-            </GridContainer>
-
+            <div className={classes.grid}>
+                <div className={classes.contentWrapper}>
+                    <h4 className={classes.content}>Responsibilities</h4>
+                    <RichText blockType='richText' backgroundColor='none' content={role.responsibilities} />
+                    <h4 className={classes.content}>Achievements</h4>
+                    <RichText blockType='richText' backgroundColor='none' content={role.achievements} />
+                </div>
+            </div>
+            
             {role.related && role.related.length > 0 && <div className={classes.related}>
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            <div className={classes.relatedWrapper}>
-                                <h4 className={classes.relatedTitle}>Related Posts</h4>
-                                <div className={classes.relatedPostsWrapper}>
-                                    {role.related.map((p, i) => 
-                                        <Post
-                                            key={i}
-                                            title={p.value.title}
-                                            datePublished={p.value.datePublished} 
-                                            featuredMedia={p.value.featuredMedia?.image} 
-                                            url={formatLinkUrl('articles', p.value.slug)} />)}
-                                </div>
-                            </div>
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    <div className={classes.relatedWrapper}>
+                        <h4 className={classes.relatedTitle}>Related Posts</h4>
+                        <div className={classes.relatedPostsWrapper}>
+                            {role.related.map((p, i) => 
+                                <Post
+                                    key={i}
+                                    title={p.value.title}
+                                    datePublished={p.value.datePublished} 
+                                    featuredMedia={p.value.featuredMedia?.image} 
+                                    url={formatLinkUrl('articles', p.value.slug)} />)}
+                        </div>
+                    </div>
+                </div>
             </div>}
 
             {/* Meta & Controls */}
             <div className={classes.controlWrapper}>
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            <div className={classes.control}>
-                                <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
-                                    <FaArrowUp />
-                                    Scroll Up
-                                </button>&nbsp;
-                                {/* <button>
-                                    <FaLink />
-                                    Copy link
-                                </button> */}
-                            </div>
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    <div className={classes.control}>
+                        <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
+                            <FaArrowUp />
+                            Scroll Up
+                        </button>&nbsp;
+                        {/* <button>
+                            <FaLink />
+                            Copy link
+                        </button> */}
+                    </div>
+                </div>
             </div>
         </Template>
     )

@@ -7,5 +7,12 @@ export default createUseStyles({
     },
     cover: {
         padding: base(2)
+    },
+    grid: {
+        display: 'grid',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        gridGap: base(),
+        gridTemplateColumns: '1fr'
     }
 })

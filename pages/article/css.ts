@@ -57,5 +57,12 @@ export default createUseStyles({
     relatedPostsWrapper: {
         display: 'flex',
         flexWrap: 'wrap'
+    },
+    grid: {
+        display: 'grid',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        gridGap: base(),
+        gridTemplateColumns: '1fr'
     }
 })

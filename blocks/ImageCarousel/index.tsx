@@ -2,9 +2,7 @@ import createUseStyles from './css'
 import { Block } from "payload/types"
 import { Type as MediaType } from '../../collections/Media'
 import { Component as Image } from '../Image'
-import GridContainer from '../../components/layout/GridContainer'
 import React, { useEffect, useState } from 'react'
-import { Cell, Grid } from '@faceless-ui/css-grid'
 
 export type Type = {
     blockType: 'imageCarousel'
@@ -101,22 +99,18 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
             {autoplay && <div className={resetAnimation ? '' : classes.progressBar}></div>}
             <Image blockType='image' type='normal' image={activeImage.image} />
             {activeImage.caption && <div className={classes.tint}></div>}
-            <GridContainer>
-                <Grid>
-                    <Cell cols={12}>
-                        <div className={classes.contentWrapper}>
-                            <div>
-                                {images.map((i, j) => <div key={j} onClick={() => setActiveIndexAndClearTimer(j)} className={`${classes.pip} ${j === activeIndex ? classes.pipActive : ''}`}>
-                                    <Image blockType='image' type='normal' image={i.image}/>
-                                </div>)}
-                            </div>
-                            {activeImage.image && <div className={classes.caption}>
-                                {activeImage.caption}
-                            </div>}
-                        </div>
-                    </Cell>
-                </Grid>
-            </GridContainer>
+            <div className={classes.grid}>
+                <div className={classes.contentWrapper}>
+                    <div>
+                        {images.map((i, j) => <div key={j} onClick={() => setActiveIndexAndClearTimer(j)} className={`${classes.pip} ${j === activeIndex ? classes.pipActive : ''}`}>
+                            <Image blockType='image' type='normal' image={i.image}/>
+                        </div>)}
+                    </div>
+                    {activeImage.image && <div className={classes.caption}>
+                        {activeImage.caption}
+                    </div>}
+                </div>
+            </div>
         </div>
     )
 }

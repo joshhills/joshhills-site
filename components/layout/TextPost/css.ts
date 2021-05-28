@@ -3,7 +3,7 @@ import { base } from '../../../css/base'
 import colors from '../../../css/colors'
 import { borderSize } from '../../../css/type'
 
-const itemSize = '306px'
+const itemSize = '346px'
 
 export default createUseStyles({
   post: {

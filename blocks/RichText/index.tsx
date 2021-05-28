@@ -2,8 +2,6 @@ import React from 'react'
 import serialize from './serialize'
 import { Block } from 'payload/types'
 import backgroundColor, { Type as BackgroundColorType } from "../../fields/backgroundColor"
-import GridContainer from '../../components/layout/GridContainer'
-import { Grid, Cell } from '@faceless-ui/css-grid'
 import useStyles from './css'
 
 export type Type = {
@@ -38,14 +36,10 @@ export const Component: React.FC<Type> = ( { content } ) => {
   const classes = useStyles()
 
   return (
-    <GridContainer>
-      <Grid>
-        <Cell cols={12}>
-          <div className={classes.richText}>
-            {serialize(content)}
-          </div>
-        </Cell>
-      </Grid>
-    </GridContainer>
+    <div className={classes.grid}>
+      <div className={classes.richText}>
+        {serialize(content)}
+      </div>
+    </div>
   )
 }

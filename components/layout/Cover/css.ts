@@ -2,6 +2,7 @@ import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
 import colors, { colorWithOpacity } from '../../../css/colors'
 import { imageCover } from '../../../css/images'
+import queries from '../../../css/queries'
 import zIndex from '../../../css/zIndex'
 
 const cover = {
@@ -30,7 +31,7 @@ export default createUseStyles({
   cover,
   coverFull: {
     ...cover,
-    minHeight: '100vh'
+    minHeight: base(35)
   },
   coverImage: {
     ...imageCover
@@ -39,5 +40,22 @@ export default createUseStyles({
     boxSizing: 'border-box',
     color: colors.white,
     width: '100%'
+  },
+  gridFull: {
+    display: 'grid',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    gridGap: base(),
+    gridTemplateColumns: '1fr'
+  },
+  gridHalf: {
+    display: 'grid',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    gridGap: base(),
+    gridTemplateColumns: '2fr 3fr',
+    [queries.m]: {
+        gridTemplateColumns: '1fr'
+    }
   }
 })

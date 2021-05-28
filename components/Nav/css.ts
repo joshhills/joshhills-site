@@ -58,5 +58,12 @@ export default createUseStyles({
                 color: colors.white
             }
         }
+    },
+    grid: {
+        display: 'grid',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        gridGap: base(),
+        gridTemplateColumns: '1fr'
     }
 })

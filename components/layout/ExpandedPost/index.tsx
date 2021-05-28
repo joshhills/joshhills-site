@@ -4,8 +4,6 @@ import { Type as MediaType } from '../../../collections/Media'
 import dateFormat from 'dateformat'
 import Link from 'next/link'
 import formatMediaUrl from '../../../utilities/formatMediaUrl'
-import GridContainer from '../GridContainer'
-import { Cell, Grid } from '@faceless-ui/css-grid'
 
 type Props = {
     title: string,
@@ -29,30 +27,28 @@ const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featured
   return (
     <div className={classes.post}>
         <div className={`${classes.wrapper} ${dashed ? classes.dashed : ''}`}>
-            <GridContainer>
-                <Grid>
-                    <Cell cols={6}></Cell>
-                    <Cell cols={6}>
-                        <div className={classes.text}>
-                            {dateRange ? 
-                                dateRange.ongoing ? 
-                                    <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
-                                    <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
-                                : 
-                                <p className={classes.date}>{dateFormat(datePublished, 'dd/mm/yy')}</p>}
-                            <Link href={url}>
-                                <a className={classes.title}>{title}</a>
-                            </Link>
-                            {company && <p className={classes.date}>{company}</p>}
-                            <p>{excerpt}</p>
-                            <Link href={url}>
-                                <a className={classes.cta}>Read more</a>
-                            </Link>
-                        </div>
-                        <img className={classes.image} src={formatMediaUrl(featuredMedia)} />
-                    </Cell>
-                </Grid>
-            </GridContainer>
+            <div className={classes.grid}>
+                <div></div>
+                <div>
+                    <div className={classes.text}>
+                        {dateRange ? 
+                            dateRange.ongoing ? 
+                                <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
+                                <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
+                            : 
+                            <p className={classes.date}>{dateFormat(datePublished, 'dd/mm/yy')}</p>}
+                        <Link href={url}>
+                            <a className={classes.title}>{title}</a>
+                        </Link>
+                        {company && <p className={classes.date}>{company}</p>}
+                        <p>{excerpt}</p>
+                        <Link href={url}>
+                            <a className={classes.cta}>Read more</a>
+                        </Link>
+                    </div>
+                    <img className={classes.image} src={formatMediaUrl(featuredMedia)} />
+                </div>
+            </div>
         </div>
     </div>
   )

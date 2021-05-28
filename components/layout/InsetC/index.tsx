@@ -1,7 +1,5 @@
-import { Grid, Cell } from "@faceless-ui/css-grid"
 import React from "react"
 import { Type as BackgroundColorType } from '../../../fields/backgroundColor'
-import GridContainer from "../GridContainer"
 import useStyles from './css'
 
 export type Props = {
@@ -18,16 +16,14 @@ const InsetC: React.FC<Props> = ({ insetTop, insetBottom, contentLeft, contentRi
 
     return (
         <div className={`${classes.inset} ${insetTop && classes.insetTop} ${insetBottom && classes.insetBottom} ${backgroundColor === 'light' && classes.light} ${backgroundColor === 'dark' && classes.dark}`}>
-            <GridContainer>
-                <Grid>
-                    <Cell cols={8}>
-                        {contentLeft}
-                    </Cell>
-                    <Cell cols={4}>
-                        {contentRight}
-                    </Cell>
-                </Grid>
-            </GridContainer>
+            <div className={classes.grid}>
+                <div>
+                    {contentLeft}
+                </div>
+                <div>
+                    {contentRight}
+                </div>
+            </div>
         </div>
     )
 }

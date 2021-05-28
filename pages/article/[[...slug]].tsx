@@ -8,10 +8,8 @@ import dateFormat from 'dateformat'
 import RenderBlocks from '../../components/RenderBlocks'
 import ProjectDetails from '../../components/article/ProjectDetails'
 import Cover from '../../components/layout/Cover'
-import { Grid, Cell } from '@faceless-ui/css-grid'
-import GridContainer from '../../components/layout/GridContainer'
 import createUseStyles from './css'
-import { FaBackspace, FaArrowUp, FaLink } from 'react-icons/fa'
+import { FaBackspace, FaArrowUp } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import Post from '../../components/layout/Post'
 import { formatLinkUrl } from '../../utilities/formatRelationUrl'
@@ -57,57 +55,45 @@ const Article: React.FC<Props> = (props) => {
                 </div>
             </Cover>
 
-            <GridContainer>
-                <Grid>
-                    <Cell cols={12}>
-                        <div>
-                            {article.category === 'project' && <ProjectDetails {...article.project}/>}
-                
-                            <RenderBlocks layout={article.content} />
-                        </div>
-                    </Cell>
-                </Grid>
-            </GridContainer>
+            <div className={classes.grid}>
+                <div>
+                    {article.category === 'project' && <ProjectDetails {...article.project}/>}
+        
+                    <RenderBlocks layout={article.content} />
+                </div>
+            </div>
 
             {article.related && article.related.length > 0 && <div className={classes.related}>
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            <div className={classes.relatedWrapper}>
-                                <h4 className={classes.relatedTitle}>Related Posts</h4>
-                                <div className={classes.relatedPostsWrapper}>
-                                    {article.related.map((p, i) => 
-                                    <Post
-                                        key={i}
-                                        title={p.value.title}
-                                        datePublished={p.value.datePublished} 
-                                        featuredMedia={p.value.featuredMedia.image} 
-                                        url={formatLinkUrl('articles', p.value.slug)} />)}
-                                </div>
-                            </div>
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    <div className={classes.relatedWrapper}>
+                        <h4 className={classes.relatedTitle}>Related Posts</h4>
+                        <div className={classes.relatedPostsWrapper}>
+                            {article.related.map((p, i) => 
+                            <Post
+                                key={i}
+                                title={p.value.title}
+                                datePublished={p.value.datePublished} 
+                                featuredMedia={p.value.featuredMedia.image} 
+                                url={formatLinkUrl('articles', p.value.slug)} />)}
+                        </div>
+                    </div>
+                </div>
             </div>}
 
             {/* Meta & Controls */}
             <div className={classes.controlWrapper}>
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            <div className={classes.control}>
-                                <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
-                                    <FaArrowUp />
-                                    Scroll Up
-                                </button>&nbsp;
-                                {/* <button>
-                                    <FaLink />
-                                    Copy link
-                                </button> */}
-                            </div>
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    <div className={classes.control}>
+                        <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
+                            <FaArrowUp />
+                            Scroll Up
+                        </button>&nbsp;
+                        {/* <button>
+                            <FaLink />
+                            Copy link
+                        </button> */}
+                    </div>
+                </div>
             </div>
         </Template>
     )

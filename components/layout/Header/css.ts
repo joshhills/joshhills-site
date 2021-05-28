@@ -60,5 +60,12 @@ export default createUseStyles({
     [queries.s]: {
       display: 'block'
     }
+  },
+  grid: {
+    display: 'grid',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    gridGap: base(),
+    gridTemplateColumns: '1fr'
   }
 })

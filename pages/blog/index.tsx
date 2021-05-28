@@ -1,4 +1,3 @@
-import { Cell, Grid } from "@faceless-ui/css-grid"
 import { GetServerSideProps } from "next"
 import React from "react"
 import { Component as RichText } from "../../blocks/RichText"
@@ -6,7 +5,6 @@ import { Type as ArticleType } from '../../collections/Article'
 import Head from "../../components/Head"
 import Cover from "../../components/layout/Cover"
 import FeaturedPost from "../../components/layout/FeaturedPost"
-import GridContainer from "../../components/layout/GridContainer"
 import InsetC from "../../components/layout/InsetC"
 import { PostList } from "../../components/layout/PostList"
 import Template from "../../components/layout/Template"
@@ -89,22 +87,14 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages }) => {
                 <FeaturedPost title={posts[0].title} excerpt={posts[0].excerpt} datePublished={posts[0].datePublished} url={formatLinkUrl('articles', posts[0].slug)} featuredMedia={posts[0].featuredMedia?.image} />} 
 
             <div className={classes.page}>
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            {posts.length === 0 && <h3>No posts found</h3>}
-                            <PostList items={normalPosts} />
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    {posts.length === 0 && <h3>No posts found</h3>}
+                    <PostList items={normalPosts} />
+                </div>
                 <InsetC insetTop={true} insetBottom={false} contentLeft={<RichText blockType='richText' content={contentLeft} />} backgroundColor='dark' />
-                <GridContainer>
-                    <Grid>
-                        <Cell cols={12}>
-                            <Pagination currentIndex={0} totalPages={totalPages} baseUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/`} />
-                        </Cell>
-                    </Grid>
-                </GridContainer>
+                <div className={classes.grid}>
+                    <Pagination currentIndex={0} totalPages={totalPages} baseUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/`} />
+                </div>
             </div>
         </Template>
     )

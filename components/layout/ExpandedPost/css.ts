@@ -2,6 +2,7 @@ import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
 import colors from '../../../css/colors'
 import { imageCover } from '../../../css/images'
+import queries from '../../../css/queries'
 import { borderSize } from '../../../css/type'
 
 const itemSize = '612px'
@@ -59,5 +60,15 @@ export default createUseStyles({
   },
   dashed: {
     borderStyle: 'dashed'
+  },
+  grid: {
+    display: 'grid',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    gridGap: base(),
+    gridTemplateColumns: '1fr 1fr',
+    [queries.m]: {
+        gridTemplateColumns: '1fr'
+    }
   }
 })

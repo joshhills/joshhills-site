@@ -1,10 +1,8 @@
-import { Cell, Grid } from "@faceless-ui/css-grid"
 import { GetServerSideProps } from "next"
 import React from "react"
 import { Type as ArticleType } from '../../collections/Article'
 import Head from "../../components/Head"
 import Cover from "../../components/layout/Cover"
-import GridContainer from "../../components/layout/GridContainer"
 import { PostList } from "../../components/layout/PostList"
 import Template from "../../components/layout/Template"
 import NotFound from "../../components/NotFound"
@@ -50,15 +48,11 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex }) => {
                 </div>
             </Cover>
 
-            <GridContainer>
-                <Grid>
-                    <Cell cols={12}>
-                        {posts.length === 0 && <h3>No posts found</h3>}
-                        <PostList items={items} />
-                        <Pagination currentIndex={activeIndex} totalPages={totalPages} baseUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/`} />
-                    </Cell>
-                </Grid>
-            </GridContainer>
+            <div className={classes.grid}>
+                {posts.length === 0 && <h3>No posts found</h3>}
+                <PostList items={items} />
+                <Pagination currentIndex={activeIndex} totalPages={totalPages} baseUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/`} />
+            </div>
         </Template>
     )
 }
