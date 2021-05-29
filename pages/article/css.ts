@@ -1,6 +1,8 @@
 import { createUseStyles } from "react-jss"
 import { base } from "../../css/base"
 import colors from '../../css/colors'
+import fonts from "../../css/fonts"
+import queries from "../../css/queries"
 import { body } from "../../css/type"
 
 export default createUseStyles({
@@ -12,6 +14,7 @@ export default createUseStyles({
         background: 'none',
         textDecoration: 'underline',
         border: 'none',
+        fontFamily: fonts.body,
         fontWeight: 'bold',
         padding: 0,
         cursor: 'pointer',

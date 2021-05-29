@@ -24,15 +24,16 @@ export default createUseStyles({
   },
   iconText: {
     margin: 0,
-    font: fonts.headers,
+    fontFamily: fonts.body,
     fontWeight: 'bold',
     display: 'inline-block'
   },
   menuButton: {
     ...body,
+    color: colors.black,
     background: 'none',
     border: 'none',
-    fontFamily: fonts.headers,
+    fontFamily: fonts.body,
     fontWeight: 'bold',
     padding: 0,
     cursor: 'pointer',
@@ -45,7 +46,11 @@ export default createUseStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: base(2),
-    paddingRight: base(2)
+    paddingRight: base(2),
+    [queries.s]: {
+      paddingLeft: base(),
+      paddingRight: base()
+    }
   },
   links: {
     '& > *': {

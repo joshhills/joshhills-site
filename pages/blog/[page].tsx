@@ -43,7 +43,7 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex }) => {
             <Cover contentWidth='half'>
                 <div className={classes.cover}>
                     <h2>Blog</h2>
-                    <h4>Technological tattle, design documents, and miscellaneous musings written during various projects.</h4>
+                    <h3>Technological tattle, design documents, and miscellaneous musings</h3>
                     <br/><br/>
                 </div>
             </Cover>

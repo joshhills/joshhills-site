@@ -37,8 +37,12 @@ export default createUseStyles({
   title: {
     color: `${colors.white} !important`,
     textDecoration: 'none',
-    lineHeight: '26pt',
-    fontSize: '26pt'
+    lineHeight: '30pt',
+    fontSize: '26pt',
+    [queries.s]: {
+      lineHeight: '26pt',
+      fontSize: '22pt'
+    }
   },
   text: {
     boxSizing: 'border-box',

@@ -1,5 +1,5 @@
 export default {
-  xs: 480,
+  xs: 360,
   s: 600,
   m: 850,
   l: 1120,

@@ -2,6 +2,7 @@ import { createUseStyles } from "react-jss";
 import { base } from "../../css/base";
 import colors from "../../css/colors";
 import fonts from "../../css/fonts";
+import queries from "../../css/queries";
 import { body, h4 } from "../../css/type";
 
 export default createUseStyles({
@@ -15,7 +16,7 @@ export default createUseStyles({
     back: {
         ...body,
         background: 'none',
-        textDecoration: 'underline',
+        fontFamily: fonts.body,
         border: 'none',
         fontWeight: 'bold',
         padding: 0,
@@ -30,7 +31,11 @@ export default createUseStyles({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingLeft: base(2),
-        paddingRight: base(2)
+        paddingRight: base(2),
+        [queries.s]: {
+            paddingLeft: base(),
+            paddingRight: base()
+        }
     },
     iconContainer: {
         display: 'flex',
@@ -57,6 +62,9 @@ export default createUseStyles({
             '&:not(:hover)': {
                 color: colors.white
             }
+        },
+        [queries.s]: {
+            padding: base()
         }
     },
     grid: {

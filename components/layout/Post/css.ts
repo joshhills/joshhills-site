@@ -2,6 +2,7 @@ import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
 import colors from '../../../css/colors'
 import { imageCover } from '../../../css/images'
+import queries from '../../../css/queries'
 import { borderSize } from '../../../css/type'
 
 const itemSize = '346px'
@@ -9,7 +10,10 @@ const itemSize = '346px'
 export default createUseStyles({
   post: {
     position: 'relative',
-    zIndex: 1
+    zIndex: 1,
+    [queries.s]: {
+      width: '100%'
+    }
   },
   wrapper: {
     position: 'relative',
@@ -18,7 +22,11 @@ export default createUseStyles({
     height: itemSize,
     width: itemSize,
     margin: base(),
-    overflow: 'hidden'
+    overflow: 'hidden',
+    [queries.s]: {
+      maxWidth: '100%',
+      width: 'auto'
+    }
   },
   text: {
     boxSizing: 'border-box',
@@ -39,8 +47,12 @@ export default createUseStyles({
   title: {
     color: `${colors.black} !important`,
     textDecoration: 'none',
-    lineHeight: '26pt',
-    fontSize: '26pt'
+    lineHeight: '30pt',
+    fontSize: '26pt',
+    [queries.s]: {
+      lineHeight: '26pt',
+      fontSize: '22pt'
+    }
   },
   cta: {
     display: 'block',

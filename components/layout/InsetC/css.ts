@@ -15,7 +15,10 @@ export default createUseStyles({
         }
     },
     inset: {
-        paddingBottom: base(2)
+        paddingBottom: base(2),
+        '& *:first-child': {
+            marginTop: 0
+        }
     },
     insetTop: {
         marginTop: `-${base(4)}`,

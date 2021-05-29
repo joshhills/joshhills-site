@@ -6,11 +6,23 @@ import SocialMedia from './globals/SocialMedia'
 import { Page } from './collections/Page'
 import Media from './collections/Media'
 import Role from './collections/Role'
+import Logo from './components/admin/graphics/Logo'
+import Icon from './components/admin/graphics/Icon'
 
 dotenv.config();
 
+
+
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+  admin: {
+    components: {
+      graphics: {
+        Icon: Icon,
+        Logo: Logo
+      }
+    }
+  },
   collections: [
     Page,
     Article,

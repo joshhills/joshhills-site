@@ -66,7 +66,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
       />
       <meta
         name="twitter:site"
-        content="@payloadcms"
+        content="@joshmarcushills"
       />
       <meta
         name="twitter:card"

@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss"
 import { base } from "../../css/base"
 import colors from '../../css/colors'
+import fonts from "../../css/fonts"
 import { body } from "../../css/type"
 
 export default createUseStyles({
@@ -13,6 +14,7 @@ export default createUseStyles({
         textDecoration: 'underline',
         border: 'none',
         fontWeight: 'bold',
+        fontFamily: fonts.body,
         padding: 0,
         cursor: 'pointer',
         color: colors.white,
@@ -60,7 +62,8 @@ export default createUseStyles({
     },
     content: {
         paddingLeft: base(2),
-        paddingRight: base(2)
+        paddingRight: base(2),
+        marginBottom: 0
     },
     contentWrapper: {
         paddingTop: base(2),

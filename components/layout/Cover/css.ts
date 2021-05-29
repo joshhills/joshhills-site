@@ -9,7 +9,6 @@ const cover = {
   zIndex: zIndex.page,
   backgroundColor: colors.grey,
   fontWeight: 'bold',
-  minHeight: '75vh',
   overflow: 'hidden',
   position: 'relative',
   '&:after': {

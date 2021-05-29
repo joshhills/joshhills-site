@@ -60,9 +60,9 @@ const Role: React.FC<Props> = (props) => {
             {/* Content */}
             <div className={classes.grid}>
                 <div className={classes.contentWrapper}>
-                    <h4 className={classes.content}>Responsibilities</h4>
+                    <h3 className={classes.content}>Responsibilities</h3>
                     <RichText blockType='richText' backgroundColor='none' content={role.responsibilities} />
-                    <h4 className={classes.content}>Achievements</h4>
+                    <h3 className={classes.content}>Achievements</h3>
                     <RichText blockType='richText' backgroundColor='none' content={role.achievements} />
                 </div>
             </div>
@@ -119,8 +119,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const roleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/roles?where[slug][equals]=${slug}&depth=3`)
     const roleData = await roleReq.json()
-
-    console.log(roleData.docs[0].related)
 
     return {
         props: {
