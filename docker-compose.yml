@@ -22,7 +22,7 @@ services:
       - mongo
     command: bash -c "/usr/wait-for-it.sh --timeout=0 mongo:27017 && yarn serve"
     volumes:
-      - ${PAYLOAD_UPLOADS_PATH}:/usr/app/payload-uploads
+      - ${PAYLOAD_UPLOADS_PATH}:${PAYLOAD_UPLOADS_PATH}
 
   # Database
   mongo:
