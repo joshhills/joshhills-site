@@ -41,7 +41,7 @@ export default createUseStyles({
         content: 'none'
       }
     },
-    '&:hover > img': {
+    '&:hover video + img': {
       opacity: 0
     }
   },
