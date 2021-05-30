@@ -22,7 +22,7 @@ type Props = {
 const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo }) => {
   const { asPath } = useRouter()
 
-  const getTitle = () => {
+  const getTitle = (title) => {
     if (title) return title + titleSuffix
     return defaultTitle + titleSuffix
   }
@@ -30,7 +30,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo 
   return (
     <NextHead>
       <title>
-        {getTitle()}
+        {getTitle(title)}
       </title>
       <link
         rel="icon"
@@ -62,7 +62,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo 
       />
       <meta
         property="og:title"
-        content={title || defaultTitle}
+        content={getTitle(title)}
       />
       <meta
         property="og:description"
@@ -70,7 +70,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo 
       />
       <meta
         property="twitter:title"
-        content={title || defaultTitle}
+        content={getTitle(title)}
       />
       <meta
         name="twitter:site"
