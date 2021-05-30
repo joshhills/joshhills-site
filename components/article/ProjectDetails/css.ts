@@ -5,7 +5,7 @@ import { borderSize } from "../../../css/type";
 
 export default createUseStyles({
     projectDetails: {
-        margin: base(2),
+        margin: `${base(3)} ${base(2)} 0 ${base(2)}`,
         padding: base(2),
         border: `${borderSize}rem dashed ${colors.orange}`
     },

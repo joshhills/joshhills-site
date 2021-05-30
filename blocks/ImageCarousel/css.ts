@@ -51,6 +51,9 @@ export default createUseStyles({
         height: `calc(100% - ${base(6)})`,
         [queries.m]: {
             width: `calc(100% - ${base(6)})`
+        },
+        [queries.s]: {
+            margin: `${base(3)} ${base(2)} ${base(3)} ${base(2)}`
         }
     },
     pip: {

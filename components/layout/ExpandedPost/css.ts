@@ -54,7 +54,10 @@ export default createUseStyles({
     backfaceVisibility: 'hidden',
     position: 'absolute',
     top: '50%',
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-50%)',
+    [queries.s]: {
+      padding: base()
+    }
   },
   cta: {
     display: 'block',

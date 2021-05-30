@@ -16,6 +16,7 @@ export default createUseStyles({
         maxWidth: '1200px',
         margin: '0 auto',
         gridGap: base(),
-        gridTemplateColumns: '1fr'
+        gridTemplateColumns: '1fr',
+        width: '100%'
     }
 })

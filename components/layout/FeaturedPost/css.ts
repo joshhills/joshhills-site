@@ -4,7 +4,7 @@ import colors from '../../../css/colors'
 import { imageCover } from '../../../css/images'
 import queries from '../../../css/queries'
 
-const itemSize = '24rem'
+const itemSize = '30rem'
 
 export default createUseStyles({
   post: {

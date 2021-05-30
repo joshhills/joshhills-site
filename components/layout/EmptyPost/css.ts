@@ -1,7 +1,8 @@
 import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
+import queries from '../../../css/queries'
 
-const itemSize = '306px'
+const itemSize = '346px'
 
 export default createUseStyles({
   post: {
@@ -9,6 +10,9 @@ export default createUseStyles({
     zIndex: 1,
     height: itemSize,
     width: itemSize,
-    margin: base()
+    margin: base(),
+    [queries.l]: {
+      display: 'none'
+    }
   }
 })

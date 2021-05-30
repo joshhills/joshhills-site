@@ -22,10 +22,11 @@ export default createUseStyles({
     },
     insetTop: {
         marginTop: `-${base(4)}`,
-        paddingTop: base(2)
+        paddingTop: base(3)
     },
     insetBottom: {
         marginBottom: `-${base(4)}`,
+        paddingBottom: base(3)
     },
     light: {
         backgroundColor: colors.lightGrey,
