@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import useStyles from './css'
-import { Type as MediaType } from '../../../collections/Media'
+import { Type as FeaturedMediaType } from '../../../fields/featuredMedia'
 import dateFormat from 'dateformat'
 import Link from 'next/link'
 import formatMediaUrl from '../../../utilities/formatMediaUrl'
@@ -8,7 +8,7 @@ import formatMediaUrl from '../../../utilities/formatMediaUrl'
 type Props = {
     title: string,
     datePublished: Date,
-    featuredMedia: MediaType,
+    featuredMedia: FeaturedMediaType,
     excerpt: string
     url: string
     dashed?: boolean
@@ -23,9 +23,24 @@ type Props = {
 const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featuredMedia, url, dashed, company, dateRange }) => {
   const classes = useStyles()
   const dateFormatStr = 'mmmm, yyyy'
+  const videoRef = useRef<HTMLVideoElement>(null)
   
+  const onMouseEnter = () => {
+    if (videoRef?.current?.play) {
+      videoRef.current.muted = true
+      videoRef.current.currentTime = 0
+      videoRef.current.play().catch()
+    }
+  }
+
+  const onMouseLeave = () => {
+    if (videoRef?.current?.pause) {
+      videoRef.current.pause()
+    }
+  }
+
   return (
-    <div className={classes.post}>
+    <div className={classes.post} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <div className={`${classes.wrapper} ${dashed ? classes.dashed : ''}`}>
             <div className={classes.grid}>
                 <div></div>
@@ -46,7 +61,10 @@ const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featured
                             <a className={classes.cta}>Read more</a>
                         </Link>
                     </div>
-                    <img className={classes.image} src={formatMediaUrl(featuredMedia)} />
+                    {featuredMedia?.video && <video ref={videoRef} className={classes.video} preload='none' loop muted playsInline disablePictureInPicture>
+                        <source type='video/mp4' src={formatMediaUrl(featuredMedia?.video)} />
+                    </video>}
+                    {featuredMedia?.image && <img className={classes.image} src={formatMediaUrl(featuredMedia?.image)} />}
                 </div>
             </div>
         </div>

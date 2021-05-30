@@ -60,14 +60,14 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     title={p.article.link.title}
                                     excerpt={p.article.link.excerpt}
                                     datePublished={p.article.link.datePublished} 
-                                    featuredMedia={p.article.link.featuredMedia.image} 
+                                    featuredMedia={p.article.link.featuredMedia} 
                                     url={formatLinkUrl('articles', p.article.link.slug)}
                                     dashed={p.article.link.category === 'general'} /> :
                                 <Post
                                     key={i}
                                     title={p.article.link.title}
                                     datePublished={p.article.link.datePublished} 
-                                    featuredMedia={p.article.link.featuredMedia.image} 
+                                    featuredMedia={p.article.link.featuredMedia} 
                                     url={formatLinkUrl('articles', p.article.link.slug)}
                                     dashed={p.article.link.category === 'general'}
                                     showImage={p.article.showImage !== undefined ? p.article.showImage : true}
@@ -79,7 +79,7 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     title={p.role.link.title}
                                     excerpt={p.role.link.excerpt}
                                     datePublished={p.role.link.datePublished} 
-                                    featuredMedia={p.role.link.featuredMedia.image} 
+                                    featuredMedia={p.role.link.featuredMedia} 
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}
                                     dateRange={p.role.link.date}
@@ -88,7 +88,7 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     key={i}
                                     title={p.role.link.title}
                                     datePublished={p.role.link.datePublished} 
-                                    featuredMedia={p.role.link.featuredMedia.image} 
+                                    featuredMedia={p.role.link.featuredMedia} 
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}
                                     dateRange={p.role.link.date} />

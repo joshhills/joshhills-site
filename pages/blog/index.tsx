@@ -83,7 +83,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages }) => {
             </Cover>
 
             {posts.length > 0 &&
-                <FeaturedPost title={posts[0].title} excerpt={posts[0].excerpt} datePublished={posts[0].datePublished} url={formatLinkUrl('articles', posts[0].slug)} featuredMedia={posts[0].featuredMedia?.image} />} 
+                <FeaturedPost title={posts[0].title} excerpt={posts[0].excerpt} datePublished={posts[0].datePublished} url={formatLinkUrl('articles', posts[0].slug)} featuredMedia={posts[0].featuredMedia} />} 
 
             <div className={classes.page}>
                 <div className={classes.grid}>

@@ -38,7 +38,14 @@ export const Role: CollectionConfig = {
         defaultColumns: [
             'title',
             'location'
-        ]
+        ],
+        preview: (doc) => {
+            if (doc?.slug) {
+                return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/role/${doc.slug}`
+            }
+
+            return null
+        }
     },
     access: {
         read: ({ req: { user } }) => {

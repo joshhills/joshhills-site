@@ -35,7 +35,10 @@ export default createUseStyles({
     backfaceVisibility: 'hidden',
     padding: base(),
     position: 'absolute',
-    zIndex: 2
+    zIndex: 2,
+    '&:hover + video + img': {
+      opacity: 0
+    }
   },
   tint: {
     background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.2))'
@@ -67,9 +70,14 @@ export default createUseStyles({
   },
   image: {
     ...imageCover,
-    zIndex: 0
+    zIndex: 0,
+    transition: 'opacity 0.25s linear'
   },
   dashed: {
     borderStyle: 'dashed'
+  },
+  video: {
+    ...imageCover,
+    zIndex: 0
   }
 })

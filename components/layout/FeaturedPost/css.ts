@@ -40,6 +40,9 @@ export default createUseStyles({
       '&:before': {
         content: 'none'
       }
+    },
+    '&:hover > img': {
+      opacity: 0
     }
   },
   date: {
@@ -77,7 +80,8 @@ export default createUseStyles({
   image: {
     ...imageCover,
     top: 0,
-    zIndex: 0
+    zIndex: 0,
+    transition: 'opacity 0.25s linear'
   },
   grid: {
     display: 'grid',
@@ -88,5 +92,9 @@ export default createUseStyles({
     [queries.m]: {
         gridTemplateColumns: '1fr'
     }
+  },
+  video: {
+    ...imageCover,
+    zIndex: 0
   }
 })

@@ -1,5 +1,6 @@
 import { RichText, Component as richText } from './RichText'
 import { Image, Component as image } from './Image'
+import { Video, Component as video } from './Video'
 import { Hero, Component as hero } from './Hero'
 import { Button, Component as button } from './Button'
 import { ArticleList, Component as articleList } from './ArticleList'
@@ -11,6 +12,7 @@ export const blocks = {
   Hero,
   RichText,
   Image,
+  Video,
   ImageCarousel,
   Button,
   ArticleList,
@@ -22,6 +24,7 @@ export const components = {
   hero,
   richText,
   image,
+  video,
   imageCarousel,
   button,
   articleList,

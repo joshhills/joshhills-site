@@ -2,12 +2,13 @@ import { CollectionConfig } from 'payload/types'
 import slug from '../fields/slug'
 import { RichText, Type as RichTextType } from '../blocks/RichText'
 import { Image, Type as ImageType } from '../blocks/Image'
+import { Video, Type as VideoType } from '../blocks/Video'
 import { Type as LinkType } from '../fields/link'
 import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 import featuredMedia, { Type as FeaturedMediaType } from '../fields/featuredMedia'
 import state from '../fields/state'
 
-export type Layout = RichTextType | ImageType | ImageCarouselType
+export type Layout = RichTextType | ImageType | VideoType | ImageCarouselType
 
 export type Type = {
     id?: string
@@ -40,7 +41,14 @@ export const Article: CollectionConfig = {
             'publishedDate',
             'featuredMedia',
             'excerpt'
-        ]
+        ],
+        preview: (doc) => {
+            if (doc?.slug) {
+                return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/article/${doc.slug}`
+            }
+
+            return null
+        }
     },
     access: {
         read: ({ req: { user } }) => {
@@ -180,6 +188,7 @@ export const Article: CollectionConfig = {
             blocks: [
                 RichText,
                 Image,
+                Video,
                 ImageCarousel
             ]
         },

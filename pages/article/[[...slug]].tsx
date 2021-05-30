@@ -13,6 +13,7 @@ import { FaBackspace, FaArrowUp } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import Post from '../../components/layout/Post'
 import { formatLinkUrl } from '../../utilities/formatRelationUrl'
+import formatMediaUrl from '../../utilities/formatMediaUrl'
 
 export type Props = {
     article?: ArticleType
@@ -41,7 +42,7 @@ const Article: React.FC<Props> = (props) => {
             />
 
             {/* Cover */}
-            <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} contentWidth='full'>
+            <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full'>
                 <div className={classes.cover}>
                     <p>
                         <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
@@ -73,7 +74,7 @@ const Article: React.FC<Props> = (props) => {
                                 key={i}
                                 title={p.value.title}
                                 datePublished={p.value.datePublished} 
-                                featuredMedia={p.value.featuredMedia.image} 
+                                featuredMedia={p.value.featuredMedia} 
                                 url={formatLinkUrl('articles', p.value.slug)} />)}
                         </div>
                     </div>
@@ -84,7 +85,7 @@ const Article: React.FC<Props> = (props) => {
             <div className={classes.controlWrapper}>
                 <div className={classes.grid}>
                     <div className={classes.control}>
-                        <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
+                        <button className={classes.button} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                             <FaArrowUp />
                             Scroll Up
                         </button>&nbsp;

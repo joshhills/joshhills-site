@@ -70,7 +70,7 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
     const activeImage = images[activeIndex]
 
     const setActiveIndexAndClearTimer = (i) => {
-        if (autoplay) {
+        if (autoplay && images.length > 1) {
             clearInterval(intervalId)
             setResetAnimation(true)
             requestAnimationFrame(() => setResetAnimation(false))
@@ -89,14 +89,14 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
     }
     
     useEffect(() => {
-        if (autoplay) {
+        if (autoplay && images.length > 1) {
             setIntervalId(setInterval(advanceCarousel.bind(this), 13000))
         }
     }, [])
  
     return (
         <div className={classes.carousel}>
-            {autoplay && <div className={resetAnimation ? '' : classes.progressBar}></div>}
+            {autoplay && images.length > 1 && <div className={resetAnimation ? '' : classes.progressBar}></div>}
             <Image blockType='image' type='normal' image={activeImage.image} />
             {activeImage.caption && <div className={classes.tint}></div>}
             <div className={classes.grid}>

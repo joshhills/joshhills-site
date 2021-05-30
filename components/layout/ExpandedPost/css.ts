@@ -11,7 +11,10 @@ export default createUseStyles({
   post: {
     position: 'relative',
     zIndex: 1,
-    width: '100%'
+    width: '100%',
+    '&:hover video + img': {
+      opacity: 0
+    }
   },
   wrapper: {
     position: 'relative',
@@ -60,7 +63,8 @@ export default createUseStyles({
   image: {
     ...imageCover,
     top: 0,
-    zIndex: 0
+    zIndex: 0,
+    transition: 'opacity 0.25s linear'
   },
   dashed: {
     borderStyle: 'dashed'
@@ -74,5 +78,10 @@ export default createUseStyles({
     [queries.m]: {
         gridTemplateColumns: '1fr'
     }
+  },
+  video: {
+    ...imageCover,
+    top: 0,
+    zIndex: 0
   }
 })

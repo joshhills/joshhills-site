@@ -11,6 +11,8 @@ const cover = {
   fontWeight: 'bold',
   overflow: 'hidden',
   position: 'relative',
+  display: 'flex',
+  alignItems: 'center',
   '&:after': {
       position: 'absolute',
       content: '""',
@@ -18,7 +20,8 @@ const cover = {
       width: '100%',
       top: 0,
       left: 0,
-      background: colorWithOpacity(colors.black, 65),
+      // background: colorWithOpacity(colors.black, 65),
+      background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.2))',
       zIndex: -1
   },
   '& a:not(:hover)': {
@@ -42,6 +45,7 @@ export default createUseStyles({
   },
   gridFull: {
     display: 'grid',
+    width: '100%',
     maxWidth: '1200px',
     margin: '0 auto',
     gridGap: base(),
@@ -49,6 +53,7 @@ export default createUseStyles({
   },
   gridHalf: {
     display: 'grid',
+    width: '100%',
     maxWidth: '1200px',
     margin: '0 auto',
     gridGap: base(),
@@ -56,5 +61,8 @@ export default createUseStyles({
     [queries.m]: {
         gridTemplateColumns: '1fr'
     }
+  },
+  video: {
+    ...imageCover
   }
 })

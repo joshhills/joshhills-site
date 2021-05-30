@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 import { RichText, Type as RichTextType } from '../blocks/RichText'
 import { Image, Type as ImageType } from '../blocks/Image'
+import { Video, Type as VideoType } from '../blocks/Video'
 import { Hero, Type as HeroType } from '../blocks/Hero'
 import meta, { Type as MetaType } from '../fields/meta'
 import slug from '../fields/slug'
@@ -10,7 +11,7 @@ import { Inset, Type as InsetType } from '../blocks/Inset'
 import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 
 export type Layout = 
-    HeroType | RichTextType | ImageType | ImageCarouselType | ArticleListType | RoleListType | InsetType
+    HeroType | RichTextType | ImageType | VideoType | ImageCarouselType | ArticleListType | RoleListType | InsetType
 
 export type Type = {
     id?: string
@@ -30,7 +31,14 @@ export const Page: CollectionConfig = {
             'title',
             'slug',
             'meta.description'
-        ]
+        ],
+        preview: (doc) => {
+            if (doc?.slug) {
+                return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug}`
+            }
+
+            return null
+        }
     },
     access: {
         read: (): boolean => true // Everyone can read Pages
@@ -52,10 +60,11 @@ export const Page: CollectionConfig = {
                 Inset,
                 RichText,
                 Image,
+                Video,
                 ImageCarousel,
                 ArticleList,
                 RoleList
-            ],
+            ]
         },
         slug,
         meta

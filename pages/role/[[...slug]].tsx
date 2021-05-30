@@ -77,7 +77,7 @@ const Role: React.FC<Props> = (props) => {
                                     key={i}
                                     title={p.value.title}
                                     datePublished={p.value.datePublished} 
-                                    featuredMedia={p.value.featuredMedia?.image} 
+                                    featuredMedia={p.value.featuredMedia} 
                                     url={formatLinkUrl('articles', p.value.slug)} />)}
                         </div>
                     </div>
@@ -88,7 +88,7 @@ const Role: React.FC<Props> = (props) => {
             <div className={classes.controlWrapper}>
                 <div className={classes.grid}>
                     <div className={classes.control}>
-                        <button className={classes.button} onClick={() => window.scrollTo(0, 0)}>
+                        <button className={classes.button} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                             <FaArrowUp />
                             Scroll Up
                         </button>&nbsp;
