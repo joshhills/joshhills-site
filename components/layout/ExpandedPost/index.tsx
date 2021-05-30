@@ -7,7 +7,7 @@ import formatMediaUrl from '../../../utilities/formatMediaUrl'
 
 type Props = {
     title: string,
-    datePublished: Date,
+    datePublished: string,
     featuredMedia: FeaturedMediaType,
     excerpt: string
     url: string
@@ -15,8 +15,8 @@ type Props = {
     company?: string
     dateRange?: {
       ongoing: boolean
-      start: Date
-      end?: Date
+      start: string
+      end?: string
     }
 }
 

@@ -14,7 +14,7 @@ type Props = {
         article?: {
             link: { 
                 title: string
-                datePublished?: Date
+                datePublished?: string
                 featuredMedia?: FeaturedMediaType
                 slug: string
                 excerpt?: string
@@ -27,7 +27,7 @@ type Props = {
         role?: {
             link: {
                 title: string,
-                datePublished?: Date
+                datePublished?: string
                 featuredMedia?: FeaturedMediaType
                 slug: string
                 excerpt?: string
@@ -36,8 +36,8 @@ type Props = {
                 }
                 date: {
                     ongoing: boolean
-                    start: Date
-                    end?: Date
+                    start: string
+                    end?: string
                 }
             }
             expanded: boolean

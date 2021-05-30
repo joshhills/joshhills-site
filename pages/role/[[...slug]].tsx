@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from '../../components/Head'
+import NextHead from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Type as RoleType } from '../../collections/Role'
 import Template from '../../components/layout/Template'
@@ -12,6 +13,7 @@ import createUseStyles from './css'
 import { useRouter } from 'next/router'
 import Post from '../../components/layout/Post'
 import { formatLinkUrl } from '../../utilities/formatRelationUrl'
+import formatMediaUrl from '../../utilities/formatMediaUrl'
 
 export type Props = {
     role?: RoleType
@@ -39,7 +41,13 @@ const Role: React.FC<Props> = (props) => {
             <Head
                 title={`${role.title} @ ${role.location.company}`}
                 ogImage={featuredImageUrl}
+                ogVideo={formatMediaUrl(role.featuredMedia?.video)}
             />
+            <NextHead>
+                <meta property="og:type" content="article" />
+                <meta name='article:author' content='Josh Hills' />
+                <meta name='article:section' content='role' />
+            </NextHead>
 
             {/* Cover */}
             <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={role.featuredMedia?.image?.alt} contentWidth='full'>
@@ -76,7 +84,7 @@ const Role: React.FC<Props> = (props) => {
                                 <Post
                                     key={i}
                                     title={p.value.title}
-                                    datePublished={p.value.datePublished} 
+                                    datePublished={p.value.publishedDate} 
                                     featuredMedia={p.value.featuredMedia} 
                                     url={formatLinkUrl('articles', p.value.slug)} />)}
                         </div>

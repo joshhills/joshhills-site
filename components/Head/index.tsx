@@ -12,13 +12,14 @@ const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`
 const defaultKeywords = 'developer, multiplayer, online, games, blog, tech, medium, portfolio, career, AAA'
 
 type Props = {
-  title?: string,
-  description?: string,
-  ogImage?: string,
-  keywords?: string,
+  title?: string
+  description?: string
+  ogImage?: string
+  ogVideo?: string
+  keywords?: string
 };
 
-const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
+const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo }) => {
   const { asPath } = useRouter()
 
   const getTitle = () => {
@@ -39,7 +40,6 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
       <link rel="manifest" href="/icons/site.webmanifest" />
       <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#ffa351" />
-      <link rel="shortcut icon" href="/icons/favicon.ico" />
       <meta name="msapplication-TileColor" content="#ffa351" />
       <meta name="msapplication-config" content="/icons/browserconfig.xml" />
       <meta name="theme-color" content="#ffa351" />
@@ -47,6 +47,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
         name="description"
         content={description || defaultDescription}
       />
+      <meta name="author" content="Josh Hills" />
       <meta
         name="keywords"
         content={keywords || defaultKeywords}
@@ -77,7 +78,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
       />
       <meta
         name="twitter:card"
-        content="summary_large_image"
+        content={ogVideo ? "player" : "summary_large_image"}
       />
       <meta
         name="twitter:image"
@@ -87,6 +88,13 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
         property="og:image"
         content={ogImage || defaultOGImage}
       />
+      {ogVideo && <meta
+        property="og:video"
+        content={ogVideo}
+      />}
+      {ogVideo && <meta name="twitter:player" content={ogVideo} />}
+      
+      <meta property="og:site_name" content="Josh Hills"></meta>
     </NextHead>
   )
 }

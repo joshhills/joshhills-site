@@ -2,8 +2,8 @@ import { CollectionConfig } from 'payload/types'
 
 export type Type = {
   id?: string
-  createdAt?: Date
-  updatedAt?: Date
+  createdAt?: string
+  updatedAt?: string
   filename: string
   slug: string
   alt: string

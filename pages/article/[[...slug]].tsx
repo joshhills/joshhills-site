@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from '../../components/Head'
+import NextHead from 'next/head'
 import { GetServerSideProps } from 'next'
 import { Type as ArticleType } from '../../collections/Article'
 import Template from '../../components/layout/Template'
@@ -39,14 +40,21 @@ const Article: React.FC<Props> = (props) => {
                 title={article.title}
                 description={article.excerpt}
                 ogImage={featuredImageUrl}
+                ogVideo={formatMediaUrl(article.featuredMedia?.video)}
             />
+            <NextHead>
+                <meta property="og:type" content="article" />
+                <meta name='article:author' content='Josh Hills' />
+                <meta name='article:section' content={article.project !== undefined ? 'project' : 'general'} />
+                <meta name="article:published_time" content={article.publishedDate} />
+            </NextHead>
 
             {/* Cover */}
             <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full'>
                 <div className={classes.cover}>
                     <p>
                         <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                        Posted {dateFormat(article.datePublished, 'dddd, mmmm dS, yyyy')}
+                        Posted {dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')}
                         {article.project?.length && ` • ${article.project.length}`}
                     </p>
                     <h2>{article.title}</h2>
@@ -73,7 +81,7 @@ const Article: React.FC<Props> = (props) => {
                             <Post
                                 key={i}
                                 title={p.value.title}
-                                datePublished={p.value.datePublished} 
+                                datePublished={p.value.publishedDate} 
                                 featuredMedia={p.value.featuredMedia} 
                                 url={formatLinkUrl('articles', p.value.slug)} />)}
                         </div>

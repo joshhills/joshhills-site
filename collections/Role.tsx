@@ -7,8 +7,8 @@ import state from '../fields/state'
 
 export type Type = {
     id?: string
-    createdAt?: Date
-    updatedAt?: Date
+    createdAt?: string
+    updatedAt?: string
     title: string
     slug: string
     state: 'draft' | 'published'
@@ -19,8 +19,8 @@ export type Type = {
     }
     date: {
         ongoing: boolean
-        start: Date
-        end?: Date
+        start: string
+        end?: string
     }
     excerpt: string
     responsibilities: string

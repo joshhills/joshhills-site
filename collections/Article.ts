@@ -12,11 +12,11 @@ export type Layout = RichTextType | ImageType | VideoType | ImageCarouselType
 
 export type Type = {
     id?: string
-    createdAt?: Date
-    updatedAt?: Date
+    createdAt?: string
+    updatedAt?: string
     title: string
     featuredMedia?: FeaturedMediaType
-    datePublished?: Date
+    publishedDate?: string
     excerpt?: string
     slug: string
     state: 'draft' | 'published'

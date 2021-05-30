@@ -15,8 +15,8 @@ export type Layout =
 
 export type Type = {
     id?: string
-    createdAt?: Date
-    updatedAt?: Date
+    createdAt?: string
+    updatedAt?: string
     title: string
     slug: string
     layout: Layout[]

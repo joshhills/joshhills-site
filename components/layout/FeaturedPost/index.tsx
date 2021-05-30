@@ -6,7 +6,7 @@ import formatMediaUrl from '../../../utilities/formatMediaUrl'
 
 type Props = {
     title: string,
-    datePublished: Date,
+    datePublished: string,
     featuredMedia: FeaturedMediaType,
     excerpt: string
     url: string
