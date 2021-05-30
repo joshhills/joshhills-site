@@ -36,6 +36,13 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
         type="image/x-icon"
         href="/icons/joshhills-dev-logo.svg"
       />
+      <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+      <link rel="manifest" href="/icons/site.webmanifest" />
+      <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#ffa351" />
+      <link rel="shortcut icon" href="/icons/favicon.ico" />
+      <meta name="msapplication-TileColor" content="#ffa351" />
+      <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+      <meta name="theme-color" content="#ffa351" />
       <meta
         name="description"
         content={description || defaultDescription}
