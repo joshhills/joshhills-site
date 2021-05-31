@@ -25,7 +25,7 @@ export default buildConfig({
   },
   upload: {
     limits: {
-      fileSize: 5000000, // 5MB, written in bytes
+      fileSize: 10000000, // 5MB, written in bytes
     }
   },
   collections: [
