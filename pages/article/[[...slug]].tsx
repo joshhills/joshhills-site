@@ -81,7 +81,7 @@ const Article: React.FC<Props> = (props) => {
                             <Post
                                 key={i}
                                 title={p.value.title}
-                                datePublished={p.value.publishedDate} 
+                                publishedDate={p.value.publishedDate} 
                                 featuredMedia={p.value.featuredMedia} 
                                 url={formatLinkUrl('articles', p.value.slug)} />)}
                         </div>

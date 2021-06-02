@@ -7,7 +7,7 @@ import formatMediaUrl from '../../../utilities/formatMediaUrl'
 
 type Props = {
     title: string,
-    datePublished: string,
+    publishedDate: string,
     featuredMedia: FeaturedMediaType,
     excerpt: string
     url: string
@@ -20,7 +20,7 @@ type Props = {
     }
 }
 
-const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featuredMedia, url, dashed, company, dateRange }) => {
+const ExpandedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featuredMedia, url, dashed, company, dateRange }) => {
   const classes = useStyles()
   const dateFormatStr = 'mmmm, yyyy'
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -51,7 +51,7 @@ const ExpandedPost: React.FC<Props> = ({ title, excerpt, datePublished, featured
                                 <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
                                 <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
                             : 
-                            <p className={classes.date}>{dateFormat(datePublished, 'dd/mm/yy')}</p>}
+                            <p className={classes.date}>{dateFormat(publishedDate, 'dd/mm/yy')}</p>}
                         <Link href={url}>
                             <a className={classes.title}>{title}</a>
                         </Link>

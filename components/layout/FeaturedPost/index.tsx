@@ -6,13 +6,13 @@ import formatMediaUrl from '../../../utilities/formatMediaUrl'
 
 type Props = {
     title: string,
-    datePublished: string,
+    publishedDate: string,
     featuredMedia: FeaturedMediaType,
     excerpt: string
     url: string
 }
 
-const FeaturedPost: React.FC<Props> = ({ title, excerpt, datePublished, featuredMedia, url }) => {
+const FeaturedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featuredMedia, url }) => {
   const classes = useStyles()
 
   const videoRef = useRef<HTMLVideoElement>(null)

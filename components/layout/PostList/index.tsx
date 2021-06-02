@@ -14,7 +14,7 @@ type Props = {
         article?: {
             link: { 
                 title: string
-                datePublished?: string
+                publishedDate?: string
                 featuredMedia?: FeaturedMediaType
                 slug: string
                 excerpt?: string
@@ -27,7 +27,7 @@ type Props = {
         role?: {
             link: {
                 title: string,
-                datePublished?: string
+                publishedDate?: string
                 featuredMedia?: FeaturedMediaType
                 slug: string
                 excerpt?: string
@@ -59,14 +59,14 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     key={i}
                                     title={p.article.link.title}
                                     excerpt={p.article.link.excerpt}
-                                    datePublished={p.article.link.datePublished} 
+                                    publishedDate={p.article.link.publishedDate} 
                                     featuredMedia={p.article.link.featuredMedia} 
                                     url={formatLinkUrl('articles', p.article.link.slug)}
                                     dashed={p.article.link.category === 'general'} /> :
                                 <Post
                                     key={i}
                                     title={p.article.link.title}
-                                    datePublished={p.article.link.datePublished} 
+                                    publishedDate={p.article.link.publishedDate} 
                                     featuredMedia={p.article.link.featuredMedia} 
                                     url={formatLinkUrl('articles', p.article.link.slug)}
                                     dashed={p.article.link.category === 'general'}
@@ -78,7 +78,7 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     key={i}
                                     title={p.role.link.title}
                                     excerpt={p.role.link.excerpt}
-                                    datePublished={p.role.link.datePublished} 
+                                    publishedDate={p.role.link.publishedDate} 
                                     featuredMedia={p.role.link.featuredMedia} 
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}
@@ -87,7 +87,7 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                 <Post
                                     key={i}
                                     title={p.role.link.title}
-                                    datePublished={p.role.link.datePublished} 
+                                    publishedDate={p.role.link.publishedDate} 
                                     featuredMedia={p.role.link.featuredMedia} 
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}

@@ -3,6 +3,7 @@ import { htmlFontSize, baselinePX, base } from './base'
 import colors from './colors'
 import { h1, h2, h3, h4, h5, body, a } from './type'
 import fonts from './fonts'
+import breakpoints from './breakpoints'
 
 export default createUseStyles({
   '@global': {
@@ -21,7 +22,10 @@ export default createUseStyles({
     html: {
       fontFamily: fonts.body,
       fontSize: htmlFontSize,
-      lineHeight: `${baselinePX}px`
+      lineHeight: `${baselinePX}px`,
+      [`@media(min-width: ${breakpoints.xxl}px)`]: {
+        zoom: 1.45
+      }
     },
     h1,
     h2,
