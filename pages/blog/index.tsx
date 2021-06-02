@@ -50,7 +50,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages }) => {
             normalPosts.push(
                 {
                     type: 'text',
-                    text: 'blah'
+                    text: `I'm currently reading 'Development and Deployment of Multiplayer Online Games' by It Hare`
                 }
             )
         }
