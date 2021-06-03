@@ -12,6 +12,8 @@ export type Type = {
         role?: {
             link: RoleType
             expanded: boolean
+            showImage: boolean
+            showDate: boolean
         }
     }[]
 }
@@ -66,7 +68,19 @@ export const RoleList: Block = {
                             name: 'expanded',
                             label: 'Expanded',
                             type: 'checkbox',
-                            required: true
+                            defaultValue: false
+                        },
+                        {
+                            name: 'showImage',
+                            label: 'Show Image',
+                            type: 'checkbox',
+                            defaultValue: true
+                        },
+                        {
+                            name: 'showDate',
+                            label: 'Show Date',
+                            type: 'checkbox',
+                            defaultValue: true
                         }
                     ],
                     admin: {

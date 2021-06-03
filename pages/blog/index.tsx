@@ -61,7 +61,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages }) => {
                 article: {
                     link: posts[i],
                     expanded: i === 6,
-                    showImage: [2, 3, 5, 7, 9].includes(i),
+                    showImage: [2, 3, 5, 6, 7, 9].includes(i),
                     showDate: [2, 7].includes(i)
                 }
             }

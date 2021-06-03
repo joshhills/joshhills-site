@@ -94,6 +94,7 @@ export default createUseStyles({
   },
   video: {
     ...imageCover,
+    top: 0,
     zIndex: 0
   }
 })

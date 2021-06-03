@@ -41,6 +41,8 @@ type Props = {
                 }
             }
             expanded: boolean
+            showImage: boolean
+            showDate: boolean
         }
     }[]
 }
@@ -62,7 +64,9 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     publishedDate={p.article.link.publishedDate} 
                                     featuredMedia={p.article.link.featuredMedia} 
                                     url={formatLinkUrl('articles', p.article.link.slug)}
-                                    dashed={p.article.link.category === 'general'} /> :
+                                    dashed={p.article.link.category === 'general'}
+                                    showImage={p.article.showImage !== undefined ? p.article.showImage : true}
+                                    showDate={p.article.showDate !== undefined ? p.article.showDate : true} /> :
                                 <Post
                                     key={i}
                                     title={p.article.link.title}
@@ -83,6 +87,8 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}
                                     dateRange={p.role.link.date}
+                                    showImage={p.role.showImage !== undefined ? p.role.showImage : true}
+                                    showDate={p.role.showDate !== undefined ? p.role.showDate : true}
                                         /> :
                                 <Post
                                     key={i}
@@ -91,7 +97,9 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     featuredMedia={p.role.link.featuredMedia} 
                                     url={formatLinkUrl('roles', p.role.link.slug)}
                                     company={p.role.link.location.company}
-                                    dateRange={p.role.link.date} />
+                                    dateRange={p.role.link.date}
+                                    showImage={p.role.showImage !== undefined ? p.role.showImage : true}
+                                    showDate={p.role.showDate !== undefined ? p.role.showDate : true} />
                         }
                     } else if (p.type === 'text') {
                         return <TextPost key={i} text={p.text}/>

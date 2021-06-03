@@ -18,13 +18,15 @@ type Props = {
       start: string
       end?: string
     }
+    showImage?: boolean
+    showDate?: boolean
 }
 
-const ExpandedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featuredMedia, url, dashed, company, dateRange }) => {
+const ExpandedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featuredMedia, url, dashed, company, dateRange, showImage = true, showDate = true }) => {
   const classes = useStyles()
   const dateFormatStr = 'mmmm, yyyy'
   const videoRef = useRef<HTMLVideoElement>(null)
-  
+
   const onMouseEnter = () => {
     if (videoRef?.current?.play) {
       videoRef.current.muted = true
@@ -46,12 +48,12 @@ const ExpandedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featured
                 <div></div>
                 <div>
                     <div className={classes.text}>
-                        {dateRange ? 
+                        {showDate && (dateRange ? 
                             dateRange.ongoing ? 
                                 <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
                                 <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
                             : 
-                            <p className={classes.date}>{dateFormat(publishedDate, 'dd/mm/yy')}</p>}
+                            <p className={classes.date}>{dateFormat(publishedDate, 'dd/mm/yy')}</p>)}
                         <Link href={url}>
                             <a className={classes.title}>{title}</a>
                         </Link>
@@ -61,10 +63,10 @@ const ExpandedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featured
                             <a className={classes.cta}>Read more</a>
                         </Link>
                     </div>
-                    {featuredMedia?.video && <video ref={videoRef} className={classes.video} preload='none' loop muted playsInline disablePictureInPicture>
+                    {showImage && featuredMedia?.video && <video ref={videoRef} className={classes.video} preload='none' loop muted playsInline disablePictureInPicture>
                         <source type='video/mp4' src={formatMediaUrl(featuredMedia?.video)} />
                     </video>}
-                    {featuredMedia?.image && <img className={classes.image} src={formatMediaUrl(featuredMedia?.image)} />}
+                    {showImage && featuredMedia?.image && <img className={classes.image} src={formatMediaUrl(featuredMedia?.image)} />}
                 </div>
             </div>
         </div>

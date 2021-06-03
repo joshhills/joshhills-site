@@ -52,12 +52,12 @@ const Post: React.FC<Props> = ({ title, publishedDate, featuredMedia, url, dashe
     <div className={classes.post}>
         <div className={`${classes.wrapper} ${dashed ? classes.dashed : ''}`}>
             <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`${classes.text} ${featuredMedia && showImage && classes.tint}`}>
-                {dateRange ? 
+                {showDate && (dateRange ? 
                   dateRange.ongoing ? 
                     <p className={classes.date}>Since {dateFormat(dateRange.start, dateFormatStr)}</p> :
                     <p className={classes.date}>{dateFormat(dateRange.start, dateFormatStr) === dateFormat(dateRange.end, dateFormatStr) ? dateFormat(dateRange.start, dateFormatStr) : `${dateFormat(dateRange.start, dateFormatStr)} to ${dateFormat(dateRange.end, dateFormatStr)}`}</p>
                   : 
-                  showDate && <p className={classes.date}>{dateFormat(publishedDate, 'dd/mm/yy')}</p>}
+                  showDate && <p className={classes.date}>{dateFormat(publishedDate, 'dd/mm/yy')}</p>)}
                 <Link href={url}>
                     <a className={classes.title}>{title}</a>
                 </Link>

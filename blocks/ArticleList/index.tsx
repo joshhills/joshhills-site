@@ -12,6 +12,8 @@ export type Type = {
         article?: {
             link: ArticleType
             expanded: boolean
+            showImage: boolean
+            showDate: boolean
         }
     }[]
 }
@@ -65,7 +67,20 @@ export const ArticleList: Block = {
                         {
                             name: 'expanded',
                             label: 'Expanded',
-                            type: 'checkbox'
+                            type: 'checkbox',
+                            defaultValue: false
+                        },
+                        {
+                            name: 'showImage',
+                            label: 'Show Image',
+                            type: 'checkbox',
+                            defaultValue: true
+                        },
+                        {
+                            name: 'showDate',
+                            label: 'Show Date',
+                            type: 'checkbox',
+                            defaultValue: true
                         }
                     ],
                     admin: {
