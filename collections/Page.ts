@@ -3,6 +3,7 @@ import { RichText, Type as RichTextType } from '../blocks/RichText'
 import { Image, Type as ImageType } from '../blocks/Image'
 import { Video, Type as VideoType } from '../blocks/Video'
 import { Hero, Type as HeroType } from '../blocks/Hero'
+import { Code, Type as CodeType } from '../blocks/Code'
 import meta, { Type as MetaType } from '../fields/meta'
 import slug from '../fields/slug'
 import { ArticleList, Type as ArticleListType } from '../blocks/ArticleList'
@@ -11,7 +12,7 @@ import { Inset, Type as InsetType } from '../blocks/Inset'
 import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 
 export type Layout = 
-    HeroType | RichTextType | ImageType | VideoType | ImageCarouselType | ArticleListType | RoleListType | InsetType
+    HeroType | RichTextType | ImageType | VideoType | ImageCarouselType | ArticleListType | RoleListType | InsetType | CodeType
 
 export type Type = {
     id?: string
@@ -63,7 +64,8 @@ export const Page: CollectionConfig = {
                 Video,
                 ImageCarousel,
                 ArticleList,
-                RoleList
+                RoleList,
+                Code
             ]
         },
         slug,

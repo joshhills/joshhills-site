@@ -1,6 +1,6 @@
-import React from 'react';
-import { Layout } from '../../collections/Page';
-import { components } from '../../blocks';
+import React from 'react'
+import { Layout } from '../../collections/Page'
+import { components } from '../../blocks'
 
 type Props = {
   layout: Layout[]

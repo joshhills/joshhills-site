@@ -1,9 +1,10 @@
 import React from 'react'
 import { Block } from 'payload/types'
 import useStyles from './css'
-import serialize from '../RichText/serialize'
 
 export type Type = {
+    blockType: 'code'
+    blockName?: string
     name?: string
     code: string
 }
