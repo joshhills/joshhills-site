@@ -3,12 +3,13 @@ import slug from '../fields/slug'
 import { RichText, Type as RichTextType } from '../blocks/RichText'
 import { Image, Type as ImageType } from '../blocks/Image'
 import { Video, Type as VideoType } from '../blocks/Video'
+import { Code, Type as CodeType } from '../blocks/Code'
 import { Type as LinkType } from '../fields/link'
 import { ImageCarousel, Type as ImageCarouselType } from '../blocks/ImageCarousel'
 import featuredMedia, { Type as FeaturedMediaType } from '../fields/featuredMedia'
 import state from '../fields/state'
 
-export type Layout = RichTextType | ImageType | VideoType | ImageCarouselType
+export type Layout = RichTextType | ImageType | VideoType | ImageCarouselType | CodeType
 
 export type Type = {
     id?: string
@@ -187,6 +188,7 @@ export const Article: CollectionConfig = {
             minRows: 1,
             blocks: [
                 RichText,
+                Code,
                 Image,
                 Video,
                 ImageCarousel

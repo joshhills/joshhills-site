@@ -7,6 +7,7 @@ import { ArticleList, Component as articleList } from './ArticleList'
 import { RoleList, Component as roleList } from './RoleList'
 import { Inset, Component as inset } from './Inset'
 import { ImageCarousel, Component as imageCarousel } from './ImageCarousel'
+import { Code, Component as code } from './Code'
 
 export const blocks = {
   Hero,
@@ -17,7 +18,8 @@ export const blocks = {
   Button,
   ArticleList,
   RoleList,
-  Inset
+  Inset,
+  Code
 }
 
 export const components = {
@@ -29,5 +31,6 @@ export const components = {
   button,
   articleList,
   roleList,
-  inset
+  inset,
+  code
 }

@@ -1,7 +1,6 @@
 import { createUseStyles } from 'react-jss'
 import { borderSize } from '../../css/type'
 import { base, baseVal } from '../../css/base'
-import { relative } from 'path'
 
 const shared = {
     marginRight: base(),
