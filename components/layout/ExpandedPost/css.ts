@@ -30,7 +30,7 @@ export default createUseStyles({
       width: '100%',
       top: 0,
       left: 0,
-      background: 'rgba(255, 163, 81, 0.35)'
+      background: 'rgba(255, 163, 81, 0.65)'
     }
   },
   date: {

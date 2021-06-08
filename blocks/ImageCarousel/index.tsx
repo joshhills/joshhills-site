@@ -13,6 +13,7 @@ export type Type = {
     images: {
         image: MediaType
         caption?: string
+        richCaption?: any
     }[]
 }
 
@@ -53,6 +54,11 @@ export const ImageCarousel: Block = {
                 {
                     type: 'textarea',
                     name: 'caption',
+                    label: 'Caption'
+                },
+                {
+                    type: 'richText',
+                    name: 'richCaption',
                     label: 'Caption'
                 }
             ]

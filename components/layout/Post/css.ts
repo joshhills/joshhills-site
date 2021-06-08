@@ -41,7 +41,7 @@ export default createUseStyles({
     }
   },
   tint: {
-    background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.2))'
+    background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.65))'
   },
   date: {
     fontWeight: 'bold',
