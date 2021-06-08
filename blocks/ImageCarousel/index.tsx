@@ -3,6 +3,7 @@ import { Block } from "payload/types"
 import { Type as MediaType } from '../../collections/Media'
 import { Component as Image } from '../Image'
 import React, { useEffect, useState } from 'react'
+import { Component as RichText } from '../RichText'
 
 export type Type = {
     blockType: 'imageCarousel'
@@ -12,7 +13,6 @@ export type Type = {
     },
     images: {
         image: MediaType
-        caption?: string
         richCaption?: any
     }[]
 }
@@ -50,11 +50,6 @@ export const ImageCarousel: Block = {
                     relationTo: 'media',
                     name: 'image',
                     required: true
-                },
-                {
-                    type: 'textarea',
-                    name: 'caption',
-                    label: 'Caption'
                 },
                 {
                     type: 'richText',
@@ -104,7 +99,7 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
         <div className={classes.carousel}>
             {autoplay && images.length > 1 && <div className={resetAnimation ? '' : classes.progressBar}></div>}
             <Image blockType='image' type='normal' image={activeImage.image} />
-            {activeImage.caption && <div className={classes.tint}></div>}
+            {activeImage.richCaption && activeImage.richCaption.length && <div className={classes.tint}></div>}
             <div className={classes.grid}>
                 <div className={classes.contentWrapper}>
                     <div>
@@ -113,7 +108,7 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
                         </div>)}
                     </div>
                     {activeImage.image && <div className={classes.caption}>
-                        {activeImage.caption}
+                        <RichText blockType='richText' content={activeImage.richCaption} withPadding={false} />
                     </div>}
                 </div>
             </div>
