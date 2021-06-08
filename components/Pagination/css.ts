@@ -12,7 +12,7 @@ export default createUseStyles({
         ...h5,
         fontFamily: fonts.body,
         padding: base(.5),
-        color: colors.black,
+        color: `${colors.black} !important`,
         textDecoration: 'none'
     },
     activeItem: {

@@ -14,5 +14,9 @@ export default createUseStyles({
         margin: '0 auto',
         gridGap: base(),
         gridTemplateColumns: '1fr'
+    },
+    notFound: {
+        padding: base(2),
+        marginBottom: base(2)
     }
 })
