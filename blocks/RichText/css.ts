@@ -10,8 +10,10 @@ export default createUseStyles({
         gridGap: base(),
         gridTemplateColumns: '1fr'
     },
+    withPadding: {
+        padding: base(2)
+    },
     richText: {
-        padding: base(2),
         '& :last-child': {
             paddingBottom: 0,
             marginBottom: 0

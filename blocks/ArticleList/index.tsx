@@ -8,7 +8,7 @@ export type Type = {
     blockName?: string
     items: {
         type: 'relation' | 'text'
-        text?: string
+        richText?: any
         article?: {
             link: ArticleType
             expanded: boolean
@@ -48,8 +48,8 @@ export const ArticleList: Block = {
                     ]
                 },
                 {
-                    name: 'text',
-                    type: 'textarea',
+                    name: 'richText',
+                    type: 'richText',
                     admin: {
                         condition: (_, siblingData) => siblingData?.type === 'text'
                     }

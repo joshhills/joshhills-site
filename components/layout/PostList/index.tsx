@@ -10,7 +10,7 @@ import EmptyPost from '../EmptyPost'
 type Props = {
     items: {
         type: 'relation' | 'text' | 'empty'
-        text?: string
+        richText?: any
         article?: {
             link: { 
                 title: string
@@ -102,7 +102,7 @@ export const PostList: React.FC<Props> = ({ items }) => {
                                     showDate={p.role.showDate !== undefined ? p.role.showDate : true} />
                         }
                     } else if (p.type === 'text') {
-                        return <TextPost key={i} text={p.text}/>
+                        return <TextPost key={i} text={p.richText}/>
                     } else {
                         return <EmptyPost key={i} />
                     }

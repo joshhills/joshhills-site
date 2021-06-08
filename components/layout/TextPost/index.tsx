@@ -1,4 +1,5 @@
 import React from 'react'
+import { Component as RichText } from '../../../blocks/RichText'
 import useStyles from './css'
 
 type Props = {
@@ -12,7 +13,7 @@ const TextPost: React.FC<Props> = ({ text }) => {
         <div className={classes.post}>
             <div className={classes.wrapper}>
                 <div className={classes.text}>
-                    <p>{text}</p>
+                    <RichText blockType='richText' content={text} withPadding={false} />
                 </div>
             </div>
         </div>

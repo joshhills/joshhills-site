@@ -48,11 +48,46 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages, searchStr }) => {
 
     const contentLeft = [
         {
+        "children": [
+            {
+            "text": "I'm reading..."
+            }
+        ],
+        "type": "h5"
+        },
+        {
+        "children": [
+            {
+            "text": ""
+            },
+            {
+            "type": "link",
+            "url": "https://google.com",
+            "newTab": false,
             "children": [
                 {
-                    "text": "I try to post often, on various recurring themes - from personal challenges, to hackathon retrospectives, tutorials and anecdotes. It's all very free-form and home-brewed."
+                "text": ""
                 }
             ]
+            },
+            {
+            "text": "'Development and Deployment of Multiplayer Online Games' by the "
+            },
+            {
+            "type": "link",
+            "url": "http://ithare.com/contents-of-development-and-deployment-of-massively-multiplayer-games-from-social-games-to-mmofps-with-stock-exchanges-in-between/",
+            "newTab": false,
+            "children": [
+                {
+                "text": "IT Hare"
+                }
+            ]
+            },
+            {
+            "text": " to plug some gaps in my knowledge"
+            }
+        ],
+        "type": "p"
         }
     ]
 
