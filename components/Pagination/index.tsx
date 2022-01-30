@@ -25,7 +25,7 @@ const Pagination: React.FC<Props> = ({ currentIndex, totalPages, baseUrl, search
 
     return (
         <div className={classes.pagination}>
-            <Link href={`${baseUrl}${currentIndex - 1 === 0 ? '' : currentIndex}${searchStr ? `?search=${searchStr}` : ''}`}>
+            <Link href={`${baseUrl}/${currentIndex - 1 === 0 ? '' : currentIndex}${searchStr ? `?search=${searchStr}` : ''}`}>
                 <a className={`${classes.item} ${currentIndex === 0 ? classes.disabled : ''}`}>&lt;</a>
             </Link>
             {items}
