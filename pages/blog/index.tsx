@@ -34,7 +34,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages, searchStr }) => {
     let [searchText, setSearchText] = useState(searchStr)
 
     const handleSearchText = (e) => {
-        const newSearchStr = e.target.value.trim()
+        const newSearchStr = e.target.value
         setSearchText(newSearchStr)
 
         if (newSearchStr !== '') {
