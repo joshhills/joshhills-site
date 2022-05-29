@@ -33,7 +33,7 @@ export default createUseStyles({
   cover,
   coverFull: {
     ...cover,
-    minHeight: base(35)
+    minHeight: '80vh'
   },
   coverImage: {
     ...imageCover

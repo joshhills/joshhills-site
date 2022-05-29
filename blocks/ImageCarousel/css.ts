@@ -8,7 +8,7 @@ import { borderSize } from "../../css/type";
 export default createUseStyles({
     carousel: {
         position: 'relative',
-        minHeight: base(35),
+        minHeight: '80vh',
         color: colors.white,
         overflow: 'hidden',
         '& img': {
