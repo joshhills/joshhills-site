@@ -1,5 +1,6 @@
 import { createUseStyles } from 'react-jss'
 import { base } from '../../../css/base'
+import breakpoints from '../../../css/breakpoints'
 import colors, { colorWithOpacity } from '../../../css/colors'
 import { imageCover } from '../../../css/images'
 import queries from '../../../css/queries'
