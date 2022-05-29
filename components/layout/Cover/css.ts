@@ -33,7 +33,10 @@ export default createUseStyles({
   cover,
   coverFull: {
     ...cover,
-    minHeight: '80vh'
+    minHeight: '70vh',
+    [`@media(min-width: ${breakpoints.xxl}px)`]: {
+        minHeight: '50vh',
+    }
   },
   coverImage: {
     ...imageCover

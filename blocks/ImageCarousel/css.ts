@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { base } from "../../css/base";
+import breakpoints from "../../css/breakpoints";
 import colors from "../../css/colors";
 import { imageCover } from "../../css/images";
 import queries from "../../css/queries";
@@ -8,7 +9,10 @@ import { borderSize } from "../../css/type";
 export default createUseStyles({
     carousel: {
         position: 'relative',
-        minHeight: '80vh',
+        minHeight: '70vh',
+        [`@media(min-width: ${breakpoints.xxl}px)`]: {
+            minHeight: '50vh',
+        },
         color: colors.white,
         overflow: 'hidden',
         '& img': {
