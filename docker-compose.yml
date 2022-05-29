@@ -5,6 +5,7 @@ services:
   # Next JS & Payload
   site:
     container_name: joshhills-site-${ENVIRONMENT}_site
+    image: joshhills-site
     restart: always
     environment:
       MONGODB_URI: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@joshhills-site-${ENVIRONMENT}_mongo/payload-${ENVIRONMENT}
