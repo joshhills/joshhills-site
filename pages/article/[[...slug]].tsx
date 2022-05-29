@@ -113,7 +113,7 @@ export default Article
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const slug = ctx.params?.slug
-    const preview = ctx.params?.preview || false
+    const preview = ctx.query?.preview || false
 
     if (!slug) {
         return {

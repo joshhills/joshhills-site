@@ -53,7 +53,7 @@ export const Article: CollectionConfig = {
         }
     },
     access: {
-        read: ({ req: { query ,user } }) => {
+        read: ({ req: { query, user } }) => {
 
             if (user) {
                 return true
