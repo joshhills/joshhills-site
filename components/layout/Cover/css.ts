@@ -14,6 +14,10 @@ const cover = {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
+  minHeight: '70vh',
+  [`@media(min-width: ${breakpoints.xxl}px)`]: {
+      minHeight: '60vh',
+  },
   '&:after': {
       position: 'absolute',
       content: '""',
