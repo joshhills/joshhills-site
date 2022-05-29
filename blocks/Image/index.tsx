@@ -51,7 +51,7 @@ export const Image: Block = {
       type: 'richText',
       admin: {
         elements: [
-          'link',
+          'link'
         ]
       }
     }

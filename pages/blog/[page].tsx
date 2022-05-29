@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import qs from "qs"
 import React, { useState } from "react"
+import { Component as RichText } from '../../blocks/RichText'
 import { Type as ArticleType } from '../../collections/Article'
 import Head from "../../components/Head"
 import Cover from "../../components/layout/Cover"
@@ -19,6 +20,8 @@ type Props = {
     activeIndex: number
     searchStr?: string
 }
+
+const YEARS_CUTOFF_OLD_POSTS = 3
 
 const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex, searchStr }) => {
 
@@ -53,6 +56,13 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex, searchStr }
         } 
     })
 
+    // Check cut-off date for old posts
+    let cutOffDateForOldPosts = new Date()
+    let pastYear = cutOffDateForOldPosts.getFullYear() - YEARS_CUTOFF_OLD_POSTS
+    cutOffDateForOldPosts.setFullYear(pastYear)
+    // let shouldShowDateCutoff = posts[0] && posts[0].dateCreated
+    let shouldShowDateCutoff = posts[0] && new Date(posts[0].publishedDate) < cutOffDateForOldPosts
+
     return (
         <Template>
             <Head
@@ -68,6 +78,9 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex, searchStr }
                 </div>
             </Cover>
 
+            {shouldShowDateCutoff && <div>
+                <RichText blockType='richText' backgroundColor='none' content={[{"children":[{"text":"It's dusty over here... 🤧"}], "type": "h5"},{"children":[{"text":"These posts are a few years old now. I've left them up so I can reflect on how far I've come since then."}]}]} />
+            </div>}
 
             <div className={classes.grid}>
                 {posts.length === 0 && <div className={classes.notFound}>
@@ -77,6 +90,7 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex, searchStr }
                             <a onClick={() => setSearchText('')}>Clear</a>
                         </Link>
                     </div>}
+                
                 <PostList items={items} />
                 <Pagination currentIndex={activeIndex} totalPages={totalPages} baseUrl={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog`} searchStr={searchStr} />
             </div>

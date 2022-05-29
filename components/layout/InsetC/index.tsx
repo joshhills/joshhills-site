@@ -20,7 +20,7 @@ const InsetC: React.FC<Props> = ({ insetTop, insetBottom, contentLeft, contentRi
                 <div>
                     {contentLeft}
                 </div>
-                <div>
+                <div className={classes.contentRight}>
                     {contentRight}
                 </div>
             </div>

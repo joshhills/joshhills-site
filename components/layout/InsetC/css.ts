@@ -14,6 +14,11 @@ export default createUseStyles({
             gridTemplateColumns: '1fr'
         }
     },
+    contentRight: {
+        [queries.m]: {
+            gridRow: 1
+        }
+    },
     inset: {
         paddingBottom: base(2),
         '& *:first-child': {
