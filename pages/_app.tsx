@@ -11,9 +11,10 @@ import { base } from '../css/base'
 import { Type as MenuType } from '../globals/Menu'
 import { Type as SocialMediaType } from '../globals/SocialMedia'
 import Nav from '../components/Nav'
+import { Type as PageType } from '../collections/Page'
 
 type AppProps = {
-  pageProps: unknown
+  pageProps: PageType
   Component: React.FC<{ socialMedia: SocialMediaType}>
 } & {
   menu: MenuType
