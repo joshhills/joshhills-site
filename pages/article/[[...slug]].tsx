@@ -113,6 +113,7 @@ export default Article
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const slug = ctx.params?.slug
+    const preview = ctx.params?.preview || false
 
     if (!slug) {
         return {
@@ -122,7 +123,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         }
     }
 
-    const articleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/articles?where[slug][equals]=${slug}`)
+    const articleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/articles?where[slug][equals]=${slug}&preview=${preview}`)
     const articleData = await articleReq.json()
 
     return {

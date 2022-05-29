@@ -43,18 +43,20 @@ export const Article: CollectionConfig = {
             'featuredMedia',
             'excerpt'
         ],
-        preview: (doc) => {
+        preview: (doc, token) => {
+
             if (doc?.slug) {
-                return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/article/${doc.slug}`
+                return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/article/${doc.slug}?preview=true`
             }
 
             return null
         }
     },
     access: {
-        read: ({ req: { user } }) => {
+        read: ({ req: { query ,user } }) => {
 
             if (user) return true
+            else if (query && query.preview) return true
             else {
                 return {
                     and: [
