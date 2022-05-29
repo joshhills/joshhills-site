@@ -55,9 +55,11 @@ export const Article: CollectionConfig = {
     access: {
         read: ({ req: { query ,user } }) => {
 
-            if (user) return true
-            else if (query && query.preview) return true
-            else {
+            if (user) {
+                return true
+            } else if (query && query.preview === 'true') {
+                return true
+            } else {
                 return {
                     and: [
                         {
