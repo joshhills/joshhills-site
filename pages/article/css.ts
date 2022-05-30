@@ -67,5 +67,11 @@ export default createUseStyles({
         margin: '0 auto',
         gridGap: base(),
         gridTemplateColumns: '1fr'
+    },
+    content: {
+        marginBottom: base(),
+        '& section:not(:first-child) [class^="richText"]': {
+            paddingTop: 0
+        }
     }
 })

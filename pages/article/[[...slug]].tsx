@@ -105,7 +105,7 @@ const Article: React.FC<Props> = (props) => {
             </Cover>
 
             <div className={classes.grid}>
-                <div>
+                <div className={classes.content}>
                     {article.category === 'project' && article.project?.resources?.length > 0 && <ProjectDetails {...article.project}/>}
         
                     <RenderBlocks layout={article.content} />

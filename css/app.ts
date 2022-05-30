@@ -24,7 +24,7 @@ export default createUseStyles({
       fontSize: htmlFontSize,
       lineHeight: `${baselinePX}px`,
       [`@media(min-width: ${breakpoints.xxl}px)`]: {
-        zoom: 1.45
+        zoom: 1.2
       }
     },
     h1,
