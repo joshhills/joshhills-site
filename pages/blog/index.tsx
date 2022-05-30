@@ -85,7 +85,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages, searchStr }) => {
                         richText: [{
                             "children": [
                               {
-                                "text": "I'm reading..."
+                                "text": "I'm teaching..."
                               }
                             ],
                             "type": "h5"
@@ -93,20 +93,20 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages, searchStr }) => {
                           {
                             "children": [
                               {
-                                "text": "'Development and Deployment of Multiplayer Online Games' by the "
+                                "text": "workshops on game design as a "
                               },
                               {
                                 "type": "link",
-                                "url": "http://ithare.com/contents-of-development-and-deployment-of-massively-multiplayer-games-from-social-games-to-mmofps-with-stock-exchanges-in-between/",
+                                "url": "https://joshhills.dev/role/workshop-instructor",
                                 "newTab": false,
                                 "children": [
                                   {
-                                    "text": "IT Hare"
+                                    "text": "video game ambassador"
                                   }
                                 ]
                               },
                               {
-                                "text": " to plug some gaps in my knowledge"
+                                "text": " to help aspiring students"
                               }
                             ],
                             "type": "p"
