@@ -20,6 +20,36 @@ export type Props = {
     article?: ArticleType
 }
 
+const readTime = (content: Array<object>) => {
+
+    let numWords = 0
+
+    for (let block of content as any) {
+        for (let parent of block.content as any) {
+            for (let child of parent.children as any) {
+
+                if (child.type) {
+                    if (child.type === 'li') {
+                        for (let subChild of child.children as any) {
+                            if (subChild.text) {
+                                numWords += subChild.text.split(' ').filter((r:any) => r !== "").length
+                            }
+                        }
+                    } else if (child.text) {
+                        numWords += child.text.split(' ').filter((r:any) => r !== "").length
+                    }
+                } else if (child.text) {
+                    numWords += child.text.split(' ').filter((r:any) => r !== "").length
+                }
+            }
+        }
+    }
+
+    const timeToReadMinutes: number = Math.ceil(numWords / 200)
+
+    return `${timeToReadMinutes} minute read`
+}
+
 const Article: React.FC<Props> = (props) => {
 
     const { article } = props
@@ -55,11 +85,14 @@ const Article: React.FC<Props> = (props) => {
                     <p>
                         <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
                         Posted {dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')}
-                        {article.project?.length && ` • ${article.project.length}`}
+                        {article.project?.length && ` • ${article.project.length} project`}
                     </p>
                     <h2>{article.title}</h2>
                     <div>
                         {article.excerpt && <p>{article.excerpt}</p>}
+                    </div>
+                    <div>
+                        {readTime(article.content)}
                     </div>
                 </div>
             </Cover>
