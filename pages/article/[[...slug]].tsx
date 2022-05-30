@@ -24,22 +24,29 @@ const readTime = (content: Array<object>) => {
 
     let numWords = 0
 
-    for (let block of content as any) {
-        for (let parent of block.content as any) {
-            for (let child of parent.children as any) {
+    if (!content)
+        return '1 minute read'
 
-                if (child.type) {
-                    if (child.type === 'li') {
-                        for (let subChild of child.children as any) {
-                            if (subChild.text) {
-                                numWords += subChild.text.split(' ').filter((r:any) => r !== "").length
+    for (let block of content as any) {
+        if (block.content) {
+            for (let parent of block.content as any) {
+                if (parent.children) {
+                    for (let child of parent.children as any) {
+        
+                        if (child.type) {
+                            if (child.type === 'li' && child.children) {
+                                for (let subChild of child.children as any) {
+                                    if (subChild.text) {
+                                        numWords += subChild.text.split(' ').filter((r:any) => r !== "").length
+                                    }
+                                }
+                            } else if (child.text) {
+                                numWords += child.text.split(' ').filter((r:any) => r !== "").length
                             }
+                        } else if (child.text) {
+                            numWords += child.text.split(' ').filter((r:any) => r !== "").length
                         }
-                    } else if (child.text) {
-                        numWords += child.text.split(' ').filter((r:any) => r !== "").length
                     }
-                } else if (child.text) {
-                    numWords += child.text.split(' ').filter((r:any) => r !== "").length
                 }
             }
         }
