@@ -6,7 +6,8 @@ import { Type as RoleType } from '../collections/Role'
 
 export type Type = {
   type: 'relation' | 'custom'
-  label: string
+  label: string,
+  emphasised: boolean,
   url?: string
   relation?: {
     relationTo: string,
@@ -36,6 +37,12 @@ const link: Field = {
       admin: {
         layout: 'horizontal'
       }
+    },
+    {
+      name: 'emphasised',
+      label: 'Emphasized',
+      type: 'checkbox',
+      defaultValue: true
     },
     {
       type: 'row',
@@ -78,7 +85,7 @@ const link: Field = {
 
 export default link
 
-export const Component: React.FC<any> = ( { type, label, url, relation, relationTo } ) => {
+export const Component: React.FC<any> = ( { type, emphasised, label, url, relation, relationTo } ) => {
 
   let component: JSX.Element
 
@@ -95,10 +102,10 @@ export const Component: React.FC<any> = ( { type, label, url, relation, relation
       }
   
       component = <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/${basePath}${relation.slug}`}>
-        <a>{label}</a>
+        <a className={emphasised ? '' : 'deemphasised'}>{label}</a>
       </Link>
     } else if (type === 'custom') {
-      component = <a href={url}>{label}</a>
+      component = <a href={url} className={emphasised ? '' : 'deemphasised'}>{label}</a>
     } else throw "Link was not of any expected type"
   } else {
     if (type === 'relation') {
@@ -113,10 +120,10 @@ export const Component: React.FC<any> = ( { type, label, url, relation, relation
       }
   
       component = <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/${basePath}${relation.value.slug}`}>
-        <a>{label}</a>
+        <a className={emphasised ? '' : 'deemphasised'}>{label}</a>
       </Link>
     } else if (type === 'custom') {
-      component = <a href={url}>{label}</a>
+      component = <a href={url} className={emphasised ? '' : 'deemphasised'}>{label}</a>
     } else throw "Link was not of any expected type"
   }
 

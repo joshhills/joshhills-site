@@ -131,5 +131,8 @@ export const a = {
   },
   '&:hover, &:active': {
     color: colors.lightOrange
+  },
+  '&.deemphasised': {
+    color: colors.lightGrey
   }
 }
