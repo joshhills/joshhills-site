@@ -94,7 +94,7 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
             setIntervalId(setInterval(advanceCarousel.bind(this), 13000))
         }
     }, [])
- 
+
     return (
         <div className={classes.carousel}>
             {autoplay && images.length > 1 && <div className={resetAnimation ? '' : classes.progressBar}></div>}

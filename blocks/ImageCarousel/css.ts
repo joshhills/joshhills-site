@@ -8,15 +8,26 @@ import { borderSize } from "../../css/type";
 
 export default createUseStyles({
     carousel: {
+        backgroundColor: colors.lightGrey,
         position: 'relative',
-        minHeight: '70vh',
-        [`@media(min-width: ${breakpoints.xxl}px)`]: {
-            minHeight: '60vh',
+        minHeight: base(30),
+        [`@media(max-width: ${breakpoints.s}px)`]: {
+            minHeight: base(20)
+        },
+        [`@media(min-width: ${breakpoints.xl}px)`]: {
+            minHeight: base(35),
         },
         color: colors.white,
         overflow: 'hidden',
         '& img': {
-            ...imageCover,
+            left: '50%',
+            height: '100%',
+            minWidth: '100%',
+            position: 'absolute',
+            transform: 'translateX(-50%)',
+            objectFit: 'contain',
+            maxWidth: '100%',
+            maxHeight: '100%',
             padding: 0
         }
     },
