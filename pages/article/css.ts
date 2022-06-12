@@ -72,6 +72,9 @@ export default createUseStyles({
         marginBottom: base(),
         '& section:not(:first-child) [class^="richText"]': {
             paddingTop: 0
+        },
+        '& [class^="carousel"]': {
+            marginBottom: base(2)
         }
     }
 })

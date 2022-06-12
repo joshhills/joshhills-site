@@ -60,6 +60,8 @@ export const Image: Block = {
 
 export const Component: React.FC<Type> = (props) => {
   const { image, type, caption } = props
+  
+  let emptyCaption = caption === undefined || caption && caption.length === 1 && caption[0].children && caption[0].children.length === 1 && caption[0].children[0].text === ''
 
   const classes = createUseStyles()
 
@@ -69,11 +71,11 @@ export const Component: React.FC<Type> = (props) => {
 
     return (
       <div className={classes.wrapper}>
-        <img className={`${classes.image} ${type === 'fullscreen' ? classes.fullscreen : ''} ${caption ? classes.hasCaption : ''}`}
+        <img className={`${classes.image} ${type === 'fullscreen' ? classes.fullscreen : ''} ${emptyCaption ? classes.noCaption : classes.hasCaption }`}
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
           alt={image.alt}
         />
-        {caption &&
+        {!emptyCaption &&
           <RichText
             blockType='richText'
             backgroundColor='none'

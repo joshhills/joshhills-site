@@ -14,6 +14,9 @@ export default createUseStyles({
     hasCaption: {
         borderBottom: `${borderSize}rem solid ${colors.lightGrey}`
     },
+    noCaption: {
+        marginBottom: base(1)
+    },
     fullscreen: {
         minWidth: '100%'
     },

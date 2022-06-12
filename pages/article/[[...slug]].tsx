@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import Post from '../../components/layout/Post'
 import { formatLinkUrl } from '../../utilities/formatRelationUrl'
 import formatMediaUrl from '../../utilities/formatMediaUrl'
+import License from '../../components/article/License'
 
 export type Props = {
     article?: ArticleType
@@ -141,6 +142,7 @@ const Article: React.FC<Props> = (props) => {
                             <FaLink />
                             Copy link
                         </button> */}
+                        <License/>
                     </div>
                 </div>
             </div>
