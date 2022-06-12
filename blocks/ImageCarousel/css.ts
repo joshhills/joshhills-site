@@ -31,6 +31,11 @@ export default createUseStyles({
             padding: 0
         }
     },
+    carouselCover: {
+        '& img': {
+            objectFit: 'cover'
+        }
+    },
     '@keyframes grow-width': {
         'from': {
             width: '0%'

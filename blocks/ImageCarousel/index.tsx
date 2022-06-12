@@ -14,7 +14,8 @@ export type Type = {
     images: {
         image: MediaType
         richCaption?: any
-    }[]
+    }[],
+    backgroundType: 'contain' | 'cover'
 }
 
 export const ImageCarousel: Block = {
@@ -39,6 +40,23 @@ export const ImageCarousel: Block = {
             ]
         },
         {
+            name: 'backgroundType',
+            label: 'Background Type',
+            type: 'radio',
+            defaultValue: 'contain',
+            options: [
+                {
+                    label: 'Contain',
+                    value: 'contain'
+                },
+                {
+                    label: 'Cover',
+                    value: 'cover'
+                }
+            ],
+            required: true
+        },
+        {
             type: 'array',
             name: 'images',
             label: 'Images',
@@ -61,7 +79,7 @@ export const ImageCarousel: Block = {
     ]
 }
 
-export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) => {
+export const Component: React.FC<Type> = ({ controls: { autoplay }, images, backgroundType }) => {
     
     const classes = createUseStyles()
     
@@ -94,9 +112,9 @@ export const Component: React.FC<Type> = ({ controls: { autoplay }, images }) =>
             setIntervalId(setInterval(advanceCarousel.bind(this), 13000))
         }
     }, [])
-
+    
     return (
-        <div className={classes.carousel}>
+        <div className={`${classes.carousel} ${backgroundType === 'cover' ? classes.carouselCover : ''}`}>
             {autoplay && images.length > 1 && <div className={resetAnimation ? '' : classes.progressBar}></div>}
             <Image blockType='image' type='normal' image={activeImage.image} />
             {activeImage.richCaption && activeImage.richCaption.length && <div className={classes.tint}></div>}
