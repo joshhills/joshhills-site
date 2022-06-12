@@ -133,6 +133,9 @@ export const a = {
     color: colors.lightOrange
   },
   '&.deemphasised': {
+    color: colors.grey
+  },
+  '&.deemphasised:hover': {
     color: colors.lightGrey
   }
 }
