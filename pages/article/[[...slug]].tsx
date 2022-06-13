@@ -79,6 +79,7 @@ const Article: React.FC<Props> = (props) => {
                 description={article.excerpt}
                 ogImage={featuredImageUrl}
                 ogVideo={formatMediaUrl(article.featuredMedia?.video)}
+                ogPublishDate={article.publishedDate}
             />
             <NextHead>
                 <meta property="og:type" content="article" />

@@ -17,9 +17,10 @@ type Props = {
   ogImage?: string
   ogVideo?: string
   keywords?: string
+  ogPublishDate?: string
 };
 
-const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo }) => {
+const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo, ogPublishDate }) => {
   const { asPath } = useRouter()
 
   const getTitle = (title) => {
@@ -71,11 +72,19 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo 
         content={description || defaultDescription}
       />
       <meta
-        property="twitter:title"
+        name="twitter:title"
         content={getTitle(title)}
       />
       <meta
+        name="twitter:description"
+        content={description || defaultDescription}
+      />
+      <meta
         name="twitter:site"
+        content="@joshmarcushills"
+      />
+      <meta
+        name="twitter:creator"
         content="@joshmarcushills"
       />
       <meta
@@ -95,6 +104,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo 
         content={ogVideo}
       />}
       {ogVideo && <meta name="twitter:player" content={ogVideo} />}
+      {ogPublishDate && <meta property="og:publish_date" content={ogPublishDate} />}
       
       <meta property="og:site_name" content="Josh Hills"></meta>
     </NextHead>
