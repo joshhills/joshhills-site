@@ -2,7 +2,6 @@ import React from 'react'
 import NextHead from 'next/head'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
-import dateFormat from 'dateformat'
 
 const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
@@ -23,8 +22,9 @@ type Props = {
 
 const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo, ogPublishDate }) => {
   const { asPath } = useRouter()
+  const pageUrl = `${SERVER_URL}${asPath}`
 
-  const getTitle = (title) => {
+  const getTitle = (title: string) => {
     if (title) return title + titleSuffix
     return defaultTitle + titleSuffix
   }
@@ -40,6 +40,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
         type="image/x-icon"
         href="/icons/joshhills-dev-logo.svg"
       />
+      <link rel="canonical" href={pageUrl} />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
       <link rel="manifest" href="/icons/site.webmanifest" />
       <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#ffa351" />
@@ -65,7 +66,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
       <meta property="og:locale" content="en_GB" />
       <meta
         property="og:url"
-        content={`${SERVER_URL}${asPath}`}
+        content={pageUrl}
       />
       <meta
         property="og:title"
