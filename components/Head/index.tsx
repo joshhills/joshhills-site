@@ -108,7 +108,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
         content={ogVideo}
       />}
       {ogVideo && <meta name="twitter:player" content={ogVideo} />}
-      {/* {ogPublishDate && <meta property="og:publish_date" name="publish_date" content={ogPublishDate} />} */}
+      {ogPublishDate && <meta property="og:publish_date" name="publish_date" content={ogPublishDate} />}
       
       <meta property="og:site_name" content="Josh Hills"></meta>
     </NextHead>
