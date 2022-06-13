@@ -3,7 +3,7 @@ import NextHead from 'next/head'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
 
-const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
+const { publicRuntimeConfig: { SERVER_URL } } = getConfig()
 
 const defaultDescription = 'Portfolio and blog'
 const defaultTitle = 'Online Game Developer'

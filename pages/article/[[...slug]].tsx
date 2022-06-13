@@ -12,14 +12,18 @@ import Cover from '../../components/layout/Cover'
 import createUseStyles from './css'
 import { FaBackspace, FaArrowUp } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import getConfig from 'next/config'
 import Post from '../../components/layout/Post'
 import { formatLinkUrl } from '../../utilities/formatRelationUrl'
 import formatMediaUrl from '../../utilities/formatMediaUrl'
 import License from '../../components/article/License'
+import ShareButton from '../../components/article/ShareButton'
 
 export type Props = {
     article?: ArticleType
 }
+
+const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
 const readTime = (content: Array<object>) => {
 
@@ -103,7 +107,7 @@ const Article: React.FC<Props> = (props) => {
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                            Posted <time itemProp="datePublished" dateTime={formattedPublishedStr}>{datePublishedStr}</time>
+                            Posted <time itemProp="datePublished" dateTime={formattedPublishedStr}>{datePublishedStr}</time> <ShareButton title={article.title} url={`${SERVER_URL}${router.asPath}`} />
                             {article.project?.length && ` • ${article.project.length} project`}
                         </p>
                         <h2 itemProp="name headline">{article.title}</h2>

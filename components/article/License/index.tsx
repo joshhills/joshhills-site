@@ -1,11 +1,5 @@
 import React from 'react'
-import { Component as Link, Type as LinkType } from '../../../fields/link'
 import createUseStyles from './css'
-
-type Type = {
-    length?: string
-    resources?: LinkType[]
-}
 
 const License = () => {
     const classes = createUseStyles()
