@@ -14,9 +14,9 @@ const Header: React.FC<Props> = ({ menu }) => {
         <div className={classes.content}>
           <div>
             <Link href="/">
-              <a className={classes.iconContainer}>
-                <img className={classes.icon} src="/images/joshhills-dev-logo-dark.svg" alt="Josh Hills logo of the letter J in a square"/>
-                <p className={classes.iconText}>Josh Hills</p>
+              <a itemProp="author" itemScope itemType="http://schema.org/Person" className={classes.iconContainer}>
+                <img itemProp="logo" itemScope itemType="https://www.schema.org/ImageObject" className={classes.icon} src="/images/joshhills-dev-logo-dark.svg" alt="Josh Hills logo of the letter J in a square"/>
+                <p itemProp="name" className={classes.iconText}>Josh Hills</p>
               </a>
             </Link>
           </div>

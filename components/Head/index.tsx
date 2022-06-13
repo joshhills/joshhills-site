@@ -7,7 +7,7 @@ const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
 const defaultDescription = 'Portfolio and blog'
 const defaultTitle = 'Online Game Developer'
-const titleSuffix = ' | Josh Hills'
+const titleSuffix = ' - Josh Hills'
 const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`
 const defaultKeywords = 'developer, multiplayer, online, games, blog, tech, medium, portfolio, career, AAA'
 

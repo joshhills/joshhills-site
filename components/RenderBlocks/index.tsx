@@ -18,7 +18,7 @@ const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
 
       if (Block) {
         return (
-          <section
+          <section itemProp="articleSection"
             key={i}
           >
             <Block {...block} />

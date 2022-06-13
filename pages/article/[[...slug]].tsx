@@ -88,62 +88,65 @@ const Article: React.FC<Props> = (props) => {
                 <meta name="article:published_time" content={article.publishedDate} />
             </NextHead>
 
-            {/* Cover */}
-            <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full'>
-                <div className={classes.cover}>
-                    <p>
-                        <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                        Posted {dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')}
-                        {article.project?.length && ` • ${article.project.length} project`}
-                    </p>
-                    <h2>{article.title}</h2>
-                    <div>
-                        {article.excerpt && <p>{article.excerpt}</p>}
+            <div itemScope itemType="http://schema.org/Article">
+                {/* Cover */}
+                <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full'>
+                    <div className={classes.cover}>
+                        <p>
+                            <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
+                            Posted <span itemProp="datePublished">{dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')}</span>
+                            {article.project?.length && ` • ${article.project.length} project`}
+                        </p>
+                        <h2 itemProp="name">{article.title}</h2>
+                        <div>
+                            {article.excerpt && <p>{article.excerpt}</p>}
+                        </div>
+                        <div>
+                            {readTime(article.content)}
+                        </div>
+                        <br/>
                     </div>
-                    <div>
-                        {readTime(article.content)}
-                    </div>
-                </div>
-            </Cover>
+                </Cover>
 
-            <div className={classes.grid}>
-                <div className={classes.content}>
-                    {article.category === 'project' && article.project?.resources?.length > 0 && <ProjectDetails {...article.project}/>}
-        
-                    <RenderBlocks layout={article.content} />
-                </div>
-            </div>
-
-            {article.related && article.related.length > 0 && <div className={classes.related}>
                 <div className={classes.grid}>
-                    <div className={classes.relatedWrapper}>
-                        <h4 className={classes.relatedTitle}>Related Posts</h4>
-                        <div className={classes.relatedPostsWrapper}>
-                            {article.related.map((p, i) => 
-                            <Post
-                                key={i}
-                                title={p.value.title}
-                                publishedDate={p.value.publishedDate} 
-                                featuredMedia={p.value.featuredMedia} 
-                                url={formatLinkUrl('articles', p.value.slug)} />)}
+                    <div className={classes.content} itemProp="articleBody">
+                        {article.category === 'project' && article.project?.resources?.length > 0 && <ProjectDetails {...article.project}/>}
+            
+                        <RenderBlocks layout={article.content} />
+                    </div>
+                </div>
+
+                {article.related && article.related.length > 0 && <div className={classes.related}>
+                    <div className={classes.grid}>
+                        <div className={classes.relatedWrapper}>
+                            <h4 className={classes.relatedTitle}>Related Posts</h4>
+                            <div className={classes.relatedPostsWrapper}>
+                                {article.related.map((p, i) => 
+                                <Post
+                                    key={i}
+                                    title={p.value.title}
+                                    publishedDate={p.value.publishedDate} 
+                                    featuredMedia={p.value.featuredMedia} 
+                                    url={formatLinkUrl('articles', p.value.slug)} />)}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>}
+                </div>}
 
-            {/* Meta & Controls */}
-            <div className={classes.controlWrapper}>
-                <div className={classes.grid}>
-                    <div className={classes.control}>
-                        <button className={classes.button} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                            <FaArrowUp />
-                            Scroll Up
-                        </button>&nbsp;
-                        {/* <button>
-                            <FaLink />
-                            Copy link
-                        </button> */}
-                        <License/>
+                {/* Meta & Controls */}
+                <div className={classes.controlWrapper}>
+                    <div className={classes.grid}>
+                        <div className={classes.control}>
+                            <button className={classes.button} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                                <FaArrowUp />
+                                Scroll Up
+                            </button>&nbsp;
+                            {/* <button>
+                                <FaLink />
+                                Copy link
+                            </button> */}
+                            <License/>
+                        </div>
                     </div>
                 </div>
             </div>
