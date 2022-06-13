@@ -14,7 +14,7 @@ export default createUseStyles({
     },
     codeWrapper: {
         margin: base(2),
-        overflowX: 'scroll'
+        overflow: 'hidden'
     },
     name: {
         padding: base(2),
