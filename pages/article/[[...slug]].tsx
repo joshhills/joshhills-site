@@ -89,7 +89,8 @@ const Article: React.FC<Props> = (props) => {
                 <meta property='og:type' content='article' />
                 <meta property='article:author' content='Josh Hills' />
                 <meta property='article:section' content={article.project !== undefined ? 'project' : 'general'} />
-                <meta property='article:published_time' content={formattedPublishedStr} />
+                {/* <meta property='article:published_time' content={formattedPublishedStr} /> */}
+                <meta property="article:published_time" content="2021-01-01T10:27:51+00:00" />
                 
                 <meta name='twitter:label1' content='Date published' />
                 <meta name='twitter:data1' content={datePublishedStr} />
