@@ -2,6 +2,7 @@ import React from 'react'
 import NextHead from 'next/head'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
+import dateFormat from 'dateformat'
 
 const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
 
@@ -30,6 +31,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
 
   return (
     <NextHead>
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <title>
         {getTitle(title)}
       </title>
@@ -51,6 +53,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
         content={description || defaultDescription}
       />
       <meta name="author" content="Josh Hills" />
+      <meta property="article:publisher" content="https://joshhills.dev"></meta>
       <meta
         name="keywords"
         content={keywords || defaultKeywords}
@@ -105,7 +108,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
       />}
       {ogVideo && <meta name="twitter:player" content={ogVideo} />}
       {ogPublishDate && <meta property="og:publish_date" name="publish_date" content={ogPublishDate} />}
-      {ogPublishDate && <time dateTime={ogPublishDate}/>}
+      {ogPublishDate && <time dateTime={ogPublishDate}>{dateFormat(ogPublishDate, 'dddd, mmmm dS, yyyy')}</time>}
       
       <meta property="og:site_name" content="Josh Hills"></meta>
     </NextHead>

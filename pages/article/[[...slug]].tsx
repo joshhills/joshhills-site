@@ -26,7 +26,7 @@ const readTime = (content: Array<object>) => {
     let numWords = 0
 
     if (!content)
-        return '1 minute read'
+        return 1
 
     for (let block of content as any) {
         if (block.content) {
@@ -55,7 +55,7 @@ const readTime = (content: Array<object>) => {
 
     const timeToReadMinutes: number = Math.ceil(numWords / 200)
 
-    return `${timeToReadMinutes} minute read`
+    return timeToReadMinutes
 }
 
 const Article: React.FC<Props> = (props) => {
@@ -72,6 +72,9 @@ const Article: React.FC<Props> = (props) => {
     const featuredImagePath = article.featuredMedia?.image?.filename
     const featuredImageUrl = featuredImagePath ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${featuredImagePath}` : null
 
+    const datePublishedStr = dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')
+    const readTimeNum = readTime(article.content)
+
     return (
         <Template>
             <Head
@@ -82,10 +85,15 @@ const Article: React.FC<Props> = (props) => {
                 ogPublishDate={article.publishedDate}
             />
             <NextHead>
-                <meta property="og:type" content="article" />
-                <meta name='article:author' content='Josh Hills' />
-                <meta name='article:section' content={article.project !== undefined ? 'project' : 'general'} />
-                <meta name="article:published_time" content={article.publishedDate} />
+                <meta property='og:type' content='article' />
+                <meta property='article:author' content='Josh Hills' />
+                <meta property='article:section' content={article.project !== undefined ? 'project' : 'general'} />
+                <meta property='article:published_time' content={article.publishedDate} />
+                
+                <meta name='twitter:label1' content='Date published' />
+                <meta name='twitter:data1' content={datePublishedStr} />
+                <meta name='twitter:label1' content='Est. reading time' />
+                <meta name='twitter:data2' content={readTimeNum === 1 ? `${readTimeNum} minute` : `${readTimeNum} minutes`} />
             </NextHead>
 
             <div itemScope itemType="http://schema.org/Article">
@@ -94,15 +102,15 @@ const Article: React.FC<Props> = (props) => {
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                            Posted <span itemProp="datePublished">{dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')}</span>
+                            Posted <span itemProp="datePublished">{datePublishedStr}</span>
                             {article.project?.length && ` • ${article.project.length} project`}
                         </p>
-                        <h2 itemProp="name">{article.title}</h2>
+                        <h2 itemProp="name headline">{article.title}</h2>
                         <div>
                             {article.excerpt && <p>{article.excerpt}</p>}
                         </div>
                         <div>
-                            {readTime(article.content)}
+                            {readTimeNum} minute read
                         </div>
                         <br/>
                     </div>
