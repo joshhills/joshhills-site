@@ -3,6 +3,8 @@ import { Block } from 'payload/types'
 import { Type as MediaType } from '../../collections/Media'
 import { Component as RichText } from '../../blocks/RichText'
 import createUseStyles from './css'
+import formatSrcSet from '../../utilities/formatSrcSet'
+import formatSizes from '../../utilities/formatSizes'
 
 export type Type = {
   blockType: 'image'
@@ -69,11 +71,16 @@ export const Component: React.FC<Type> = (props) => {
     let filenameToRender = image.filename
     if (image.sizes[type]) filenameToRender = image.sizes[type]
 
+    const srcset = formatSrcSet(image)
+    const sizes = formatSizes(image)
+
     return (
       <div className={classes.wrapper}>
         <img className={`${classes.image} ${type === 'fullscreen' ? classes.fullscreen : ''} ${emptyCaption ? classes.noCaption : classes.hasCaption }`}
           src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
           alt={image.alt}
+          srcSet={srcset}
+          sizes={sizes}
         />
         {!emptyCaption &&
           <RichText

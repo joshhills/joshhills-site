@@ -3,6 +3,8 @@ import useStyles from './css'
 import { Type as FeaturedMediaType } from '../../../fields/featuredMedia'
 import Link from 'next/link'
 import formatMediaUrl from '../../../utilities/formatMediaUrl'
+import formatSrcSet from '../../../utilities/formatSrcSet'
+import formatSizes from '../../../utilities/formatSizes'
 
 type Props = {
     title: string,
@@ -31,6 +33,14 @@ const FeaturedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featured
     }
   }
 
+  let srcset = null
+  let sizes = null
+  
+  if (featuredMedia?.image) {
+    srcset = formatSrcSet(featuredMedia.image)
+    sizes = formatSizes(featuredMedia.image)
+  }
+
   return (
     <div className={classes.post} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <div className={classes.grid}>
@@ -51,7 +61,7 @@ const FeaturedPost: React.FC<Props> = ({ title, excerpt, publishedDate, featured
         {featuredMedia?.video && <video ref={videoRef} className={classes.video} preload='none' loop muted playsInline disablePictureInPicture>
             <source type='video/mp4' src={formatMediaUrl(featuredMedia?.video)} />
         </video>}
-        {featuredMedia?.image && <img className={classes.image} src={formatMediaUrl(featuredMedia?.image)} />}
+        {featuredMedia?.image && <img className={classes.image} src={formatMediaUrl(featuredMedia?.image)} srcSet={srcset} sizes={sizes} />}
     </div>
   )
 }

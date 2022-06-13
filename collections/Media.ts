@@ -1,6 +1,8 @@
 import { CollectionConfig } from 'payload/types'
 
 export type Type = {
+  width: number
+  height: number
   id?: string
   createdAt?: string
   updatedAt?: string
