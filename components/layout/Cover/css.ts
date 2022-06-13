@@ -49,6 +49,7 @@ export default createUseStyles({
   coverContent: {
     boxSizing: 'border-box',
     color: colors.white,
+    textShadow: `0px 0px 1px ${colors.orange}`,
     width: '100%'
   },
   gridFull: {

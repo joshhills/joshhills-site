@@ -73,6 +73,7 @@ const Article: React.FC<Props> = (props) => {
     const featuredImageUrl = featuredImagePath ? `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${featuredImagePath}` : null
 
     const datePublishedStr = dateFormat(article.publishedDate, 'dddd, mmmm dS, yyyy')
+    const formattedPublishedStr = dateFormat(article.publishedDate, 'isoDateTime')
     const readTimeNum = readTime(article.content)
 
     return (
@@ -82,13 +83,13 @@ const Article: React.FC<Props> = (props) => {
                 description={article.excerpt}
                 ogImage={featuredImageUrl}
                 ogVideo={formatMediaUrl(article.featuredMedia?.video)}
-                ogPublishDate={article.publishedDate}
+                ogPublishDate={formattedPublishedStr}
             />
             <NextHead>
                 <meta property='og:type' content='article' />
                 <meta property='article:author' content='Josh Hills' />
                 <meta property='article:section' content={article.project !== undefined ? 'project' : 'general'} />
-                <meta property='article:published_time' content={article.publishedDate} />
+                <meta property='article:published_time' content={formattedPublishedStr} />
                 
                 <meta name='twitter:label1' content='Date published' />
                 <meta name='twitter:data1' content={datePublishedStr} />
@@ -102,7 +103,7 @@ const Article: React.FC<Props> = (props) => {
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                            Posted <time itemProp="datePublished" dateTime={article.publishedDate}>{datePublishedStr}</time>
+                            Posted <time itemProp="datePublished" dateTime={formattedPublishedStr}>{datePublishedStr}</time>
                             {article.project?.length && ` • ${article.project.length} project`}
                         </p>
                         <h2 itemProp="name headline">{article.title}</h2>
