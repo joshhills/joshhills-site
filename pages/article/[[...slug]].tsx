@@ -102,7 +102,7 @@ const Article: React.FC<Props> = (props) => {
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                            Posted <span itemProp="datePublished">{datePublishedStr}</span>
+                            Posted <time itemProp="datePublished" dateTime={article.publishedDate}>{datePublishedStr}</time>
                             {article.project?.length && ` • ${article.project.length} project`}
                         </p>
                         <h2 itemProp="name headline">{article.title}</h2>

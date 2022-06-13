@@ -53,7 +53,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
         content={description || defaultDescription}
       />
       <meta name="author" content="Josh Hills" />
-      <meta property="article:publisher" content="https://joshhills.dev"></meta>
+      <meta property="article:publisher" content="https://joshhills.dev" />
       <meta
         name="keywords"
         content={keywords || defaultKeywords}
@@ -62,6 +62,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
         name="viewport"
         content="width=device-width, initial-scale=1"
       />
+      <meta property="og:locale" content="en_GB" />
       <meta
         property="og:url"
         content={`${SERVER_URL}${asPath}`}
@@ -108,7 +109,6 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
       />}
       {ogVideo && <meta name="twitter:player" content={ogVideo} />}
       {ogPublishDate && <meta property="og:publish_date" name="publish_date" content={ogPublishDate} />}
-      {ogPublishDate && <time dateTime={ogPublishDate}>{dateFormat(ogPublishDate, 'dddd, mmmm dS, yyyy')}</time>}
       
       <meta property="og:site_name" content="Josh Hills"></meta>
     </NextHead>
