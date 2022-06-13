@@ -181,6 +181,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const articleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/articles?where[slug][equals]=${slug}&preview=${preview}`)
     const articleData = await articleReq.json()
 
+    if (!articleData || !articleData.docs || !articleData.docs[0]) {
+        return {
+            redirect: {
+                destination: '/404',
+                permanent: false
+            }
+        }
+    }
+
     return {
         props: {
             article: articleData.docs[0] || null

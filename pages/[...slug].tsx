@@ -44,6 +44,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const pageReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/pages?where[slug][equals]=${slug}&depth=2`)
   const pageData = await pageReq.json()
 
+  if (!pageData || !pageData.docs || !pageData.docs[0]) {
+    return {
+      redirect: {
+          destination: '/404',
+          permanent: false
+      }
+    }
+  }
+
   return {
     props: {
       page: pageData.docs[0] || null,

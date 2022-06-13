@@ -128,6 +128,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const roleReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/roles?where[slug][equals]=${slug}&depth=3`)
     const roleData = await roleReq.json()
 
+    if (!roleData || !roleData.docs) {
+        return {
+            redirect: {
+                destination: '/404',
+                permanent: false
+            }
+        }
+    }
+
     return {
         props: {
             role: roleData.docs[0] || null

@@ -134,6 +134,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const articleReq = await fetch(url)
     const articleData = await articleReq.json()
     
+    if (!articleData || !articleData.docs) {
+        return {
+            redirect: {
+                destination: '/404',
+                permanent: false
+            }
+        }
+    }
+
     return {
         props: {
             posts: articleData.docs || null,
