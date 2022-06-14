@@ -88,6 +88,7 @@ export default createUseStyles({
         position: 'relative',
         minHeight: '64pt',
         minWidth: '64pt',
+        background: colors.grey,
         '& img': {
             ...imageCover,
             padding: 0,
@@ -101,12 +102,23 @@ export default createUseStyles({
             height: '50pt',
             minHeight: '50pt',
             minWidth: '50pt',
+        },
+        [queries.s]: {
+            width: '20pt',
+            height: '20pt',
+            minHeight: '20pt',
+            minWidth: '20pt',
+            border: 0,
+            '& img': {
+                opacity: 0
+            }
         }
     },
     pipActive: {
         cursor: 'default',
         borderColor: `${colors.orange} !important`,
-        borderStyle: 'dashed'
+        borderStyle: 'dashed',
+        background: colors.orange
     },
     caption: {
         position: 'absolute',
