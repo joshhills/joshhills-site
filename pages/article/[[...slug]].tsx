@@ -97,7 +97,7 @@ const Article: React.FC<Props> = (props) => {
                 
                 <meta name='twitter:label1' content='Date published' />
                 <meta name='twitter:data1' content={datePublishedStr} />
-                <meta name='twitter:label1' content='Est. reading time' />
+                <meta name='twitter:label2' content='Est. reading time' />
                 <meta name='twitter:data2' content={readTimeNum === 1 ? `${readTimeNum} minute` : `${readTimeNum} minutes`} />
             </NextHead>
 
