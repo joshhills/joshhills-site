@@ -1,3 +1,6 @@
-# joshhills-site
+![Josh Hill Site Share Image](./public/images/og-image.jpg)
 
-My personal development portfolio and blog
+# Hi, I'm Josh, online game developer.
+## This is my personal development portfolio and blog
+
+Written in TypeScript using [NextJS]() and [PayloadCMS]()
