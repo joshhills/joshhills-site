@@ -10,7 +10,7 @@ const formatSrcSet = (image: MediaType) : string => {
     //   }
     // }
   
-    srcsetStr += `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${image.filename} ${image.width}w`
+    srcsetStr += `${process.env.NEXT_PUBLIC_SERVER_URL}/media/${encodeURIComponent(image.filename)} ${image.width}w`
   
     return srcsetStr
 }
