@@ -12,6 +12,7 @@ import { Type as MenuType } from '../globals/Menu'
 import { Type as SocialMediaType } from '../globals/SocialMedia'
 import Nav from '../components/Nav'
 import { Type as PageType } from '../collections/Page'
+import { snooper } from '../utilities/snooper'
 
 type AppProps = {
   pageProps: PageType
@@ -27,6 +28,9 @@ const MyApp = (appProps: AppProps): React.ReactElement => {
 
   useEffect(() => {
     const style = document.getElementById('server-side-styles')
+
+    // Say hello to curious eyes
+    console.log('%c%s', snooper.css, snooper.message);
 
     if (style) {
       style.parentNode.removeChild(style)

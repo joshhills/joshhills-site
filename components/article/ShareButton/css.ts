@@ -17,8 +17,7 @@ export default createUseStyles({
         color: colors.white,
         '&:hover, &:active': {
             color: colors.lightOrange
-        },
-        marginLeft: base()
+        }
     },
     icon: {
         marginRight: base(0.5),

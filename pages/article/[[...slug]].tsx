@@ -107,12 +107,12 @@ const Article: React.FC<Props> = (props) => {
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;
-                            Posted <time itemProp="datePublished" dateTime={formattedPublishedStr}>{datePublishedStr}</time> <ShareButton title={article.title} url={`${SERVER_URL}${router.asPath}`} />
+                            Posted <time className={classes.postDate} itemProp="datePublished" dateTime={formattedPublishedStr}>{datePublishedStr}</time> <ShareButton title={article.title} url={`${SERVER_URL}${router.asPath}`} />
                             {article.project?.length && ` • ${article.project.length} project`}
                         </p>
-                        <h2 itemProp="name headline">{article.title}</h2>
+                        <h1 itemProp="name headline">{article.title}</h1>
                         <div>
-                            {article.excerpt && <p>{article.excerpt}</p>}
+                            {article.excerpt && <h2 className={classes.excerpt}>{article.excerpt}</h2>}
                         </div>
                         <div>
                             {readTimeNum} minute read
