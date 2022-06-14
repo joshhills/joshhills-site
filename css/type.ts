@@ -1,4 +1,4 @@
-import { base, baseVal, htmlFontSize, htmlFontSizeXs } from './base'
+import { base, baseVal, htmlFontSize, htmlFontSizeS, htmlFontSizeXs } from './base'
 import fonts from './fonts'
 import colors from './colors'
 import queries from './queries'
@@ -118,6 +118,9 @@ export const h5 = {
 export const body = {
   fontSize: htmlFontSize,
   lineHeight: base(1.5),
+  [queries.s]: {
+    fontSize: htmlFontSizeS
+  },
   [queries.xs]: {
     fontSize: htmlFontSizeXs
   }

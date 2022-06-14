@@ -1,4 +1,5 @@
-export const htmlFontSize = 18;
+export const htmlFontSize = 20;
+export const htmlFontSizeS = 16;
 export const htmlFontSizeXs = 14;
 
 export const baselinePX = 20;
