@@ -1,0 +1,35 @@
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Pride Layer</title>
+  <rect stroke="#22262a" id="svg_11" height="900" width="900" y="50.00001" x="50" stroke-width="99" fill="#ffffff"/>
+  <g id="svg_30">
+   <g id="svg_21">
+    <path stroke="#ff0018" id="svg_15" d="m961.53841,-57.6923l-1041.63268,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffa52c" id="svg_16" d="m1056.41021,-14.10256l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffff41" id="svg_17" d="m1102.56406,78.20513l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#008018" id="svg_18" d="m1117.94868,201.28206l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#0000f9" id="svg_19" d="m1171.79483,285.89745l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#86007d" id="svg_20" d="m1274.35893,321.79488l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+   </g>
+   <g id="svg_10">
+    <path stroke="#ff0018" id="svg_4" d="m499.99996,-429.48718l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffa52c" id="svg_5" d="m594.87176,-385.89744l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffff41" id="svg_6" d="m641.02561,-293.58975l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#008018" id="svg_7" d="m656.41023,-170.51282l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#0000f9" id="svg_8" d="m710.25638,-85.89743l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#86007d" id="svg_9" d="m812.82048,-50l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+   </g>
+   <g id="svg_28">
+    <path stroke="#ff0018" id="svg_22" d="m1317.94866,416.66666l-1041.63268,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffa52c" id="svg_23" d="m1412.82046,460.2564l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#ffff41" id="svg_24" d="m1458.97431,552.56409l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#008018" id="svg_25" d="m1474.35893,675.64102l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#0000f9" id="svg_26" d="m1528.20508,760.25641l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+    <path stroke="#86007d" id="svg_27" d="m1630.76918,796.15384l-1041.63269,1041.63269" opacity="undefined" stroke-width="99" fill="#22262a"/>
+   </g>
+  </g>
+  <rect stroke="#22262a" id="svg_14" height="797" width="797.43591" y="103.84615" x="100" stroke-width="0" fill="#ffffff"/>
+  <path id="svg_2" fill="#22262a" fill-rule="evenodd" d="m337,226l0,104l197,0l0,277s-0.031,81.463 -76,81c-72.142,1.442 -107,-61 -107,-61l-72,85s51.618,81.6 181,83c124.544,-0.657 193.6,-59.009 203,-193c-0.433,-126.032 0,-376 0,-376l-326,0z" class="letter"/>
+ </g>
+</svg>
