@@ -33,8 +33,8 @@ export const h1 = {
 
 export const h2 = {
   ...heading,
-  fontSize: base(4),
-  lineHeight: base(4.75),
+  fontSize: base(3.75),
+  lineHeight: base(4.5),
   margin: `${base(2)} 0`,
   [queries.m]: {
     fontSize: base(3),
@@ -54,8 +54,8 @@ export const h2 = {
 
 export const h3 = {
   ...heading,
-  fontSize: base(3.5),
-  lineHeight: base(4),
+  fontSize: base(3.25),
+  lineHeight: base(3.75),
   margin: `${base(2)} 0 ${base(1.5)}`,
   [queries.m]: {
     fontSize: base(2.75),
