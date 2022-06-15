@@ -91,8 +91,8 @@ export default createUseStyles({
             marginBottom: base(2)
         },
         [queries.s]: {
-            paddingLeft: base(1),
-            paddingRight: base(1)
+            paddingLeft: 0,
+            paddingRight: 0
         }
     }
 })
