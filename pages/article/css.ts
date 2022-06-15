@@ -42,7 +42,11 @@ export default createUseStyles({
         top: '2px'
     },
     control: {
-        padding: base(2)
+        padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(1),
+            paddingRight: base(1)
+        }
     },
     controlWrapper: {
         backgroundColor: colors.lightGrey,

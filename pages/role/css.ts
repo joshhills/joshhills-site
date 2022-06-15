@@ -9,8 +9,8 @@ export default createUseStyles({
     cover: {
         padding: base(2),
         [queries.s]: {
-            paddingLeft: base(0.5),
-            paddingRight: base(0.5)
+            paddingLeft: base(1),
+            paddingRight: base(1)
         }
     },
     button: {
@@ -36,7 +36,11 @@ export default createUseStyles({
         top: '2px'
     },
     control: {
-        padding: base(2)
+        padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(1),
+            paddingRight: base(1)
+        }
     },
     controlWrapper: {
         backgroundColor: colors.lightGrey,
@@ -70,8 +74,8 @@ export default createUseStyles({
         paddingRight: base(2),
         marginBottom: 0,
         [queries.s]: {
-            paddingLeft: base(1),
-            paddingRight: base(1)
+            paddingLeft: 0,
+            paddingRight: 0
         }
     },
     contentWrapper: {
