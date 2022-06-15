@@ -1,12 +1,17 @@
 import { createUseStyles } from "react-jss";
 import { base } from "../../css/base";
+import queries from "../../css/queries";
 
 export default createUseStyles({
     page: {
         background: 'url(/images/backgrounds/minimap.svg) no-repeat center top'
     },
     cover: {
-        padding: base(2)
+        padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(0.5),
+            paddingRight: base(0.5)
+        }
     },
     grid: {
         display: 'grid',
@@ -17,6 +22,10 @@ export default createUseStyles({
     },
     notFound: {
         padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(0.5),
+            paddingRight: base(0.5)
+        },
         marginBottom: base(2)
     }
 })

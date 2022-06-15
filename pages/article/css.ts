@@ -2,11 +2,16 @@ import { createUseStyles } from "react-jss"
 import { base } from "../../css/base"
 import colors from '../../css/colors'
 import fonts from "../../css/fonts"
+import queries from "../../css/queries"
 import { body } from "../../css/type"
 
 export default createUseStyles({
     cover: {
-        padding: base(2)
+        padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(0.5),
+            paddingRight: base(0.5)
+        }
     },
     postDate: {
         marginRight: base()
@@ -80,6 +85,10 @@ export default createUseStyles({
         },
         '& [class^="carousel"]': {
             marginBottom: base(2)
+        },
+        [queries.s]: {
+            paddingLeft: base(0.5),
+            paddingRight: base(0.5)
         }
     }
 })

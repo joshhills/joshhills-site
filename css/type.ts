@@ -5,7 +5,8 @@ import queries from './queries'
 
 const heading = {
   fontFamily: fonts.headers,
-  fontWeight: 700
+  fontWeight: 700,
+  wordBreak: 'break-word'
 }
 
 export const borderSize = baseVal(0.35)
@@ -16,12 +17,12 @@ export const h1 = {
   lineHeight: base(5),
   margin: `${base(2)} 0 ${base(2)}`,
   [queries.m]: {
-    fontSize: base(3.75),
-    lineHeight: base(4)
+    fontSize: base(3.5),
+    lineHeight: base(3.75)
   },
   [queries.s]: {
-    fontSize: base(2.75),
-    lineHeight: base(3),
+    fontSize: base(2.5),
+    lineHeight: base(2.75),
     margin: `${base(1.4)} 0 ${base(1.4)}`
   },
   [queries.xs]: {
