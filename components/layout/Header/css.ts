@@ -48,8 +48,8 @@ export default createUseStyles({
     paddingLeft: base(2),
     paddingRight: base(2),
     [queries.s]: {
-      paddingLeft: base(0.5),
-      paddingRight: base(0.5)
+      paddingLeft: 0,
+      paddingRight: 0
     }
   },
   links: {

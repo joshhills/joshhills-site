@@ -70,8 +70,8 @@ export default createUseStyles({
         paddingRight: base(2),
         marginBottom: 0,
         [queries.s]: {
-            paddingLeft: base(0.5),
-            paddingRight: base(0.5)
+            paddingLeft: base(1),
+            paddingRight: base(1)
         }
     },
     contentWrapper: {

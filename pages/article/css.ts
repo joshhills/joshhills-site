@@ -9,8 +9,8 @@ export default createUseStyles({
     cover: {
         padding: base(2),
         [queries.s]: {
-            paddingLeft: base(0.5),
-            paddingRight: base(0.5)
+            paddingLeft: base(1),
+            paddingRight: base(1)
         }
     },
     postDate: {
@@ -87,8 +87,8 @@ export default createUseStyles({
             marginBottom: base(2)
         },
         [queries.s]: {
-            paddingLeft: base(0.5),
-            paddingRight: base(0.5)
+            paddingLeft: base(1),
+            paddingRight: base(1)
         }
     }
 })

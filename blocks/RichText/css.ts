@@ -11,7 +11,11 @@ export default createUseStyles({
         gridTemplateColumns: '1fr'
     },
     withPadding: {
-        padding: base(2)
+        padding: base(2),
+        [queries.s]: {
+            paddingLeft: base(1),
+            paddingRight: base(1)
+        }
     },
     richText: {
         '& :last-child': {
