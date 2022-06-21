@@ -108,9 +108,13 @@ export default createUseStyles({
             height: '20pt',
             minHeight: '20pt',
             minWidth: '20pt',
-            border: 0,
+            borderColor: colors.grey,
+            // border: 0,
             '& img': {
                 opacity: 0
+            },
+            '&:hover': {
+                // background: colors.lightGrey
             }
         }
     },
