@@ -1,11 +1,15 @@
 import React, { Fragment } from 'react';
 import escapeHTML from 'escape-html';
 import { Text } from 'slate';
+import { format as formatSlug } from '../../utilities/formatSlug'
 
-const serialize = (children: any, codeAsPre: boolean = false): React.ReactElement[] => children.map((node, i) => {
+const serialize = (children: any, codeAsPre: boolean = false, tagResultSpanWithId: boolean = false): React.ReactElement[] => children.map((node, i) => {
 
   if (Text.isText(node)) {
-    let text = <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />;
+    
+    let text = tagResultSpanWithId ?
+      <span id={formatSlug(node.text)} dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />
+      : <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />;
 
     if (node.bold) {
       text = (
@@ -76,37 +80,37 @@ const serialize = (children: any, codeAsPre: boolean = false): React.ReactElemen
     case 'h1':
       return (
         <h1 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h1>
       );
     case 'h2':
       return (
         <h2 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h2>
       );
     case 'h3':
       return (
         <h3 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h3>
       );
     case 'h4':
       return (
         <h4 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h4>
       );
     case 'h5':
       return (
         <h5 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h5>
       );
     case 'h6':
       return (
         <h6 key={i}>
-          {serialize(node.children, codeAsPre)}
+          {serialize(node.children, codeAsPre, true)}
         </h6>
       );
     case 'quote':

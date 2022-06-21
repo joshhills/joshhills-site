@@ -64,7 +64,10 @@ export default createUseStyles({
         backgroundColor: colors.black
     },
     relatedWrapper: {
-        padding: `${base(2)} ${base()} ${base(2)} ${base()}`
+        padding: `${base(2)} ${base()} ${base(2)} ${base()}`,
+        [queries.s]: {
+            padding: `${base()} 0 ${base()} 0`
+        }
     },
     relatedTitle: {
         padding: `${base()} ${base()} 0 ${base()}`,

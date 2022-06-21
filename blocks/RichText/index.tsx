@@ -29,7 +29,7 @@ export const RichText: Block = {
     ]
 }
 
-export const Component: React.FC<Type> = ( { content, withPadding = true } ) => {
+export const Component: React.FC<Type> = ( { content, withPadding = true, backgroundColor } ) => {
   if (!content) {
     return null
   }
@@ -38,7 +38,7 @@ export const Component: React.FC<Type> = ( { content, withPadding = true } ) => 
 
   return (
     <div className={classes.grid}>
-      <div className={`${classes.richText} ${withPadding ? classes.withPadding : ''}`}>
+      <div className={`${classes.richText} ${withPadding ? classes.withPadding : ''} ${backgroundColor !== 'none' ? classes[backgroundColor] : ''}`}>
         {serialize(content)}
       </div>
     </div>

@@ -70,6 +70,9 @@ export default createUseStyles({
     [queries.m]: {
       position: 'relative',
       padding: base(2)
+    },
+    [queries.s]: {
+      padding: base()
     }
   },
   cta: {

@@ -1,7 +1,7 @@
 import { createUseStyles } from 'react-jss'
 import { htmlFontSize, baselinePX, base } from './base'
 import colors from './colors'
-import { h1, h2, h3, h4, h5, body, a } from './type'
+import { h1, h2, h3, h4, h5, h6, body, a } from './type'
 import fonts from './fonts'
 import breakpoints from './breakpoints'
 
@@ -32,6 +32,7 @@ export default createUseStyles({
     h3,
     h4,
     h5,
+    h6,
     p: {
       ...body
     },

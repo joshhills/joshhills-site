@@ -7,11 +7,12 @@ import { body, h4 } from "../../css/type";
 
 export default createUseStyles({
     nav: {
-        background: colors.orange,
+        backgroundColor: colors.orange,
         color: colors.white,
         height: '100%',
         width: '100%',
-        border: 'none'
+        border: 'none',
+        background: 'url(/images/backgrounds/minimap-light.svg) no-repeat center 82px'
     },
     back: {
         ...body,
@@ -33,8 +34,8 @@ export default createUseStyles({
         paddingLeft: base(2),
         paddingRight: base(2),
         [queries.s]: {
-            paddingLeft: base(),
-            paddingRight: base()
+            paddingLeft: 0,
+            paddingRight: 0
         }
     },
     iconContainer: {
@@ -64,7 +65,7 @@ export default createUseStyles({
             }
         },
         [queries.s]: {
-            padding: base()
+            padding: 0
         }
     },
     grid: {

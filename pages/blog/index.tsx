@@ -93,7 +93,7 @@ const BlogIndex: React.FC<Props> = ({ posts, totalPages, searchStr }) => {
                           {
                             "children": [
                               {
-                                "text": "workshops on game design as a "
+                                "text": "workshops on game programming as a "
                               },
                               {
                                 "type": "link",

@@ -4,7 +4,8 @@ import queries from "../../css/queries";
 
 export default createUseStyles({
     page: {
-        background: 'url(/images/backgrounds/minimap.svg) no-repeat center top'
+        background: 'url(/images/backgrounds/minimap.svg) no-repeat center top',
+        minHeight: `calc(100vh - 82px)`
     },
     cover: {
         padding: base(2),

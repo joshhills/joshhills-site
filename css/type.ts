@@ -116,6 +116,27 @@ export const h5 = {
   }
 }
 
+export const h6 = {
+  ...heading,
+  fontSize: base(1.25),
+  lineHeight: base(1.5),
+  margin: `${base(0.75)} 0 ${base(0.5)}`,
+  [queries.m]: {
+    fontSize: base(1),
+    lineHeight: base(1.25)
+  },
+  [queries.s]: {
+    fontSize: base(0.8),
+    lineHeight: base(1.25),
+    margin: `${base(0.5)} 0 ${base(0.25)}`
+  },
+  [queries.xs]: {
+    fontSize: base(0.75),
+    lineHeight: base(1),
+    margin: `${base(0.25)} 0 ${base(0.1)}`
+  }
+}
+
 export const body = {
   fontSize: htmlFontSize,
   lineHeight: base(1.5),
