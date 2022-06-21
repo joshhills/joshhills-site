@@ -188,6 +188,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
                     excerpt: {
                         like: searchStr
                     }
+                },
+                {
+                    category: {
+                        like: searchStr
+                    }
                 }
             ]
         }
