@@ -50,7 +50,7 @@ const Role: React.FC<Props> = (props) => {
             </NextHead>
 
             {/* Cover */}
-            <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={role.featuredMedia?.image?.alt} contentWidth='full'>
+            <Cover backgroundImageSrc={featuredImageUrl} backgroundImageAlt={role.featuredMedia?.image?.alt} contentWidth='full' fade={true}>
                 <div className={classes.cover}>
                     <p>
                         <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;

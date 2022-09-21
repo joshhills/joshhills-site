@@ -18,24 +18,29 @@ const cover = {
   [`@media(min-width: ${breakpoints.xxl}px)`]: {
       minHeight: '60vh',
   },
-  '&:after': {
-      position: 'absolute',
-      content: '""',
-      height: '100%',
-      width: '100%',
-      top: 0,
-      left: 0,
-      // background: colorWithOpacity(colors.black, 65),
-      background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.2))',
-      zIndex: -1
-  },
   '& a:not(:hover)': {
     color: colors.white
   }
 }
 
+const fade = {
+  textShadow: `0px 0px 1px ${colors.orange}`,
+  '&:after': {
+    position: 'absolute',
+    content: '""',
+    height: '100%',
+    width: '100%',
+    top: 0,
+    left: 0,
+    // background: colorWithOpacity(colors.black, 65),
+    background: 'linear-gradient(rgba(255, 162, 80, 0.9), rgba(255, 162, 80, 0.2))',
+    zIndex: -1
+  }
+}
+
 export default createUseStyles({
   cover,
+  fade,
   coverFull: {
     ...cover,
     minHeight: '70vh',
@@ -49,7 +54,6 @@ export default createUseStyles({
   coverContent: {
     boxSizing: 'border-box',
     color: colors.white,
-    textShadow: `0px 0px 1px ${colors.orange}`,
     width: '100%'
   },
   gridFull: {

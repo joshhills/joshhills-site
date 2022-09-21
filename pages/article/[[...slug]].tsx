@@ -103,7 +103,7 @@ const Article: React.FC<Props> = (props) => {
 
             <div itemScope itemType="http://schema.org/Article">
                 {/* Cover */}
-                <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full'>
+                <Cover fullScreen={true} backgroundImageSrc={featuredImageUrl} backgroundImageAlt={article.featuredMedia?.image?.alt} backgroundVideoSrc={formatMediaUrl(article.featuredMedia?.video)} contentWidth='full' fade={true}>
                     <div className={classes.cover}>
                         <p>
                             <button className={`${classes.button} ${classes.back}`} onClick={() => router.back()}><span className={classes.icon}><FaBackspace/></span>Back</button>&nbsp;

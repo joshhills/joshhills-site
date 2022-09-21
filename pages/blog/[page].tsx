@@ -70,7 +70,7 @@ const BlogPage: React.FC<Props> = ({ posts, totalPages, activeIndex, searchStr }
                 description='Tech writing'
             />
 
-            <Cover contentWidth='half' backgroundImageSrc='/images/blog-cover.png' backgroundImageAlt='Me using a graphics tablet to design a game UI'>
+            <Cover contentWidth='half' backgroundImageSrc='/images/masthead-image-blog-orange.jpg' backgroundImageAlt='Me writing on a whiteboard'>
                 <div className={classes.cover}>
                     <h2>Blog</h2>
                     <h5>Technological tattle, design documents, and miscellaneous musings written during various projects</h5>
