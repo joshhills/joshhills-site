@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Template: React.FC = ({ children }) => (
+const Template: React.FC<any> = ({ children }) => (
   <Fragment>
     {children}
   </Fragment>

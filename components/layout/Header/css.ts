@@ -53,7 +53,7 @@ export default createUseStyles({
     }
   },
   links: {
-    '& > *': {
+    '& > *:not(:last-child)': {
       marginRight: base()
     },
     [queries.s]: {

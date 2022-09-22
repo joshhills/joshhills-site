@@ -5,11 +5,13 @@ import { format as formatSlug } from '../../utilities/formatSlug'
 
 const serialize = (children: any, codeAsPre: boolean = false, tagResultSpanWithId: boolean = false): React.ReactElement[] => children.map((node, i) => {
 
-  if (Text.isText(node)) {
+  if (node.text) {
     
     let text = tagResultSpanWithId ?
       <span id={formatSlug(node.text)} dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />
       : <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />;
+
+    
 
     if (node.bold) {
       text = (

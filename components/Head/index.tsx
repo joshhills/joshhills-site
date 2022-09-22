@@ -47,7 +47,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
       <meta name="msapplication-TileColor" content="#ffa351" />
       <meta name="msapplication-config" content="/icons/browserconfig.xml" />
       <meta name="theme-color" content="#ffa351" />
-      <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      {/* <link rel="dns-prefetch" href="https://fonts.gstatic.com" /> */}
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <meta
         name="description"
