@@ -74,7 +74,7 @@ const serialize = (children: any, codeAsPre: boolean = false, tagResultSpanWithI
     );
   }
 
-  if (!node) {
+  if (!node || !node.children) {
     return null;
   }
 
