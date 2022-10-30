@@ -2,7 +2,6 @@ import React from 'react';
 import Document from 'next/document';
 import { jss, SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
 import globalPlugin from 'jss-global';
-import { CookiesProvider } from 'react-cookie';
 
 export default class JssDocument extends Document {
   static async getInitialProps(ctx) {
@@ -17,9 +16,7 @@ export default class JssDocument extends Document {
           registry={registry}
           generateId={generateId}
         >
-          <CookiesProvider>
-            <App {...props} />
-          </CookiesProvider>
+          <App {...props} />
         </JssProvider>
       ),
     });
