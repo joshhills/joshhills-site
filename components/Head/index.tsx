@@ -38,7 +38,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords, ogVideo,
       <link
         rel="icon"
         type="image/x-icon"
-        href="/icons/joshhills-dev-logo-dark.svg"
+        href="/icons/joshhills-dev-logo.svg"
       />
       <link rel="canonical" href={pageUrl} />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
